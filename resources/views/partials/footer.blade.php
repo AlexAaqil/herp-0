@@ -4,8 +4,8 @@
             <div class="image">
                 <x-app-logo />
             </div>
-            <p class="app_name">{{ env('APP_NAME') }}</p>
-            <p>Some cool slogan.</p>
+            <p class="app_name">{{ config('globals.app_short_name') }}</p>
+            <p>{{ config('globals.app_slogan') }}</p>
         </section>
 
         <section class="links">
