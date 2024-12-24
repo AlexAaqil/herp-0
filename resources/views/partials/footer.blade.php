@@ -6,6 +6,7 @@
             </div>
             <p class="app_name">{{ config('globals.app_short_name') }}</p>
             <p>{{ config('globals.app_slogan') }}</p>
+            <p>{{ config('globals.address') }}</p>
         </section>
 
         <section class="links">
