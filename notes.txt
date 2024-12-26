@@ -1,19 +1,31 @@
+--------------------------------------------------------
 TODOs
-# authentication - add user levels and permissions like 0 (super admin), 1 (admins), 2 (users) and 3 (blogger).
-# profile - users should be able to update profile pictures.
-# Logs - keeps logs on when users logged in and what they did when they logged in.
-# signup | contact - use proper phone number inputs with country codes.
-
-admin - search functionality.
-users - edit functionality.
-navbar - solve error for pages without the burger menu.
-authentication - ensure only active users can login.
+--------------------------------------------------------
 
 
+--------------------------------------------------------
+REQUIREMENTS
+--------------------------------------------------------
+TEACHERS PORTAL
+- Can update Student Exam Marks
+- Can view all classes Performance
+- Can view student Discipline Record
+- Can view Text book issued
+- Can view student Leavouts
+- Can issue Leavout forms
 
+STUDENT PORTAL
+- Can view their report forms
+- Can view their School fees statement
+- Can view their Discipline Record
+- Can view their Textbook issues
+- Can View Leavout History
+- Can view teachers Statement and Remarks
 
-
-NOTES
-User levels:
-0 - admin
-1 - user
+PARENTS PORTAL
+- Can view their students report forms
+- Can view their student School fees statement
+- Can view their student Discipline Record
+- Can View their student  Leavout History
+- Can view teachers Statement and Remarks
+- Can send messages to teachers in School. Can know about Teachers info and Contact them 
