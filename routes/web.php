@@ -4,10 +4,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\GeneralPagesController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserLevelController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserMessageController;
 use App\Http\Controllers\BlogCategoryController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\SettingsController;
 
 Route::get('/', [GeneralPagesController::class, 'home'])->name('home');
 Route::get('/about', [GeneralPagesController::class, 'about'])->name('about');
@@ -33,10 +35,16 @@ Route::middleware(['auth', 'verified', 'active', 'admin'])
 ->group(function() {
     Route::get('/dashboard', [DashboardController::class, 'admin_dashboard'])->name('admin.dashboard');
 
-    Route::get('/users', [UserController::class, 'index'])->name('users.index');
-    Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('user.edit');
-    Route::patch('/users/{user}', [UserController::class, 'update'])->name('user.update');
-    Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+    Route::resource('/user-levels', UserLevelController::class)->except('show');
+
+    Route::resource('/users', UserController::class)->except('show');
+
+    // Route::get('/users', [UserController::class, 'index'])->name('users.index');
+    // Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('user.edit');
+    // Route::get('/users/create', [UserController::class, 'create'])->name('user.create');
+    // Route::get('/users', [UserController::class, 'create'])->name('user.store');
+    // Route::patch('/users/{user}', [UserController::class, 'update'])->name('user.update');
+    // Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
 
     Route::resource('user-messages', UserMessageController::class)->only('index', 'show', 'destroy');
 
@@ -44,4 +52,6 @@ Route::middleware(['auth', 'verified', 'active', 'admin'])
 
     Route::resource('/blogs', BlogController::class)->except('show');
     Route::post('/blogs/sort-lessons', [BlogController::class, 'sort_blogs'])->name('blogs.sort');
+
+    Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
 });

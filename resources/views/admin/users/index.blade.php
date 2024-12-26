@@ -2,6 +2,7 @@
     <x-admin-header 
         header_title="Users" 
         :total_count="count($users)"
+        route="{{ route('users.create') }}"
     />
 
     <div class="body">
@@ -19,16 +20,17 @@
                     @foreach($users as $user)
                     <tr class="searchable {{ $user->user_status == '0' ? 'inactive_user' : 'active' }}">
                         <td class="center">
-                            <a href="{{ route('user.edit', ['user' => $user->id]) }}">
+                            <a href="{{ route('users.edit', ['user' => $user->id]) }}">
                                 {{ $id++ }}
                             </a>
                         </td>
                         <td>
                             {{ $user->first_name .' '. Auth::user()->last_name }} 
-                            {!! $user->user_level == 0 ? '<span class="td_span">admin</span>' : '' !!}
+                            {!! $user->user_level == 0 ? '<span class="td_span">super admin</span>' : '' !!}
+                            {!! $user->user_level == 1 ? '<span class="td_span">admin</span>' : '' !!}
                         </td>
                         <td class="{{ $user->email_verified_at != Null ? 'verified' : 'unverified'  }}">{{ $user->email }}</td>
-                        <td>{{ $user->phone_number }}</td>
+                        <td>{{ $user->phone_main }}</td>
                     </tr>
                     @endforeach
                 @else

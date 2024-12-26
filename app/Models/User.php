@@ -20,7 +20,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'first_name',
         'last_name',
         'email',
-        'phone_number',
+        'phone_main',
+        'emp_code',
         'password',
         'user_level',
     ];
@@ -46,5 +47,10 @@ class User extends Authenticatable implements MustVerifyEmail
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function userLevel()
+    {
+        return $this->belongsTo(UserLevel::class, 'user_level', 'user_level');
     }
 }

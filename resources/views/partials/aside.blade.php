@@ -10,6 +10,7 @@
                 ['route' => 'users.index', 'icon' => 'fas fa-users', 'text' => 'Users'],
                 ['route' => 'blogs.index', 'icon' => 'fas fa-blog', 'text' => 'Blogs'],
                 ['route' => 'user-messages.index', 'icon' => 'fas fa-comment', 'text' => 'Messages'],
+                ['route' => 'settings.index', 'icon' => 'fas fa-cog', 'text' => 'Settings'],
             ];
         @endphp
 

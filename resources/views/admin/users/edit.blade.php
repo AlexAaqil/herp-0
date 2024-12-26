@@ -9,7 +9,7 @@
             </p>
         </header>
 
-        <form action="{{ route('user.update', ['user' => $user->id]) }}" method="post">
+        <form action="{{ route('users.update', ['user' => $user->id]) }}" method="post">
             @csrf
             @method('PATCH')
 
@@ -31,17 +31,29 @@
 
                 <div class="input_group">
                     <label for="user_level">User Level</label>
-                    <div class="custom_radio_buttons">
+                    {{-- <div class="custom_radio_buttons">
                         <label>
                             <input class="option_radio" type="radio" name="user_level" id="user_level_1" value="1" {{ ($user->user_level == 1) ? 'checked' : '' }}>
-                            <span>Admin</span>
+                            <span>{{ $user->userLevel->title }}</span>
                         </label>
 
                         <label>
                             <input class="option_radio" type="radio" name="user_level" id="user_level_2" value="2" {{ ($user->user_level == 2) ? 'checked' : '' }}>
-                            <span>User</span>
+                            <span>{{ $user->userLevel->title }}</span>
                         </label>
-                    </div>
+                    </div> --}}
+
+                    <div class="custom_radio_buttons">
+                        @foreach ($user_levels as $level)
+                            <label>
+                                <input class="option_radio" type="radio" name="user_level" 
+                                       id="user_level_{{ $level->id }}" 
+                                       value="{{ $level->id }}" 
+                                       {{ ($user->user_level == $level->id) ? 'checked' : '' }}>
+                                <span>{{ $level->title }}</span>
+                            </label>
+                        @endforeach
+                    </div>                    
                 </div>
             </div>
 
