@@ -1085,6 +1085,7 @@ footer .copyright {
 .Settings ul li {
   width: 12%;
   border-bottom: 2px solid grey;
+  padding: 4px 2px;
 }
 .Settings ul li a {
   text-decoration: none;
