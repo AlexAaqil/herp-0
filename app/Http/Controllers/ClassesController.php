@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Classes;
+use App\Models\ClassSections;
 use Illuminate\Http\Request;
 
 class ClassesController extends Controller
