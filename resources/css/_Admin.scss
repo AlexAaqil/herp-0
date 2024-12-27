@@ -86,6 +86,11 @@ $thead_background: #000;
                                 border-radius: 32px;
                                 background: $dashboard_background;
                             }
+
+                            .super_admin {
+                                background: $success;
+                                color: #fff;
+                            }
                         }
 
                         .actions {

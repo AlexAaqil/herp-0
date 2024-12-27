@@ -11,6 +11,10 @@
   color: #4d4d4d;
 }
 
+.super_admin {
+  background: green;
+}
+
 .inactive,
 .unverified,
 .draft {
@@ -1039,6 +1043,10 @@ footer .copyright {
   font-weight: bold;
   border-radius: 32px;
   background: #dedefd;
+}
+.Admin .admin_content .body .table tbody tr td .super_admin {
+  background: green;
+  color: #fff;
 }
 .Admin .admin_content .body .table tbody tr .actions {
   display: flex;

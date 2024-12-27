@@ -28,6 +28,10 @@ $primary_button: #000;
     color: darken($faded, 20);
 }
 
+.super_admin {
+    background: $success;
+}
+
 .inactive,
 .unverified,
 .draft {

@@ -14,7 +14,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::orderByDesc('user_status')->orderBy('user_level')->orderBy('created_at')->get();
+        $users = User::orderBy('first_name')->get();
 
         return view("admin.users.index", compact("users"));
     }
@@ -36,8 +36,6 @@ class UserController extends Controller
             'emp_code' => ['nullable'],
             'password' => ['nullable', 'confirmed', Rules\Password::defaults()],
         ]);
-
-        // dd($request);
 
         $user = User::create([
             'first_name' => $request->first_name,
@@ -64,10 +62,25 @@ class UserController extends Controller
 
     public function update(Request $request, User $user)
     {
-        $user->user_level = $request->user_level;
-        $user->user_status = $request->user_status;
+        $validated = $request->validate([
+            'first_name' => ['required', 'string', 'max:80'],
+            'last_name' => ['required', 'string', 'max:120'],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class.',email,'.$user->id],
+            'phone_main' => ['required', 'max:30'],
+            'user_level' => ['required'],
+            'emp_code' => ['nullable','unique:'.User::class.',emp_code,'.$user->id],
+            'password' => ['nullable', 'confirmed', $request->password ? Rules\Password::defaults() : ''],
+        ]);
 
-        $user->save();
+        $user->update([
+            'first_name' => $validated['first_name'],
+            'last_name' => $validated['last_name'],
+            'email' => $validated['email'],
+            'phone_main' => $validated['phone_main'],
+            'user_level' => $validated['user_level'],
+            'emp_code' => $validated['emp_code'] ?? null,
+            'password' => $validated['password'] ? bcrypt($validated['password']) : $user->password,
+        ]);        
 
         return redirect()->route('users.index')->with('success', ['message' => 'User has been updated']);
     }
