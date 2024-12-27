@@ -1077,4 +1077,17 @@ footer .copyright {
     width: 88%;
     margin: auto;
   }
+}
+.Settings ul {
+  list-style: none;
+  margin: 0.8em 0;
+}
+.Settings ul li {
+  width: 12%;
+  border-bottom: 2px solid grey;
+}
+.Settings ul li a {
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
 }/*# sourceMappingURL=styles.css.map */
