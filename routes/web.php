@@ -11,6 +11,7 @@ use App\Http\Controllers\BlogCategoryController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\ClassesController;
+use App\Http\Controllers\ClassSectionsController;
 
 Route::get('/', [GeneralPagesController::class, 'home'])->name('home');
 Route::get('/about', [GeneralPagesController::class, 'about'])->name('about');
@@ -47,5 +48,12 @@ Route::middleware(['auth', 'verified', 'active', 'admin'])
 
     Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
 
-    Route::resource('/classes', ClassesController::class)->except('show');
+    Route::get('/classes', [ClassesController::class, 'index'])->name('classes.index');
+    Route::get('/classes/create', [ClassesController::class, 'create'])->name('classes.create');
+    Route::post('/classes', [ClassesController::class, 'store'])->name('classes.store');
+    Route::get('/classes/{classes}', [ClassesController::class, 'show'])->name('classes.show');
+    Route::get('/classes/{classes}/edit', [ClassesController::class, 'edit'])->name('classes.edit');
+    Route::patch('/classes/{classes}', [ClassesController::class, 'update'])->name('classes.update');
+    Route::delete('/classes/{classes}', [ClassesController::class, 'destroy'])->name('classes.destroy');
+    Route::resource('class_sections', ClassSectionsController::class)->except('show');
 });

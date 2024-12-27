@@ -43,7 +43,7 @@
                             <span class="inline_alert">{{ $errors->first('title') }}</span>
                         </div>
 
-                        <div class="input_grout">
+                        <div class="input_group">
                             <select name="teacher_id" id="teacher_id">
                                 <option value="">Select Class Teacher</option>
                             </select>
@@ -58,7 +58,9 @@
                 @if(count($class_sections) > 0)
                     @foreach($class_sections as $class_section)
                         <p>
-                            <span>{{ $class_section->title }} - </span>
+                            <span>
+                                <a href="{{ route('class_sections.edit',$class_section->id) }}">{{ $class_section->title }}</a> - 
+                            </span>
                             <span>{{ $class_section->teacher_id ?? 'Teacher is unknown' }}</span>
                         </p>
                     @endforeach

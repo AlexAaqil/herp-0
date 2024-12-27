@@ -1091,4 +1091,11 @@ footer .copyright {
   text-decoration: none;
   color: #000;
   font-weight: bold;
+}
+
+.Classes .class_sections {
+  margin: 2em 0;
+}
+.Classes .class_sections .sections {
+  margin: 1em 0 0;
 }/*# sourceMappingURL=styles.css.map */
