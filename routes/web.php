@@ -12,6 +12,8 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\ClassesController;
 use App\Http\Controllers\ClassSectionsController;
+use App\Http\Controllers\StudentsController;
+use App\Http\Controllers\ParentsController;
 
 Route::get('/', [GeneralPagesController::class, 'home'])->name('home');
 Route::get('/about', [GeneralPagesController::class, 'about'])->name('about');
@@ -39,6 +41,10 @@ Route::middleware(['auth', 'verified', 'active', 'admin'])
 
     Route::resource('/user-levels', UserLevelController::class)->except('show');
     Route::resource('/users', UserController::class)->except('show');
+
+    Route::resource('students', StudentsController::class)->except('show');
+
+    Route::resource('/parents', ParentsController::class)->except('show');
 
     Route::resource('user-messages', UserMessageController::class)->only('index', 'show', 'destroy');
 
