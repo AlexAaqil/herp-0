@@ -3,10 +3,10 @@
         {{ $extra_head ?? '' }}
     </x-slot>
     
-    <main class="Admin">
+    <main class="app_main">
         @include('partials.aside')
 
-        <div class="admin_content">
+        <div class="app_content">
             @include('partials.messages')
         
             <section {{ $attributes->merge(['class' => '']) }}>

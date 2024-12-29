@@ -1,12 +1,12 @@
 $aside_width: 15%;
 $thead_background: #000;
 
-.Admin {
+.app_main {
     aside {
         width: $aside_width;
     }
 
-    .admin_content {
+    .app_content {
         margin-left: $aside_width;
         padding: 4px 15px;
 
