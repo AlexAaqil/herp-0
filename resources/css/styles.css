@@ -1079,13 +1079,13 @@ footer .copyright {
 }
 
 @media screen and (width >= 726px) {
-  .Admin .admin_content .header .header_btn {
+  .app_main .app_content .header .header_btn {
     justify-self: right;
   }
-  .Admin .admin_content .body {
+  .app_main .app_content .body {
     overflow: hidden;
   }
-  .Admin .admin_content .custom_form {
+  .app_main .app_content .custom_form {
     width: 88%;
     margin: auto;
   }
