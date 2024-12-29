@@ -10,6 +10,8 @@
 
     @vite(['resources/css/styles.css', 'resources/js/app.js'])
 
+    {{ $extra_head ?? '' }}
+
     <title>{{ config('app.name', 'Laravel') }}</title>
 </head>
 <body>
