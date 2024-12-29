@@ -1,9 +1,5 @@
-<x-admin-layout class="Classes">
-    <x-admin-header
-        header_title="Classes"
-        :total_count="count($classes)"
-        route="{{ route('classes.create') }}"
-    />
+<x-authenticated-layout class="Classes">
+    <x-admin-header header_title="Classes" :total_count="count($classes)" route="{{ route('classes.create') }}" />
 
     <div class="body">
         <table class="table">
@@ -15,9 +11,9 @@
             </thead>
 
             <tbody>
-                @if(count($classes) > 0)
+                @if (count($classes) > 0)
                     @php $id = 1 @endphp
-                    @foreach($classes as $class)
+                    @foreach ($classes as $class)
                         <tr class="searchable">
                             <td class="center">
                                 <a href="{{ route('classes.edit', $class->id) }}">
@@ -35,4 +31,4 @@
             </tbody>
         </table>
     </div>
-</x-admin-layout>
+</x-authenticated-layout>

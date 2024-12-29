@@ -1,4 +1,4 @@
-<x-admin-layout class="User_levels">
+<x-authenticated-layout class="User_levels">
     <div class="custom_form">
         <header>
             <p>New User Level</p>
@@ -22,4 +22,4 @@
             <button type="submit">Save</button>
         </form>
     </div>
-</x-admin-layout>
+</x-authenticated-layout>

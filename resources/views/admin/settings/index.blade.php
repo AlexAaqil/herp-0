@@ -1,4 +1,4 @@
-<x-admin-layout class="Settings">
+<x-authenticated-layout class="Settings">
     <h1>Settings</h1>
 
     <ul>
@@ -12,4 +12,4 @@
             <a href="#">Dorms</a>
         </li>
     </ul>
-</x-admin-layout>
+</x-authenticated-layout>

@@ -1,4 +1,4 @@
-<x-admin-layout class="Admin_dashboard">
+<x-authenticated-layout class="Admin_dashboard">
     <section class="Hero">
         <p>Hi {{ Auth::user()->first_name }}</p>
     </section>
@@ -34,4 +34,4 @@
             </div>
         </div>
     </section>
-</x-admin-layout>
+</x-authenticated-layout>

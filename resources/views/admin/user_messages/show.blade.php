@@ -1,4 +1,4 @@
-<x-admin-layout class="Contact">
+<x-authenticated-layout class="Contact">
     <div class="custom_form show_user_message">
         <header>
             <p>Update Message</p>
@@ -18,7 +18,8 @@
             <a href="mailto:{{ $user_message->email }}" class="btn">Email this user</a>
         </div>
 
-        <form id="deleteForm_{{ $user_message->id }}" action="{{ route('user-messages.destroy', ['user_message' => $user_message->id]) }}" method="post">
+        <form id="deleteForm_{{ $user_message->id }}"
+            action="{{ route('user-messages.destroy', ['user_message' => $user_message->id]) }}" method="post">
             @csrf
             @method('DELETE')
 
@@ -33,4 +34,4 @@
     <x-slot name="javascript">
         <x-sweetalert />
     </x-slot>
-</x-admin-layout>
+</x-authenticated-layout>

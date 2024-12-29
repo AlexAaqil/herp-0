@@ -1,4 +1,4 @@
-<x-admin-layout class="Blogs">
+<x-authenticated-layout class="Blogs">
     <div class="custom_form">
         <header>
             <p>New Blog</p>
@@ -20,12 +20,14 @@
                     <label for="is_published">Publish?</label>
                     <div class="custom_radio_buttons">
                         <label>
-                            <input class="option_radio" type="radio" name="is_published" id="yes" value="1" {{ old('is_published', 1) == '1' ? 'checked' : '' }}>
+                            <input class="option_radio" type="radio" name="is_published" id="yes" value="1"
+                                {{ old('is_published', 1) == '1' ? 'checked' : '' }}>
                             <span>Yes</span>
                         </label>
 
                         <label>
-                            <input class="option_radio" type="radio" name="is_published" id="no" value="0" {{ old('is_published') == '0' ? 'checked' : '' }}>
+                            <input class="option_radio" type="radio" name="is_published" id="no" value="0"
+                                {{ old('is_published') == '0' ? 'checked' : '' }}>
                             <span>Save as draft</span>
                         </label>
                     </div>
@@ -36,7 +38,8 @@
             <div class="row_input_group">
                 <div class="input_group">
                     <label for="title">Blog Title</label>
-                    <input type="text" name="title" id="title" placeholder="Enter your Blog's Title" value="{{ old('title') }}">
+                    <input type="text" name="title" id="title" placeholder="Enter your Blog's Title"
+                        value="{{ old('title') }}">
                     <span class="inline_alert">{{ $errors->first('title') }}</span>
                 </div>
 
@@ -44,8 +47,10 @@
                     <label for="category_id">Category</label>
                     <select name="category_id" id="category_id">
                         <option value="">Select Blog Category</option>
-                        @foreach($categories as $category)
-                            <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>{{ $category->title }}</option>
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}"
+                                {{ old('category_id') == $category->id ? 'selected' : '' }}>{{ $category->title }}
+                            </option>
                         @endforeach
                     </select>
                 </div>
@@ -65,7 +70,8 @@
 
             <div class="input_group">
                 <label for="title">New Blog Category Title</label>
-                <input type="text" name="title" id="title" placeholder="New Blog Category" value="{{ old('title') }}">
+                <input type="text" name="title" id="title" placeholder="New Blog Category"
+                    value="{{ old('title') }}">
                 <span class="inline_alert">{{ $errors->first('title') }}</span>
             </div>
 
@@ -76,4 +82,4 @@
     <x-slot name="javascript">
         <x-text-editor />
     </x-slot>
-</x-admin-layout>
+</x-authenticated-layout>
