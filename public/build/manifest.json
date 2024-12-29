@@ -1,6 +1,10 @@
 {
+  "public/assets/images/Hero.webp": {
+    "file": "assets/Hero-CbVW5t1s.webp",
+    "src": "public/assets/images/Hero.webp"
+  },
   "resources/css/styles.css": {
-    "file": "assets/styles-BprxzrI9.css",
+    "file": "assets/styles-BHK_eeGb.css",
     "src": "resources/css/styles.css",
     "isEntry": true
   },
