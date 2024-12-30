@@ -12,12 +12,12 @@ Each user should have their own dashboard
 REQUIREMENTS
 --------------------------------------------------------
 TEACHERS PORTAL
-- Can update Student Exam Marks
-- Can view all classes Performance
 - Can view student Discipline Record
 - Can view Text book issued
-- Can view student Leavouts
 - Can issue Leavout forms
+- Can view student Leavouts
+- Can update Student Exam Marks
+- Can view all classes Performance
 
 STUDENT PORTAL
 - Can view their report forms
