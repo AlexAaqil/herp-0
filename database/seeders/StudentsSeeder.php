@@ -23,7 +23,6 @@ class StudentsSeeder extends Seeder
                 'year_admitted' => 2013,
                 'gender' => 'M',
                 'password' => Hash::make("st123456"),
-                'parent_id' => 1,
             ],
             [
                 'registration_number' => 7365,

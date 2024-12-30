@@ -17,5 +17,10 @@ class Parents extends Model
         'phone_other',
         'address',
         'password',
-    ];    
+    ]; 
+
+    public function students()
+    {
+        return $this->belongsToMany(Students::class, 'parent_student',  'parent_id', 'student_id');
+    }   
 }

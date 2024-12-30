@@ -115,7 +115,7 @@
 
                 <div class="input_group">
                     <label for="password">Password</label>
-                    <input type="password" name="password" id="password" value="st123456">
+                    <input type="password" name="password" id="password">
                     <span class="inline_alert">{{ $errors->first('password') }}</span>
                 </div>
             </div>
@@ -126,15 +126,15 @@
             <div class="row_input_group">
                 <div class="input_group">
                     <label for="parent_id">Select Parent</label>
-                    <select name="parent_id" id="parent_id" class="searchable_select">
+                    <select name="parent_id[]" id="parent_id" class="searchable_select" multiple>
                         <option value="">Search for a parent</option>
                         @foreach ($parents as $parent)
                             <option value="{{ $parent->id }}"
-                                {{ old('parent_id') == $parent->id ? 'selected' : '' }}>
+                                {{ in_array($parent->id, old('parent_id', [])) ? 'selected' : '' }}>
                                 {{ $parent->phone_main }} - {{ $parent->first_name }} {{ $parent->last_name }}
                             </option>
                         @endforeach
-                    </select>
+                    </select>                    
                     <span class="inline_alert">{{ $errors->first('parent_id') }}</span>
                 </div>
             </div>
@@ -206,7 +206,7 @@
     <x-slot name="javascript">
         <script>
             $(document).ready(function() {
-                $('.searchable_select').chosen();
+                $('#parent_id').chosen();
             })
         </script>
     </x-slot>

@@ -1,8 +1,9 @@
 --------------------------------------------------------
 TODOs
 --------------------------------------------------------
-Work on the form for updating users
-Each user should have their own dashboard
+Work on the form for updating users.
+Each user should have their own dashboard.
+- update students form should also have the multiselect enabled.
 - add a pivot table for parents and students to make it possible to have a many to many relationship.
 - Update Forms: Add a button for going back to index pages for easier navigation.
 

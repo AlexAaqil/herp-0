@@ -26,8 +26,6 @@ return new class extends Migration
             $table->string('gender')->nullable();
             $table->string('image')->nullable();
             $table->string('password');
-
-            $table->foreignId('parent_id')->nullable()->constrained('parents')->onDelete('set null');
             $table->timestamps();
         });
     }

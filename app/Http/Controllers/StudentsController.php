@@ -43,11 +43,19 @@ class StudentsController extends Controller
             'graduation_status' => 'required|boolean',
             'graduation_date' => 'nullable|date',
             'class_section_id' => 'required|integer',
-            'parent_id' => 'nullable|integer',
-            'password' => 'required|string',
+            'parent_id' => 'nullable|array',
+            'parent_id.*' => 'exists:parents,id',
+            'password' => ['nullable', Rules\Password::defaults()],
         ]);
 
-        Students::create($validated);
+        $validated['password'] = Hash::make($request->password ?? 'st123456');
+
+        $student = new Students($validated);
+        $student->save();
+
+        if($request->has('parent_id')) {
+            $student->parents()->attach($request->parent_id);
+        }
 
         return redirect()->route('students.index')->with('success', ['message' => 'Student has been admitted']);
     }
