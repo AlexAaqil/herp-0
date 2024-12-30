@@ -16,19 +16,19 @@ class UserLevelsSeeder extends Seeder
         $user_levels = [
             [
                 "user_level" => 0,
-                "title" => "super_admin",
+                "title" => "Super Admin",
             ],
             [
                 "user_level" => 1,
-                "title" => "admin",
+                "title" => "Admin",
             ],
             [
                 "user_level" => 2,
-                "title" => "accountant",
+                "title" => "Accountant",
             ],
             [
                 "user_level" => 3,
-                "title" => "teacher",
+                "title" => "Teacher",
             ],
         ];
 
