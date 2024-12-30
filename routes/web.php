@@ -26,10 +26,16 @@ Route::get('/blogs/{slug}', [BlogController::class, 'show'])->name('blogs.show')
 Route::middleware(['auth', 'verified', 'active'])->group(function () {
     Route::get('/home', [DashboardController::class, 'index'])->name('dashboard.index');
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+    Route::get('/accountant/dashboard', [DashboardController::class, 'accountant_dashboard'])->name('accountant.dashboard');
+    Route::get('/teacher/dashboard', [DashboardController::class, 'teacher_dashboard'])->name('teacher.dashboard');
     
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::resource('students', StudentsController::class)->except('show');
+
+    Route::resource('/parents', ParentsController::class)->except('show');
 });
 
 require __DIR__.'/auth.php';
@@ -41,10 +47,6 @@ Route::middleware(['auth', 'verified', 'active', 'admin'])
 
     Route::resource('/user-levels', UserLevelController::class)->except('show');
     Route::resource('/users', UserController::class)->except('show');
-
-    Route::resource('students', StudentsController::class)->except('show');
-
-    Route::resource('/parents', ParentsController::class)->except('show');
 
     Route::resource('user-messages', UserMessageController::class)->only('index', 'show', 'destroy');
 
