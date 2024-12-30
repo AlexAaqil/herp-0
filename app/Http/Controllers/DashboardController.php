@@ -12,13 +12,17 @@ class DashboardController extends Controller
     {
         $user_level = Auth()->user()->user_level;
         
-        if($user_level == 1)
+        if($user_level == 2)
         {
-            return redirect()->route('dashboard');
+            return redirect()->route('accountant.dashboard');
         }
-        else if($user_level == 0)
+        else if($user_level == 0 || $user_level == 1)
         {
             return redirect()->route('admin.dashboard');
+        }
+        else if($user_level == 3)
+        {
+            return redirect()->route('teacher.dashboard');
         }
         else
         {
@@ -42,5 +46,15 @@ class DashboardController extends Controller
             'count_user_messages',
             'count_blogs',
         ));
+    }
+
+    public function accountant_dashboard()
+    {
+        return view('dashboards.accountant_dashboard');
+    }
+
+    public function teacher_dashboard()
+    {
+        return view('dashboards.teacher_dashboard');
     }
 }
