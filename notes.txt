@@ -5,6 +5,7 @@ Work on the form for updating users.
 Each user should have their own dashboard.
 Add a pivot table for parents and students to make it possible to have a many to many relationship.
 Teachers can do CRUD operations for student's disciplinary records.
+Teachers can do CRUD operations for student's leaveouts.
 
 - Teachers and Students logins.
 - Update students form should also have the multiselect enabled.
