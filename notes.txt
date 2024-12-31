@@ -3,9 +3,13 @@ TODOs
 --------------------------------------------------------
 Work on the form for updating users.
 Each user should have their own dashboard.
+Add a pivot table for parents and students to make it possible to have a many to many relationship.
+Teachers can do CRUD operations for student's disciplinary records.
+
 - Teachers and Students logins.
-- update students form should also have the multiselect enabled.
-- add a pivot table for parents and students to make it possible to have a many to many relationship.
+- Update students form should also have the multiselect enabled.
+- Ensure proper data entry for student_parent pivot table.
+- Users table should get the user_levels from the user_levels table.
 - Update Forms: Add a button for going back to index pages for easier navigation.
 
 
