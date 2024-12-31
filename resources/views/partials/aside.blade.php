@@ -42,6 +42,12 @@
                 'level' => [0, 1, 2, 3],
             ],
             [
+                'route' => 'disciplinaries.index',
+                'icon' => 'fas fa-balance-scale-right',
+                'text' => 'Disciplinaries',
+                'level' => [0, 1, 3],
+            ],
+            [
                 'route' => 'blogs.index',
                 'icon' => 'fas fa-blog',
                 'text' => 'Blogs',
