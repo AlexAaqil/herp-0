@@ -14,6 +14,8 @@ class StudentsSeeder extends Seeder
      */
     public function run(): void
     {
+        $password = Hash::make("st123456");
+
         $students = [
             [
                 'registration_number' => 7364,
@@ -22,7 +24,7 @@ class StudentsSeeder extends Seeder
                 'class_section_id' => 1,
                 'year_admitted' => 2013,
                 'gender' => 'M',
-                'password' => Hash::make("st123456"),
+                'password' => $password,
             ],
             [
                 'registration_number' => 7365,
@@ -31,7 +33,7 @@ class StudentsSeeder extends Seeder
                 'class_section_id' => 5,
                 'year_admitted' => 2013,
                 'gender' => 'M',
-                'password' => Hash::make("st123456"),
+                'password' => $password,
             ],
             [
                 'registration_number' => 7366,
@@ -40,7 +42,7 @@ class StudentsSeeder extends Seeder
                 'class_section_id' => 3,
                 'year_admitted' => 2013,
                 'gender' => 'M',
-                'password' => Hash::make("st123456"),
+                'password' => $password,
             ],
         ];
 

@@ -14,34 +14,35 @@ class ParentsSeeder extends Seeder
      */
     public function run(): void
     {
+        $password = Hash::make('p@rents');
         $parents = [
             [
                 'first_name' => 'Silvia',
                 'last_name' => 'Njeri',
                 'email' => 'parent@gmail.com',
                 'phone_main' => '0720569458',
-                'password' => Hash::make('p@rents'),
+                'password' => $password,
             ],
             [
                 'first_name' => 'Beatrice',
                 'last_name' => 'Wangari',
                 'email' => 'parent1@gmail.com',
                 'phone_main' => '0746055487',
-                'password' => Hash::make('p@rents'),
+                'password' => $password,
             ],
             [
                 'first_name' => 'Nicholas',
                 'last_name' => 'Kamau',
                 'email' => 'parent2@gmail.com',
                 'phone_main' => '0720569457',
-                'password' => Hash::make('p@rents'),
+                'password' => $password,
             ],
             [
                 'first_name' => 'Charles',
                 'last_name' => 'Maina',
                 'email' => 'parent3@gmail.com',
                 'phone_main' => '0720569358',
-                'password' => Hash::make('p@rents'),
+                'password' => $password,
             ],
         ];
 

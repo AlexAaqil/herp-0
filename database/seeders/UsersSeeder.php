@@ -13,6 +13,8 @@ class UsersSeeder extends Seeder
      */
     public function run(): void
     {
+        $user_password = Hash::make("p@ssword");
+
         $users = [
             [
                 "first_name" => "Alex",
@@ -28,7 +30,7 @@ class UsersSeeder extends Seeder
                 "last_name" => "Admin",
                 "email" => "user@gmail.com",
                 "phone_main" => "0746055487",
-                "password"=> Hash::make("p@ssword"),
+                "password"=> $user_password,
                 "user_level" => 1,
                 "email_verified_at" => now(),
             ],
@@ -37,7 +39,7 @@ class UsersSeeder extends Seeder
                 "last_name" => "Test",
                 "email" => "accountant@gmail.com",
                 "phone_main" => "0746055487",
-                "password"=> Hash::make("p@ssword"),
+                "password"=> $user_password,
                 "user_level" => 2,
                 "email_verified_at" => now(),
             ],
@@ -46,7 +48,7 @@ class UsersSeeder extends Seeder
                 "last_name" => "Test",
                 "email" => "teacher@gmail.com",
                 "phone_main" => "0746055487",
-                "password"=> Hash::make("p@ssword"),
+                "password"=> $user_password,
                 "user_level" => 3,
                 "email_verified_at" => now(),
             ],
@@ -55,7 +57,7 @@ class UsersSeeder extends Seeder
                 "last_name" => "One",
                 "email" => "teacher1@gmail.com",
                 "phone_main" => "0746055487",
-                "password"=> Hash::make("p@ssword"),
+                "password"=> $user_password,
                 "user_level" => 3,
                 "email_verified_at" => now(),
             ],
@@ -64,7 +66,7 @@ class UsersSeeder extends Seeder
                 "last_name" => "Two",
                 "email" => "teacher2@gmail.com",
                 "phone_main" => "0746055487",
-                "password"=> Hash::make("p@ssword"),
+                "password"=> $user_password,
                 "user_level" => 3,
                 "email_verified_at" => now(),
             ],
