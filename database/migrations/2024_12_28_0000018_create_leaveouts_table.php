@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('disciplinaries', function (Blueprint $table) {
+        Schema::create('leaveouts', function (Blueprint $table) {
             $table->id();
             $table->string('category');
-            $table->text('comment');
+            $table->text('reason');
+            $table->date('from_date');
+            $table->date('to_date');
             $table->foreignId('student_id')->constrained('students')->onDelete('cascade');
             $table->foreignId('created_by')->nullable()->constrained('users')->onDelete('set null');
             $table->foreignId('updated_by')->nullable()->constrained('users')->onDelete('set null');
@@ -27,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('disciplinaries');
+        Schema::dropIfExists('leaveouts');
     }
 };

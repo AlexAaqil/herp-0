@@ -15,6 +15,7 @@ use App\Http\Controllers\ClassSectionsController;
 use App\Http\Controllers\StudentsController;
 use App\Http\Controllers\ParentsController;
 use App\Http\Controllers\DisciplinariesController;
+use App\Http\Controllers\LeaveoutsController;
 
 Route::get('/', [GeneralPagesController::class, 'home'])->name('home');
 Route::get('/about', [GeneralPagesController::class, 'about'])->name('about');
@@ -39,6 +40,8 @@ Route::middleware(['auth', 'verified', 'active'])->group(function () {
     Route::resource('/parents', ParentsController::class)->except('show');
 
     Route::resource('/disciplinaries', DisciplinariesController::class)->except('show');
+
+    Route::resource('/leaveouts', LeaveoutsController::class)->except('show');
 });
 
 require __DIR__.'/auth.php';
