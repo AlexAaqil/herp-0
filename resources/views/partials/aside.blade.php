@@ -54,6 +54,12 @@
                 'level' => [0, 1, 3],
             ],
             [
+                'route' => 'textbooks.index',
+                'icon' => 'fas fa-book',
+                'text' => 'Textbooks',
+                'level' => [0, 1, 3],
+            ],
+            [
                 'route' => 'blogs.index',
                 'icon' => 'fas fa-blog',
                 'text' => 'Blogs',
