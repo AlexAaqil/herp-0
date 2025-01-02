@@ -32,7 +32,7 @@
                             <td>{{ $textbook->student->registration_number }}</td>
                             <td>{{ $textbook->student->first_name . ' ' . $textbook->student->last_name }}</td>
                             @can('view-author-column')
-                                <td>{{ $textbook->createdBy->first_name . ' ' . $textbook->createdBy->last_name }}</td>
+                                <td>{{ $textbook->issuedBy->first_name . ' ' . $textbook->issuedBy->last_name }}</td>
                             @endcan
                             <td>{{ ucfirst($textbook->status) }}</td>
                             <td>{{ $textbook->date_issued }}</td>
