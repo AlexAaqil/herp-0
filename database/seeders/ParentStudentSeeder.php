@@ -16,8 +16,5 @@ class ParentStudentSeeder extends Seeder
     {
         $student = Students::find(1);
         $student->parents()->attach([1, 2]); // Student 1 has Parent 1 and 2
-        
-        $parent = Parents::find(1);
-        $parent->students()->attach([1, 3]); // Parent 1 has Student 1 and 3
     }
 }
