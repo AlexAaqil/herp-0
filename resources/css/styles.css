@@ -462,6 +462,23 @@ a.btn {
   border-radius: 50%;
 }
 
+.info_wrapper {
+  margin: 0 0 2em;
+}
+.info_wrapper .title {
+  font-weight: bold;
+  font-size: 1.1em;
+  margin: 0 0 0.3em;
+}
+.info_wrapper .info p {
+  margin: 0 0 0.2em;
+  display: grid;
+  grid-template-columns: 15% 85%;
+}
+.info_wrapper .info p span:nth-of-type(1) {
+  color: rgb(104, 104, 104);
+}
+
 @media screen and (width >= 726px) {
   .custom_form .row_input_group,
   .custom_form .row_input_group_3 {

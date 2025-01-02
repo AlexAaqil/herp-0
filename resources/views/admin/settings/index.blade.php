@@ -9,6 +9,9 @@
             <a href="{{ route('classes.index') }}">Classes</a>
         </li>
         <li>
+            <a href="{{ route('payments.index') }}">Payments</a>
+        </li>
+        <li>
             <a href="#">Dorms</a>
         </li>
     </ul>

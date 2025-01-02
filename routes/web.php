@@ -17,6 +17,7 @@ use App\Http\Controllers\ParentsController;
 use App\Http\Controllers\DisciplinariesController;
 use App\Http\Controllers\LeaveoutsController;
 use App\Http\Controllers\TextbooksController;
+use App\Http\Controllers\PaymentsController;
 
 Route::get('/', [GeneralPagesController::class, 'home'])->name('home');
 Route::get('/about', [GeneralPagesController::class, 'about'])->name('about');
@@ -73,4 +74,6 @@ Route::middleware(['auth', 'verified', 'active', 'admin'])
     Route::patch('/classes/{classes}', [ClassesController::class, 'update'])->name('classes.update');
     Route::delete('/classes/{classes}', [ClassesController::class, 'destroy'])->name('classes.destroy');
     Route::resource('class_sections', ClassSectionsController::class)->except('show');
+
+    Route::resource('/payments', PaymentsController::class)->except('show');
 });
