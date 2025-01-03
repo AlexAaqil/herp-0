@@ -13,13 +13,13 @@ class PaymentsController extends Controller
     public function index()
     {
         $payments = Payments::orderBy('year')->get();
-        return view('admin.payments.index', compact('payments'));
+        return view('admin.payments.payments.index', compact('payments'));
     }
 
     public function create()
     {
         $classes = Classes::orderBy('class_name')->get();
-        return view('admin.payments.create', compact('classes'));
+        return view('admin.payments.payments.create', compact('classes'));
     }
 
     public function store(Request $request)
@@ -44,7 +44,7 @@ class PaymentsController extends Controller
 
     public function edit(Payments $payment)
     {
-        return view('admin.payments.edit', compact('payment'));
+        return view('admin.payments.payments.edit', compact('payment'));
     }
 
     public function update(Request $request, Payments $payment)
