@@ -20,4 +20,14 @@ class Students extends Model
     {
         return $this->belongsToMany(Parents::class, 'parent_student', 'student_id', 'parent_id');
     }
+
+    public function getParentNamesAttribute()
+    {
+        if ($this->parents->isEmpty()) {
+            return 'Unknown';
+        }
+
+        // Join parent names with a comma
+        return $this->parents->pluck('full_name')->join(', ');
+    }
 }
