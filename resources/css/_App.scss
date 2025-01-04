@@ -94,9 +94,10 @@ $thead_background: #000;
                         }
 
                         .actions {
-                            display: flex;
+                            display: grid;
+                            grid-template-columns: auto auto;
                             justify-content: center;
-                            gap: 0 2em;
+                            gap: 0 0.5em;
                         }
                     }
                 }

@@ -23,4 +23,9 @@ class Payments extends Model
     {
         return $this->belongsTo(Classes::class, 'class_id', 'id');
     }
+
+    public function paymentRecords()
+    {
+        return $this->hasMany(PaymentRecords::class);
+    }
 }

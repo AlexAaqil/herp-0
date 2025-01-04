@@ -1,3 +1,15 @@
+.info {
+  color: #00adb5;
+}
+
+.success {
+  color: green;
+}
+
+.danger {
+  color: red;
+}
+
 .center {
   text-align: center !important;
 }
@@ -30,6 +42,10 @@
   font-weight: bold;
 }
 
+.btn_info {
+  background: #00adb5;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -48,16 +64,30 @@ img {
      object-fit: cover;
 }
 
+.btn {
+  background: #000;
+  border-radius: 4px;
+  color: #fff;
+  padding: 8px 12px;
+  border: none;
+}
+
 .btn_link_wrapper {
   margin: 0.5em 0;
 }
 .btn_link_wrapper .btn_link {
   text-decoration: none;
-  background: #000;
-  color: #fff;
   text-align: center;
-  border-radius: 4px;
-  padding: 8px 12px;
+}
+
+p.title {
+  font-weight: bold;
+  font-size: 1.1em;
+  margin: 0 0 0.1em;
+}
+
+.mt-10 {
+  margin-top: 1em;
 }
 
 .cards {
@@ -477,6 +507,20 @@ a.btn {
 }
 .info_wrapper .info p span:nth-of-type(1) {
   color: rgb(104, 104, 104);
+}
+
+form.inline {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  margin: 0.2em 0;
+}
+form.inline input {
+  width: auto;
+  margin: 0;
+}
+form.inline button {
+  padding: 4px 8px;
 }
 
 @media screen and (width >= 726px) {
@@ -1078,9 +1122,10 @@ footer .copyright {
   color: #fff;
 }
 .app_main .app_content .body .table tbody tr .actions {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto auto;
   justify-content: center;
-  gap: 0 2em;
+  gap: 0 0.5em;
 }
 .app_main .app_content .custom_form form {
   padding: 15px;

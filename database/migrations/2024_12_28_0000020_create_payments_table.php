@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title', 100);
             $table->string('reference_number', 100)->unique();
             $table->string('payment_method')->default('cheque');
-            $table->unsignedInteger('amount');
+            $table->decimal('amount', 10, 2);
             $table->foreignId('class_id')->constrained('classes')->onDelete('cascade');
             $table->string('year');
             $table->unsignedTinyInteger('term');

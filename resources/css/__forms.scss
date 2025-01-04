@@ -187,6 +187,22 @@ a.btn {
     }
 }
 
+form.inline {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    margin: 0.2em 0;
+
+    input {
+        width: auto;
+        margin: 0;
+    }
+
+    button {
+        padding: 4px 8px;
+    }
+}
+
 @media screen and (width >= 726px) {
     .custom_form {
         .row_input_group,

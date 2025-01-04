@@ -18,6 +18,7 @@ use App\Http\Controllers\DisciplinariesController;
 use App\Http\Controllers\LeaveoutsController;
 use App\Http\Controllers\TextbooksController;
 use App\Http\Controllers\PaymentsController;
+use App\Http\Controllers\PaymentRecordsController;
 
 Route::get('/', [GeneralPagesController::class, 'home'])->name('home');
 Route::get('/about', [GeneralPagesController::class, 'about'])->name('about');
@@ -46,6 +47,13 @@ Route::middleware(['auth', 'verified', 'active'])->group(function () {
     Route::resource('/leaveouts', LeaveoutsController::class)->except('show');
 
     Route::resource('/textbooks', TextbooksController::class)->except('show');
+
+    // Route::resource('/payment-records', PaymentRecordsController::class)->except('show');
+    Route::get('/payment-records/{class_section_id?}', [PaymentRecordsController::class, 'index'])->name('payment-records.index');
+    Route::get('/payment-records/create/{student_id}', [PaymentRecordsController::class, 'create'])->name('payment-records.create');
+    Route::post('/payment-records', [PaymentRecordsController::class, 'store'])->name('payment-records.store');
+    Route::post('/payment-records/update', [PaymentRecordsController::class, 'update'])->name('payment-records.update');
+
 });
 
 require __DIR__.'/auth.php';

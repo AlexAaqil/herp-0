@@ -42,6 +42,12 @@
                 'level' => [0, 1, 2, 3],
             ],
             [
+                'route' => 'payment-records.index',
+                'icon' => 'fas fa-money-bill-alt',
+                'text' => 'Payments',
+                'level' => [0, 1, 2],
+            ],
+            [
                 'route' => 'leaveouts.index',
                 'icon' => 'fas fa-calendar-minus',
                 'text' => 'Leaveouts',
