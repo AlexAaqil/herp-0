@@ -2,8 +2,10 @@
     <div class="body">
         @if ($paymentRecords->isNotEmpty())
             <p class="title">
-                Manage Payments for 
-                {{ $paymentRecords->first()->student ? $paymentRecords->first()->student->first_name.' '.$paymentRecords->first()->student->last_name : 'No available payments' }}
+                Manage Payments:
+            </p>
+            <p>
+                {{ $paymentRecords->first()->student ? $paymentRecords->first()->student->first_name.' '.$paymentRecords->first()->student->last_name.' - '.$paymentRecords->first()->student->registration_number : 'No available payments' }}
             </p>
         @else
             <p class="title">No payment records available for this student.</p>
