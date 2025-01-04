@@ -1151,6 +1151,11 @@ footer .copyright {
     width: 88%;
     margin: auto;
   }
+  .app_main .app_content .row_container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 0 1em;
+  }
 }
 .Settings ul {
   list-style: none;

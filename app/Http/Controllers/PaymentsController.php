@@ -13,13 +13,8 @@ class PaymentsController extends Controller
     public function index()
     {
         $payments = Payments::orderBy('year')->get();
-        return view('admin.payments.payments.index', compact('payments'));
-    }
-
-    public function create()
-    {
         $classes = Classes::orderBy('class_name')->get();
-        return view('admin.payments.payments.create', compact('classes'));
+        return view('admin.payments.payments.index', compact('payments', 'classes'));
     }
 
     public function store(Request $request)

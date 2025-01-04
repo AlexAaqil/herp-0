@@ -141,6 +141,12 @@ $thead_background: #000;
                 width: 88%;
                 margin: auto;
             }
+
+            .row_container {
+                display: grid;
+                grid-template-columns: 2fr 1fr;
+                gap: 0 1em;
+            }
         }
     }
 }

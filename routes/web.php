@@ -83,5 +83,5 @@ Route::middleware(['auth', 'verified', 'active', 'admin'])
     Route::delete('/classes/{classes}', [ClassesController::class, 'destroy'])->name('classes.destroy');
     Route::resource('class_sections', ClassSectionsController::class)->except('show');
 
-    Route::resource('/payments', PaymentsController::class)->except('show');
+    Route::resource('/payments', PaymentsController::class)->except('create', 'show');
 });
