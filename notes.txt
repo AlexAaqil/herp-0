@@ -8,8 +8,10 @@ Teachers can do CRUD operations for student's disciplinary records.
 Teachers can do CRUD operations for student's leaveouts.
 Teachers can do CRUD operations for textbooks issued.
 
+- Students Performance.
+- Accountant can print payment receipts.
 - Teachers and Students logins.
-- Update students form should also have the multiselect enabled.
+- Update students form should also have the multiselect for parents.
 - Ensure proper data entry for student_parent pivot table.
 - Users table should get the user_levels from the user_levels table.
 - Update Forms: Add a button for going back to index pages for easier navigation.
@@ -42,3 +44,33 @@ PARENTS PORTAL
 - Can View their student  Leavout History
 - Can view teachers Statement and Remarks
 - Can send messages to teachers in School. Can know about Teachers info and Contact them 
+
+
+
+
+- Class TimeTables
+- Settings
+
+
+settings:
+general_settings {
+    logo
+    school_name
+    school_code
+    address
+    phone
+    email
+    session (2025 - 2026)
+    session_start_month
+    language
+    timezone
+    currency
+    currency_symbol
+    date_format
+    fees_due_days
+}
+
+subjects {
+    title
+    subject_code
+}
