@@ -1,4 +1,9 @@
 <x-authenticated-layout class="User_levels">
+    <div class="system_nav">
+        <a href="{{ route('settings.index') }}">Settings</a>
+        <span>/ User Levels</span>
+    </div>
+
     <x-admin-header header_title="User Levels" :total_count="count($user_levels)" route="{{ route('user-levels.create') }}" />
 
     <div class="body">

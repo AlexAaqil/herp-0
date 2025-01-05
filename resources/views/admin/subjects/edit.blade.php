@@ -1,5 +1,11 @@
 <x-authenticated-layout class="Subjects">
     <div class="custom_form">
+        <div class="system_nav">
+            <a href="{{ route('settings.index') }}">Settings</a>
+            <a href="{{ route('subjects.index') }}">/ Subjects</a>
+            <span>/ Edit</span>
+        </div>
+        
         <header>
             <p>Update Subject</p>
         </header>

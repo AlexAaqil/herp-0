@@ -1,4 +1,9 @@
 <x-authenticated-layout class="Grades">
+    <div class="system_nav">
+        <a href="{{ route('settings.index') }}">Settings</a>
+        <span>/ Grades</span>
+    </div>
+
     <x-admin-header header_title="Grades" :total_count="count($grades)" />
 
     <div class="row_container">

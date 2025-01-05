@@ -1,5 +1,11 @@
 <x-authenticated-layout class="User_levels">
     <div class="custom_form">
+        <div class="system_nav">
+            <a href="{{ route('settings.index') }}">Settings</a>
+            <a href="{{ route('user-levels.index') }}">/ User Levels</a>
+            <span>/ Edit</span>
+        </div>
+
         <header>
             <p>Update User Level</p>
         </header>

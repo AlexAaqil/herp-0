@@ -1,4 +1,9 @@
 <x-authenticated-layout class="Payments">
+    <div class="system_nav">
+        <a href="{{ route('settings.index') }}">Settings</a>
+        <span>/ Payments</span>
+    </div>
+
     <x-admin-header header_title="Payments" :total_count="count($payments)" />
 
     <div class="row_container">

@@ -12,7 +12,7 @@
             <a href="{{ route('payments.index') }}">Payments</a>
         </li>
         <li>
-            <a href="#">Dorms</a>
+            <a href="#">--Dorms</a>
         </li>
         <li>
             <a href="{{ route('grades.index') }}">Grades</a>

@@ -1,4 +1,9 @@
 <x-authenticated-layout class="Classes">
+    <div class="system_nav">
+        <a href="{{ route('settings.index') }}">Settings</a>
+        <span>/ Classes</span>
+    </div>
+
     <x-admin-header header_title="Classes" :total_count="count($classes)" route="{{ route('classes.create') }}" />
 
     <div class="body">

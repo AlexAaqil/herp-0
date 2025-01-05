@@ -1,5 +1,11 @@
 <x-authenticated-layout class="Payments">
     <div class="custom_form">
+        <div class="system_nav">
+            <a href="{{ route('settings.index') }}">Settings</a>
+            <a href="{{ route('payments.index') }}">/ Payments</a>
+            <span>/ Edit</span>
+        </div>
+
         <header>
             <p>Update Payment</p>
         </header>
