@@ -14,4 +14,14 @@ class Subjects extends Model
         'short_name',
         'code',
     ];
+
+    public function classSections()
+    {
+        return $this->belongsToMany(ClassSections::class, 'section_subject_teacher')->withPivot('teacher_id')->withTimestamps();
+    }
+
+    public function sectionSubjectTeachers()
+    {
+        return $this->hasMany(SectionSubjectTeacher::class);
+    }
 }

@@ -22,6 +22,7 @@ use App\Http\Controllers\PaymentRecordsController;
 use App\Http\Controllers\ReceiptsController;
 use App\Http\Controllers\GradesController;
 use App\Http\Controllers\SubjectsController;
+use App\Http\Controllers\SectionSubjectTeacherController;
 
 Route::get('/', [GeneralPagesController::class, 'home'])->name('home');
 Route::get('/about', [GeneralPagesController::class, 'about'])->name('about');
@@ -36,7 +37,7 @@ Route::middleware(['auth', 'verified', 'active'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
     Route::get('/accountant/dashboard', [DashboardController::class, 'accountant_dashboard'])->name('accountant.dashboard');
     Route::get('/teacher/dashboard', [DashboardController::class, 'teacher_dashboard'])->name('teacher.dashboard');
-    
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -60,36 +61,38 @@ Route::middleware(['auth', 'verified', 'active'])->group(function () {
     Route::get('/receipts/{payment_record_id}', [ReceiptsController::class, 'print'])->name('receipts.print');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 Route::middleware(['auth', 'verified', 'active', 'admin'])
-->prefix('admin')
-->group(function() {
-    Route::get('/dashboard', [DashboardController::class, 'admin_dashboard'])->name('admin.dashboard');
+    ->prefix('admin')
+    ->group(function () {
+        Route::get('/dashboard', [DashboardController::class, 'admin_dashboard'])->name('admin.dashboard');
 
-    Route::resource('/user-levels', UserLevelController::class)->except('show');
-    Route::resource('/users', UserController::class)->except('show');
+        Route::resource('/user-levels', UserLevelController::class)->except('show');
+        Route::resource('/users', UserController::class)->except('show');
 
-    Route::resource('user-messages', UserMessageController::class)->only('index', 'show', 'destroy');
+        Route::resource('user-messages', UserMessageController::class)->only('index', 'show', 'destroy');
 
-    Route::resource('/blog-categories', BlogCategoryController::class)->only('store', 'edit', 'update', 'destroy');
-    Route::resource('/blogs', BlogController::class)->except('show');
-    Route::post('/blogs/sort-lessons', [BlogController::class, 'sort_blogs'])->name('blogs.sort');
+        Route::resource('/blog-categories', BlogCategoryController::class)->only('store', 'edit', 'update', 'destroy');
+        Route::resource('/blogs', BlogController::class)->except('show');
+        Route::post('/blogs/sort-lessons', [BlogController::class, 'sort_blogs'])->name('blogs.sort');
 
-    Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
+        Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
 
-    Route::get('/classes', [ClassesController::class, 'index'])->name('classes.index');
-    Route::get('/classes/create', [ClassesController::class, 'create'])->name('classes.create');
-    Route::post('/classes', [ClassesController::class, 'store'])->name('classes.store');
-    Route::get('/classes/{classes}', [ClassesController::class, 'show'])->name('classes.show');
-    Route::get('/classes/{classes}/edit', [ClassesController::class, 'edit'])->name('classes.edit');
-    Route::patch('/classes/{classes}', [ClassesController::class, 'update'])->name('classes.update');
-    Route::delete('/classes/{classes}', [ClassesController::class, 'destroy'])->name('classes.destroy');
-    Route::resource('class_sections', ClassSectionsController::class)->except('show');
+        Route::get('/classes', [ClassesController::class, 'index'])->name('classes.index');
+        Route::get('/classes/create', [ClassesController::class, 'create'])->name('classes.create');
+        Route::post('/classes', [ClassesController::class, 'store'])->name('classes.store');
+        Route::get('/classes/{classes}', [ClassesController::class, 'show'])->name('classes.show');
+        Route::get('/classes/{classes}/edit', [ClassesController::class, 'edit'])->name('classes.edit');
+        Route::patch('/classes/{classes}', [ClassesController::class, 'update'])->name('classes.update');
+        Route::delete('/classes/{classes}', [ClassesController::class, 'destroy'])->name('classes.destroy');
+        Route::resource('class_sections', ClassSectionsController::class)->except('show');
 
-    Route::resource('/payments', PaymentsController::class)->except('create', 'show');
+        Route::resource('/payments', PaymentsController::class)->except('create', 'show');
 
-    Route::resource('/grades', GradesController::class)->except('show');
+        Route::resource('/grades', GradesController::class)->except('show');
 
-    Route::resource('/subjects', SubjectsController::class)->except('show');
-});
+        Route::resource('/subjects', SubjectsController::class)->except('show');
+
+        Route::resource('/subject-teachers', SectionSubjectTeacherController::class)->except('show');
+    });

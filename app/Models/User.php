@@ -53,4 +53,14 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsTo(UserLevel::class, 'user_level', 'user_level');
     }
+
+    public function sectionsAndSubjects()
+    {
+        return $this->belongsToMany(ClassSections::class, 'section_subject_teacher', 'teacher_id', 'class_section_id')->withPivot('subject_id')->withTimestamps();
+    }
+
+    public function sectionSubjectTeachers()
+    {
+        return $this->hasMany(SectionSubjectTeacher::class);
+    }
 }
