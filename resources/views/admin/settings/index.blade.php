@@ -17,5 +17,8 @@
         <li>
             <a href="{{ route('grades.index') }}">Grades</a>
         </li>
+        <li>
+            <a href="{{ route('subjects.index') }}">Subjects</a>
+        </li>
     </ul>
 </x-authenticated-layout>

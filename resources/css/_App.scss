@@ -123,6 +123,16 @@ $thead_background: #000;
     }
 }
 
+.system_nav {
+    margin: 0 0 0.5em;
+    
+    a {
+        color: purple;
+        font-weight: bold;
+        text-decoration: none;
+    }
+}
+
 
 @media screen and (width >= 726px) {
     .app_main {
