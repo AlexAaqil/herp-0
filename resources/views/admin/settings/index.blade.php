@@ -14,5 +14,8 @@
         <li>
             <a href="#">Dorms</a>
         </li>
+        <li>
+            <a href="{{ route('grades.index') }}">Grades</a>
+        </li>
     </ul>
 </x-authenticated-layout>

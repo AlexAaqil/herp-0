@@ -20,6 +20,7 @@ use App\Http\Controllers\TextbooksController;
 use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\PaymentRecordsController;
 use App\Http\Controllers\ReceiptsController;
+use App\Http\Controllers\GradesController;
 
 Route::get('/', [GeneralPagesController::class, 'home'])->name('home');
 Route::get('/about', [GeneralPagesController::class, 'about'])->name('about');
@@ -86,4 +87,6 @@ Route::middleware(['auth', 'verified', 'active', 'admin'])
     Route::resource('class_sections', ClassSectionsController::class)->except('show');
 
     Route::resource('/payments', PaymentsController::class)->except('create', 'show');
+
+    Route::resource('/grades', GradesController::class)->except('show');
 });
