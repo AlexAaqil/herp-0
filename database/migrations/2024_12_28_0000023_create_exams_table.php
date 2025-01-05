@@ -11,13 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('payments', function (Blueprint $table) {
+        Schema::create('exams', function (Blueprint $table) {
             $table->id();
-            $table->string('title', 100);
-            $table->string('reference_number', 100)->unique();
-            $table->string('payment_method')->default('cheque');
-            $table->decimal('amount', 10, 2);
-            $table->foreignId('class_id')->constrained('classes')->onDelete('cascade');
+            $table->string('title');
             $table->unsignedSmallInteger('year');
             $table->unsignedTinyInteger('term');
             $table->timestamps();
@@ -29,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('payments');
+        Schema::dropIfExists('exams');
     }
 };

@@ -23,6 +23,7 @@ use App\Http\Controllers\ReceiptsController;
 use App\Http\Controllers\GradesController;
 use App\Http\Controllers\SubjectsController;
 use App\Http\Controllers\SectionSubjectTeacherController;
+use App\Http\Controllers\ExamController;
 
 Route::get('/', [GeneralPagesController::class, 'home'])->name('home');
 Route::get('/about', [GeneralPagesController::class, 'about'])->name('about');
@@ -95,4 +96,6 @@ Route::middleware(['auth', 'verified', 'active', 'admin'])
         Route::resource('/subjects', SubjectsController::class)->except('show');
 
         Route::resource('/subject-teachers', SectionSubjectTeacherController::class)->except('show');
+
+        Route::resource('/exams', ExamController::class)->except('create', 'show');
     });
