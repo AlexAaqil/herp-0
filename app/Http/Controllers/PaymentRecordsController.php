@@ -9,6 +9,7 @@ use App\Models\Classes;
 use App\Models\Students;
 use App\Models\Receipts;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PaymentRecordsController extends Controller
 {
@@ -73,36 +74,48 @@ class PaymentRecordsController extends Controller
             'amount_paid.*' => 'required|numeric|min:0',
         ]);
     
-        foreach ($request->amount_paid as $recordId => $amountPaid) {
-            $paymentRecord = PaymentRecords::findOrFail($recordId);
+        // Used a transaction to ensure all operations succeed or fail together
+        DB::beginTransaction();
 
-            // Check if the amount being paid exceeds the remaining balance
-            if ($amountPaid > $paymentRecord->balance) {
-                return back()->withErrors([
-                    "amount_paid.{$recordId}" => "The amount exceeds the remaining balance for payment ID {$recordId}.",
+        try {
+            foreach ($request->amount_paid as $recordId => $amountPaid) {
+                $paymentRecord = PaymentRecords::findOrFail($recordId);
+
+                // Check if the amount being paid exceeds the remaining balance
+                if ($amountPaid > $paymentRecord->balance) {
+                    throw new \Exception("The amount exceeds the remaining balance for payment ID {$recordId}.");
+                }
+
+                // Calculate the new balance
+                $newBalance = $paymentRecord->payment->amount - ($paymentRecord->amount_paid + $amountPaid);
+
+                // Update the payment record
+                $paymentRecord->amount_paid += $amountPaid;
+                $paymentRecord->balance = $newBalance;
+                $paymentRecord->save();
+
+                // Create a receipt record
+                Receipts::create([
+                    'payment_record_id' => $paymentRecord->id,
+                    'amount_paid' => $amountPaid,
+                    'balance' => $newBalance,
+                    'date_paid' => today(),
                 ]);
             }
-    
-            // Calculate the new balance
-            $newBalance = $paymentRecord->payment->amount - ($paymentRecord->amount_paid + $amountPaid);
-    
-            // Update the payment record
-            $paymentRecord->amount_paid += $amountPaid;
-            $paymentRecord->balance = $newBalance;
-            $paymentRecord->save();
-    
-            // Create a receipt record
-            Receipts::create([
-                'payment_record_id' => $paymentRecord->id,
-                'amount_paid' => $amountPaid,
-                'balance' => $newBalance,
-                // 'date' => now(),
-            ]);
+
+            // Commit the transaction if all operations are successful
+            DB::commit();
+
+            return redirect()
+                ->route('payment-records.create', ['student_id' => $request->student_id])
+                ->with('success', ['message' => 'Payment has been added successfully.']);
+
+        } catch (\Exception $e) {
+            // Roll back the transaction if any operation fails
+            DB::rollBack();
+
+            return back()->with('error', ['message' => $e->getMessage()]);
         }
-    
-        return redirect()
-            ->route('payment-records.create', ['student_id' => $request->student_id])
-            ->with('success', ['message' => 'Payment has been added.']);
     }    
 
     /**

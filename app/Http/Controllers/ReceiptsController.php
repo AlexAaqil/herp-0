@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Receipts;
+use App\Models\PaymentRecords;
 use Illuminate\Http\Request;
 
 class ReceiptsController extends Controller
@@ -61,5 +62,29 @@ class ReceiptsController extends Controller
     public function destroy(Receipts $receipts)
     {
         //
+    }
+
+    public function print($payment_record_id)
+    {
+        // Fetch the payment record along with its related receipts, payment, and student
+        $paymentRecord = PaymentRecords::with([
+            'receipts',
+            'student',
+            'payment'
+        ])
+        ->findOrFail($payment_record_id);
+
+        // Extract the necessary related data
+        $student = $paymentRecord->student;
+        $payment = $paymentRecord->payment;
+        $receipts = $paymentRecord->receipts;
+
+        // Pass the data to the view for rendering
+        return view('admin.payments.receipts.print', [
+            'paymentRecord' => $paymentRecord,
+            'student' => $student,
+            'payment' => $payment,
+            'receipts' => $receipts
+        ]);
     }
 }

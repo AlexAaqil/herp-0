@@ -7,6 +7,7 @@ $light_text: #eee;
 $dark_text: #000;
 $text_faded: #2b2b2b;
 
+$white: #fff;
 $faded: grey;
 $info: $theme_3;
 $danger: red;
@@ -29,10 +30,13 @@ $info_button: $info;
     color: $danger;
 }
 
+.white {
+    color: $white;
+}
+
 .center {
     text-align: center !important;
 }
-
 
 .published {
     color: $success;

@@ -10,6 +10,10 @@
   color: red;
 }
 
+.white {
+  color: #fff;
+}
+
 .center {
   text-align: center !important;
 }
@@ -64,20 +68,22 @@ img {
      object-fit: cover;
 }
 
-.btn {
-  background: #000;
-  border-radius: 4px;
-  color: #fff;
-  padding: 8px 12px;
-  border: none;
-}
-
 .btn_link_wrapper {
   margin: 0.5em 0;
 }
-.btn_link_wrapper .btn_link {
+
+.btn_link {
   text-decoration: none;
   text-align: center;
+}
+
+.btn_link,
+.btn {
+  background: #000;
+  border-radius: 4px;
+  color: #fff !important;
+  padding: 8px 12px;
+  border: none;
 }
 
 p.title {
@@ -1080,53 +1086,6 @@ footer .copyright {
 .app_main .app_content .body {
   overflow: scroll;
 }
-.app_main .app_content .body .table {
-  width: 100%;
-  border-spacing: 0;
-  border-collapse: collapse;
-}
-.app_main .app_content .body .table thead {
-  color: #fff;
-  background: #000;
-}
-.app_main .app_content .body .table thead th {
-  padding: 6px;
-  font-size: 0.9em;
-  text-align: left;
-}
-.app_main .app_content .body .table thead th:last-of-type {
-  border-radius: 0 8px 0 0;
-}
-.app_main .app_content .body .table thead th:first-of-type {
-  border-radius: 8px 0 0 0;
-}
-.app_main .app_content .body .table tbody tr {
-  border-bottom: 1px solid silver;
-}
-.app_main .app_content .body .table tbody tr td {
-  padding: 2px 6px;
-}
-.app_main .app_content .body .table tbody tr td a {
-  color: blue;
-  text-decoration: none;
-}
-.app_main .app_content .body .table tbody tr td .td_span {
-  padding: 2px 6px;
-  font-size: 0.65em;
-  font-weight: bold;
-  border-radius: 32px;
-  background: #dedefd;
-}
-.app_main .app_content .body .table tbody tr td .super_admin {
-  background: green;
-  color: #fff;
-}
-.app_main .app_content .body .table tbody tr .actions {
-  display: grid;
-  grid-template-columns: auto auto;
-  justify-content: center;
-  gap: 0 0.5em;
-}
 .app_main .app_content .custom_form form {
   padding: 15px;
   border: 1px solid #b3b3b3;
@@ -1138,6 +1097,54 @@ footer .copyright {
 }
 .app_main .app_content .delete_btn {
   margin: 0.5em 0 0;
+}
+
+.table {
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+.table thead {
+  color: #fff;
+  background: #000;
+}
+.table thead th {
+  padding: 6px;
+  font-size: 0.9em;
+  text-align: left;
+}
+.table thead th:last-of-type {
+  border-radius: 0 8px 0 0;
+}
+.table thead th:first-of-type {
+  border-radius: 8px 0 0 0;
+}
+.table tbody tr {
+  border-bottom: 1px solid silver;
+}
+.table tbody tr td {
+  padding: 2px 6px;
+}
+.table tbody tr td a {
+  color: blue;
+  text-decoration: none;
+}
+.table tbody tr td .td_span {
+  padding: 2px 6px;
+  font-size: 0.65em;
+  font-weight: bold;
+  border-radius: 32px;
+  background: #dedefd;
+}
+.table tbody tr td .super_admin {
+  background: green;
+  color: #fff;
+}
+.table tbody tr .actions {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: center;
+  gap: 0 0.5em;
 }
 
 @media screen and (width >= 726px) {
@@ -1183,5 +1190,36 @@ footer .copyright {
   margin: 2em 0 0.5em;
 }
 .Users .another_section .title {
+  font-weight: bold;
+}
+
+.Printable {
+  padding: 4px 8px;
+}
+.Printable .header {
+  padding: 0 0 0.5em;
+  margin: 0 0 1em;
+  border-bottom: 4px solid rgb(207, 207, 207);
+}
+.Printable .header .row {
+  display: flex;
+  grid-template-columns: 3fr 1fr;
+  justify-content: space-between;
+  gap: 1em;
+}
+.Printable .header .row .title {
+  font-weight: bold;
+  font-size: 2em;
+}
+.Printable .body div {
+  margin: 0 0 1em;
+}
+.Printable .body .payment_details p span:first-of-type {
+  font-weight: bold;
+}
+.Printable .body .payment_receipts .table {
+  width: 50%;
+}
+.Printable .body .payment p {
   font-weight: bold;
 }/*# sourceMappingURL=styles.css.map */

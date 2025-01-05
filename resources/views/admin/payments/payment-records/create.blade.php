@@ -50,9 +50,7 @@
                         <td>
                             <div class="actions">
                                 <div class="action">
-                                </div>
-                                <div class="action">
-                                    <button type="button" class="btn">Print</button>
+                                    <a href="{{ route('receipts.print', $record->id) }}" target="_blank" class="btn_link">Print</a>
                                 </div>
                             </div>
                         </td>

@@ -20,7 +20,7 @@ class PaymentRecords extends Model
 
     public function receipts()
     {
-        return $this->hasMany(Receipts::class);
+        return $this->hasMany(Receipts::class, 'payment_record_id');
     }
 
     public function student()

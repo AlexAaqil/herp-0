@@ -19,6 +19,7 @@ use App\Http\Controllers\LeaveoutsController;
 use App\Http\Controllers\TextbooksController;
 use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\PaymentRecordsController;
+use App\Http\Controllers\ReceiptsController;
 
 Route::get('/', [GeneralPagesController::class, 'home'])->name('home');
 Route::get('/about', [GeneralPagesController::class, 'about'])->name('about');
@@ -54,6 +55,7 @@ Route::middleware(['auth', 'verified', 'active'])->group(function () {
     Route::post('/payment-records', [PaymentRecordsController::class, 'store'])->name('payment-records.store');
     Route::post('/payment-records/update', [PaymentRecordsController::class, 'update'])->name('payment-records.update');
 
+    Route::get('/receipts/{payment_record_id}', [ReceiptsController::class, 'print'])->name('receipts.print');
 });
 
 require __DIR__.'/auth.php';

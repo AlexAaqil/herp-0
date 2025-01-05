@@ -15,21 +15,22 @@ img {
     object-fit: cover;
 }
 
+.btn_link_wrapper {
+    margin: 0.5em 0;
+}
+
+.btn_link {
+    text-decoration: none;
+    text-align: center;
+}
+
+.btn_link,
 .btn {
     background: $primary_button;
     border-radius: 4px;
-    color: #fff;
+    color: #fff !important;
     padding: 8px 12px;
     border: none;
-}
-
-.btn_link_wrapper {
-    margin: 0.5em 0;
-
-    .btn_link {
-        text-decoration: none;
-        text-align: center;
-    }
 }
 
 p.title {

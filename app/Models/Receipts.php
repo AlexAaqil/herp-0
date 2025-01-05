@@ -13,10 +13,11 @@ class Receipts extends Model
         'payment_record_id',
         'amount_paid',
         'balance',
+        'date_paid',
     ];
 
     public function paymentRecord()
     {
-        return $this->belongsTo(PaymentRecords::class);
+        return $this->belongsTo(PaymentRecords::class, 'payment_record_id');
     }
 }
