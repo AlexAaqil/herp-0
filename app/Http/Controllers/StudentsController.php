@@ -129,6 +129,15 @@ class StudentsController extends Controller
         return view('students.disciplinaries', compact('student', 'disciplinaries'));
     }
 
+    public function payments(Request $request)
+    {
+        $student = $request->student;
+        $payments = $student->paymentRecords;
+
+        return view('students.payments', compact('student', 'payments'));
+    }
+
+
     public function student_logout()
     {
         session()->forget('student_registration_number');

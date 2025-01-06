@@ -50,4 +50,9 @@ class Students extends Model
     {
         return $this->hasMany(Disciplinaries::class, 'student_id');
     }
+
+    public function paymentRecords()
+    {
+        return $this->hasMany(PaymentRecords::class, 'student_id');
+    }
 }

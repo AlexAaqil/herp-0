@@ -33,6 +33,7 @@ Route::get('/contact', [GeneralPagesController::class, 'contact'])->name('contac
 Route::post('/contact', [UserMessageController::class, 'store'])->name('user-messages.store');
 Route::get('/blogs', [BlogController::class, 'users_blogs'])->name('users.blogs');
 Route::get('/blogs/{slug}', [BlogController::class, 'show'])->name('blogs.show');
+Route::get('/receipts/{payment_record_id}', [ReceiptsController::class, 'print'])->name('receipts.print');
 
 Route::middleware(['student'])
 ->prefix('student')
@@ -41,6 +42,7 @@ Route::middleware(['student'])
     Route::get('/textbooks', [StudentsController::class, 'textbooks'])->name('student-textbooks');
     Route::get('/leaveouts', [StudentsController::class, 'leavouts'])->name('student-leavouts');
     Route::get('/disciplinaries', [StudentsController::class, 'disciplinaries'])->name('student-disciplinaries');
+    Route::get('/payments', [StudentsController::class, 'payments'])->name('student-payments');
 });
 
 Route::middleware(['auth', 'verified', 'active'])->group(function () {
@@ -68,8 +70,6 @@ Route::middleware(['auth', 'verified', 'active'])->group(function () {
     Route::get('/payment-records/create/{student_id}', [PaymentRecordsController::class, 'create'])->name('payment-records.create');
     Route::post('/payment-records', [PaymentRecordsController::class, 'store'])->name('payment-records.store');
     Route::post('/payment-records/update', [PaymentRecordsController::class, 'update'])->name('payment-records.update');
-
-    Route::get('/receipts/{payment_record_id}', [ReceiptsController::class, 'print'])->name('receipts.print');
 });
 
 require __DIR__ . '/auth.php';
