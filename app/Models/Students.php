@@ -30,4 +30,9 @@ class Students extends Model
         // Join parent names with a comma
         return $this->parents->pluck('full_name')->join(', ');
     }
+
+    public function examResults()
+    {
+        return $this->hasMany(ExamResult::class);
+    }
 }

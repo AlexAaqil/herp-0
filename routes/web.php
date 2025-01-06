@@ -24,6 +24,7 @@ use App\Http\Controllers\GradesController;
 use App\Http\Controllers\SubjectsController;
 use App\Http\Controllers\SectionSubjectTeacherController;
 use App\Http\Controllers\ExamController;
+use App\Http\Controllers\ExamResultController;
 
 Route::get('/', [GeneralPagesController::class, 'home'])->name('home');
 Route::get('/about', [GeneralPagesController::class, 'about'])->name('about');
@@ -98,4 +99,5 @@ Route::middleware(['auth', 'verified', 'active', 'admin'])
         Route::resource('/subject-teachers', SectionSubjectTeacherController::class)->except('show');
 
         Route::resource('/exams', ExamController::class)->except('create', 'show');
+        Route::resource('/exam-results', ExamResultController::class)->except('show');
     });

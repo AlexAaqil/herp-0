@@ -88,6 +88,18 @@ a.btn {
         }
     }
 
+    .details {
+        margin: 0 0 0.8em;
+        
+        p {
+            span {
+                &:first-of-type {
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+
     form {
         .input_group {
             margin: 0 0 0.3em;

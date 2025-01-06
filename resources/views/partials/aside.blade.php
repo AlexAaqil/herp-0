@@ -48,6 +48,12 @@
                 'level' => [0, 1, 2],
             ],
             [
+                'route' => 'exam-results.index',
+                'icon' => 'fas fa-brain',
+                'text' => 'Exams',
+                'level' => [0, 1, 3],
+            ],
+            [
                 'route' => 'leaveouts.index',
                 'icon' => 'fas fa-calendar-minus',
                 'text' => 'Leaveouts',

@@ -443,6 +443,12 @@ a.btn {
 .custom_form header p span {
   font-size: 0.85em;
 }
+.custom_form .details {
+  margin: 0 0 0.8em;
+}
+.custom_form .details p span:first-of-type {
+  font-weight: bold;
+}
 .custom_form form .input_group {
   margin: 0 0 0.3em;
 }

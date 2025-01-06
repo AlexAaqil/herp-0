@@ -15,4 +15,9 @@ class Grades extends Model
         'grade',
         'remarks',
     ];
+
+    public function examResults()
+    {
+        return $this->hasMany(ExamResult::class);
+    }
 }

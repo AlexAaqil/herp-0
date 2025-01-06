@@ -24,4 +24,9 @@ class Subjects extends Model
     {
         return $this->hasMany(SectionSubjectTeacher::class);
     }
+
+    public function examResults()
+    {
+        return $this->hasMany(ExamResult::class);
+    }
 }

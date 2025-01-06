@@ -14,4 +14,9 @@ class Exam extends Model
         'year',
         'term',
     ];
+
+    public function examResults()
+    {
+        return $this->hasMany(ExamResult::class);
+    }
 }
