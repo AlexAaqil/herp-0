@@ -2,14 +2,11 @@
     <section class="Login">
         <div class="container">
             <div class="portals">
-                <p class="portal active">
+                <p class="portal">
                     <a href="{{ route('login') }}">Staff</a>
                 </p>
-                <p class="portal">
-                    <a href="#">Student</a>
-                </p>
-                <p class="portal">
-                    <a href="#">Parent</a>
+                <p class="portal active">
+                    <a href="{{ route('student-login') }}">Student / Parent</a>
                 </p>
             </div>
 

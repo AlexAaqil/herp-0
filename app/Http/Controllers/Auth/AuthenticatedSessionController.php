@@ -8,6 +8,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use App\Models\Students;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -43,5 +44,26 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/');
+    }
+
+    public function student_login()
+    {
+        return view('auth.student_login');
+    }
+
+    public function login_student(Request $request)
+    {
+        $validated = $request->validate([
+            'registration_number' => 'required|string|exists:students,registration_number',
+        ]);
+
+        $student = Students::where('registration_number', $validated['registration_number'])->first();
+
+        if ($student) {
+            session(['student_registration_number' => $student->registration_number]);
+            return redirect()->route('student-details');
+        }
+
+        return redirect()->back()->withErrors(['registration_number' => 'Invalid registration number.']);
     }
 }

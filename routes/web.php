@@ -34,6 +34,13 @@ Route::post('/contact', [UserMessageController::class, 'store'])->name('user-mes
 Route::get('/blogs', [BlogController::class, 'users_blogs'])->name('users.blogs');
 Route::get('/blogs/{slug}', [BlogController::class, 'show'])->name('blogs.show');
 
+Route::middleware(['student'])
+->prefix('student')
+->group(function () {
+    Route::get('/student-details', [StudentsController::class, 'student_details'])->name('student-details');
+    Route::get('/textbooks', [StudentsController::class, 'student_textbooks'])->name('student-textbooks');
+});
+
 Route::middleware(['auth', 'verified', 'active'])->group(function () {
     Route::get('/home', [DashboardController::class, 'index'])->name('dashboard.index');
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');

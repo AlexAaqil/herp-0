@@ -1,0 +1,29 @@
+.StudentPortal {
+    // *{border: 1px solid grey}
+
+    .separator {
+        border: 1px solid rgb(230, 230, 230);
+        margin: 0 0 0.5em;
+    }
+
+    .details {
+        margin: 0.8em 0 2em;
+        width: 40%;
+
+        .title {
+            font-weight: bold;
+        }
+
+        p {
+            margin: 0 0 0.5em;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            span {
+                &:first-of-type {
+                    font-style: italic;
+                }
+            }
+        }
+    }
+}

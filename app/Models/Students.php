@@ -35,4 +35,9 @@ class Students extends Model
     {
         return $this->hasMany(ExamResult::class);
     }
+
+    public function textbooks()
+    {
+        return $this->hasMany(Textbooks::class, 'student_id');
+    }
 }
