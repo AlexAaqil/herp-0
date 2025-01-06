@@ -44,6 +44,8 @@ Route::middleware(['student'])
     Route::get('/disciplinaries', [StudentsController::class, 'disciplinaries'])->name('student-disciplinaries');
     Route::get('/payments', [StudentsController::class, 'payments'])->name('student-payments');
     Route::get('/results', [StudentsController::class, 'results'])->name('student-results');
+    Route::post('/logout', [StudentsController::class, 'logout_student'])
+                ->name('student_logout');
 });
 
 Route::middleware(['auth', 'verified', 'active'])->group(function () {

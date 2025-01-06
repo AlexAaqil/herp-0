@@ -145,7 +145,7 @@ class StudentsController extends Controller
         return view('students.results', compact('student', 'results'));
     }
 
-    public function student_logout()
+    public function logout_student()
     {
         session()->forget('student_registration_number');
         return redirect()->route('student-login');
