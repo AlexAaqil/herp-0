@@ -45,4 +45,9 @@ class Students extends Model
     {
         return $this->hasMany(Leaveouts::class, 'student_id');
     }
+
+    public function disciplinaries()
+    {
+        return $this->hasMany(Disciplinaries::class, 'student_id');
+    }
 }

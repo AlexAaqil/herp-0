@@ -40,6 +40,7 @@ Route::middleware(['student'])
     Route::get('/student-details', [StudentsController::class, 'details'])->name('student-details');
     Route::get('/textbooks', [StudentsController::class, 'textbooks'])->name('student-textbooks');
     Route::get('/leaveouts', [StudentsController::class, 'leavouts'])->name('student-leavouts');
+    Route::get('/disciplinaries', [StudentsController::class, 'disciplinaries'])->name('student-disciplinaries');
 });
 
 Route::middleware(['auth', 'verified', 'active'])->group(function () {

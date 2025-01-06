@@ -121,6 +121,14 @@ class StudentsController extends Controller
         return view('students.leaveouts', compact('student', 'leaveouts'));
     }
 
+    public function disciplinaries(Request $request)
+    {
+        $student = $request->student;
+        $disciplinaries = $student->disciplinaries;
+
+        return view('students.disciplinaries', compact('student', 'disciplinaries'));
+    }
+
     public function student_logout()
     {
         session()->forget('student_registration_number');
