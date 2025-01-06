@@ -33,7 +33,7 @@ class Students extends Model
 
     public function examResults()
     {
-        return $this->hasMany(ExamResult::class);
+        return $this->hasMany(ExamResult::class, 'student_id');
     }
 
     public function textbooks()

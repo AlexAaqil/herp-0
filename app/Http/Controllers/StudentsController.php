@@ -137,6 +137,13 @@ class StudentsController extends Controller
         return view('students.payments', compact('student', 'payments'));
     }
 
+    public function results(Request $request)
+    {
+        $student = $request->student;
+        $results = $student->examResults;
+
+        return view('students.results', compact('student', 'results'));
+    }
 
     public function student_logout()
     {
