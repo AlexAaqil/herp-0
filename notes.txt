@@ -8,6 +8,8 @@ Teachers can do CRUD operations for student's disciplinary records.
 Teachers can do CRUD operations for student's leaveouts.
 Teachers can do CRUD operations for textbooks issued.
 
+- Icons on the students sidenav.
+- Proper text on the home page.
 - Students Performance.
 - Accountant can print payment receipts.
 - Teachers and Students logins.
