@@ -37,8 +37,9 @@ Route::get('/blogs/{slug}', [BlogController::class, 'show'])->name('blogs.show')
 Route::middleware(['student'])
 ->prefix('student')
 ->group(function () {
-    Route::get('/student-details', [StudentsController::class, 'student_details'])->name('student-details');
-    Route::get('/textbooks', [StudentsController::class, 'student_textbooks'])->name('student-textbooks');
+    Route::get('/student-details', [StudentsController::class, 'details'])->name('student-details');
+    Route::get('/textbooks', [StudentsController::class, 'textbooks'])->name('student-textbooks');
+    Route::get('/leaveouts', [StudentsController::class, 'leavouts'])->name('student-leavouts');
 });
 
 Route::middleware(['auth', 'verified', 'active'])->group(function () {

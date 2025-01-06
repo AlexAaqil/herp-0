@@ -98,19 +98,27 @@ class StudentsController extends Controller
         return redirect()->route('students.index')->with('success', ['message' => 'Student has been deleted.']);
     }
 
-    public function student_details(Request $request)
+    public function details(Request $request)
     {
         $student = $request->student;
 
         return view('students.index', compact('student'));
     }
 
-    public function student_textbooks(Request $request)
+    public function textbooks(Request $request)
     {
         $student = $request->student;
         $textbooks = $student->textbooks;
 
         return view('students.textbooks', compact('student', 'textbooks'));
+    }
+
+    public function leavouts(Request $request)
+    {
+        $student = $request->student;
+        $leaveouts = $student->leaveouts;
+
+        return view('students.leaveouts', compact('student', 'leaveouts'));
     }
 
     public function student_logout()

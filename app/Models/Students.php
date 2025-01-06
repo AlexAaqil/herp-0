@@ -40,4 +40,9 @@ class Students extends Model
     {
         return $this->hasMany(Textbooks::class, 'student_id');
     }
+
+    public function leaveouts()
+    {
+        return $this->hasMany(Leaveouts::class, 'student_id');
+    }
 }

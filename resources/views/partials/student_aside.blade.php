@@ -8,6 +8,9 @@
             <a href="{{ route('student-details') }}">Home</a>
         </li>
         <li>
+            <a href="{{ route('student-leavouts') }}">Leaveouts</a>
+        </li>
+        <li>
             <a href="{{ route('student-textbooks') }}">Textbooks</a>
         </li>
     </ul>
