@@ -4,7 +4,7 @@
             <div class="image">
                 <x-app-logo />
             </div>
-            <p class="app_name">{{ config('globals.app_short_name') }}</p>
+            <p class="title">{{ config('globals.app_short_name') }}</p>
             <p>{{ config('globals.app_slogan') }}</p>
             <p>{{ config('globals.address') }}</p>
         </section>

@@ -1,0 +1,14 @@
+.btn_hero {
+    padding: 12px 32px;
+    border: 2px solid #fff;
+    border-radius: 32px;
+    font-size: 1.2em;
+    font-weight: bold;
+
+    &:hover {
+        background: #fff;
+        color: #000!important;
+        border: none;
+        transition: all 0.2s ease-in-out;
+    }
+}

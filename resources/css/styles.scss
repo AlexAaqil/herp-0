@@ -1,24 +1,9 @@
-@import "__variables";
 @import "__mixins";
+@import "__variables";
 @import "__global";
+@import "__buttons";
 
-@import "_aside";
 @import "_navbar";
-@import "_forms";
 @import "_footer";
-@import "_alerts";
 
-@import "Homepage";
-@import "About";
-@import "Services";
-@import "Contact";
-@import "Blogs";
-@import "Authentication";
-@import "Dashboard";
-
-@import "App";
-@import "Settings";
-@import "Classes";
-@import "Users";
-@import "Printable";
-@import "StudentPortal";
+@import "Home_Page";

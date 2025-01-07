@@ -1,0 +1,146 @@
+.Home_Page {
+    section {
+        &:not(:nth-of-type(1)) {
+            margin: 5em 0;
+        }
+    }
+
+    .Hero {
+        @include flex_center;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.7) 50%, rgba(0, 0, 0, 0.95) 100%), 
+            url('../../public/assets/images/hero.jpg');
+        background-size: cover;
+        background-position: center;
+        height: 90dvh;
+
+        .container {
+            text-align: center;
+            color: #fff;
+
+            .title {
+                font-size: 2.4em;
+                text-transform: uppercase;
+                margin: 0.5em 0 1em;
+            }
+
+            .sub_title {
+                font-size: 1.6em;
+            }
+
+            a {
+                color: #fff;
+            }
+        }
+    }
+
+    .About {
+        .container {
+            @include grid(3);
+            gap: 2em;
+
+            .about_card {
+                text-align: center;
+                background: $faded_background;
+                padding: 16px 16px;
+                border-radius: 8px;
+                position: relative;
+
+                &:hover {
+                    background: darken($faded_background, 20%);
+                    transition: all 0.2s ease-in-out;
+                }
+
+                .icon {
+                    @include flex_center;
+                    position: absolute;
+                    top: -25px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background: darken($faded_background, 10%);
+                    width: 60px;
+                    height: 60px;
+                    border-radius: 50%;
+                    z-index: 10;
+
+                    i {
+                        font-size: 2em;
+                    }
+                }
+
+                .text {
+                    .title {
+                        font-size: 1.05em;
+                        margin: 1.5em 0 0.5em;
+                    }
+
+                    p {
+                        font-size: 0.9em;
+                    }
+                }
+            }
+        }
+    }
+
+    .Mission_Vision {
+        .container {
+            .title {
+                font-size: 2em;
+                margin: 0.5em 0;
+            }
+
+            .sub_title {
+                font-size: 1.6em;
+                font-weight: bold;
+                margin: 0.6em 0 0.3em;
+            }
+
+            img {
+                border-radius: 8px;
+            }
+        }
+    }
+
+    .Statistics {
+        margin-bottom: 0!important;
+        background: darken($faded_background, 10%);
+        padding: 2em 0;
+
+        .container {
+            display: grid;  
+            grid-template-columns: repeat(3, 1fr);
+
+            .stat {
+                text-align: center;
+                
+                .number {
+                    font-size: 2.4em;
+                }
+
+                .text {
+                    font-size: 1.2em;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (width >=726px) {
+    .Mission_Vision {
+        .container {
+            .title {
+                text-align: center;
+            }
+
+            .content {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                align-items: center;
+                gap: 2em;
+
+                .sub_title {
+                    font-size: 1.2em;
+                }
+            }
+        }
+    }
+}
