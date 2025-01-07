@@ -1,10 +1,14 @@
 {
-  "public/assets/images/Hero.webp": {
-    "file": "assets/Hero-CbVW5t1s.webp",
-    "src": "public/assets/images/Hero.webp"
+  "public/assets/images/auth.png": {
+    "file": "assets/auth-CAQWwXhz.png",
+    "src": "public/assets/images/auth.png"
+  },
+  "public/assets/images/hero.jpg": {
+    "file": "assets/hero-iaugWDl3.jpg",
+    "src": "public/assets/images/hero.jpg"
   },
   "resources/css/styles.css": {
-    "file": "assets/styles-Bh_QKLko.css",
+    "file": "assets/styles-BW06txym.css",
     "src": "resources/css/styles.css",
     "isEntry": true
   },
