@@ -167,6 +167,121 @@ nav .burger_menu {
     transform: rotate(45deg) translate(-5px, -6px);
   }
 }
+aside {
+  height: 100%;
+  position: fixed;
+  padding: 4px 8px;
+  text-align: center;
+  border-right: 1px solid rgb(204, 204, 204);
+}
+aside .brand,
+aside .text {
+  display: none;
+}
+@media screen and (width >= 726px) {
+  aside .brand,
+  aside .text {
+    display: block;
+  }
+}
+aside i {
+  font-size: 1.5em;
+}
+aside a {
+  color: #000;
+  text-decoration: none;
+}
+aside ul {
+  list-style: none;
+  margin: 0.8em 0 0;
+}
+aside ul li {
+  padding: 4px;
+}
+aside ul li a {
+  color: gray;
+}
+aside .footer {
+  position: absolute;
+  bottom: 2em;
+}
+aside .footer .profile img {
+  width: 40px;
+  height: 40px;
+  padding: 2px;
+  border-radius: 50%;
+  border: 1px solid green;
+}
+aside .footer .logout {
+  margin: 0.5em 0 0;
+}
+aside .footer .logout form button {
+  padding: unset;
+  background: none;
+}
+aside .footer .logout form button i {
+  color: red;
+}
+aside .active a {
+  color: #000;
+  font-weight: bold;
+}
+
+@media screen and (width >= 726px) {
+  aside {
+    text-align: left;
+  }
+  aside i {
+    font-size: 0.95em;
+  }
+  aside .brand a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2em;
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+  aside ul {
+    margin: 1.8em 0;
+  }
+  aside ul li {
+    border-bottom: 1px solid rgb(204, 204, 204);
+  }
+  aside ul li a {
+    display: flex;
+    align-items: center;
+    gap: 0.2em;
+  }
+  aside .footer {
+    left: 0;
+    margin: 0 0.4em 0;
+  }
+  aside .footer .profile,
+  aside .footer .logout button {
+    display: flex;
+    align-items: center;
+    gap: 0.3em;
+  }
+  aside .footer .profile img {
+    width: 35px;
+    height: 35px;
+  }
+  aside .footer .profile span {
+    font-size: 0.8em;
+  }
+  aside .footer .logout form button {
+    justify-content: center;
+    color: #fff;
+    background: red;
+    width: 100%;
+    padding: 6px 8px;
+    text-align: center;
+  }
+  aside .footer .logout form button i {
+    color: #fff;
+  }
+}
 footer {
   background: #042c2e;
   padding: 3.2em 0 0;
@@ -437,4 +552,72 @@ footer .copyright {
   .Authentication form {
     width: 350px;
   }
+}
+.app_main aside {
+  width: 15%;
+}
+.app_main .app_content {
+  margin-left: 15%;
+  padding: 4px 15px;
+}
+.app_main .app_content .header {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5em;
+  align-items: center;
+  margin: 0 0 0.8em;
+}
+@media screen and (width >= 726px) {
+  .app_main .app_content .header {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.app_main .app_content .header p {
+  font-size: 1.1em;
+}
+.app_main .app_content .header p span {
+  font-size: 0.85em;
+}
+.app_main .app_content .header input {
+  padding: 6px 12px;
+  border-radius: 32px;
+  border: 1px solid rgb(204, 204, 204);
+}
+.app_main .app_content .header .header_btn a {
+  text-decoration: none;
+  background: #000;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+.app_main .app_content .header .body {
+  overflow: scroll;
+}
+
+@media screen and (width >= 726px) {
+  .app_main .app_content .header .header_btn {
+    justify-self: right;
+  }
+  .app_main .app_content .body {
+    overflow: hidden;
+  }
+}
+.StudentPortal .separator {
+  border: 1px solid rgb(230, 230, 230);
+  margin: 0 0 0.5em;
+}
+.StudentPortal .details {
+  margin: 0.8em 0 2em;
+  width: 40%;
+}
+.StudentPortal .details .title {
+  font-weight: bold;
+}
+.StudentPortal .details p {
+  margin: 0 0 0.5em;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.StudentPortal .details p span:first-of-type {
+  font-style: italic;
 }/*# sourceMappingURL=styles.css.map */

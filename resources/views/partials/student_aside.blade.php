@@ -1,27 +1,52 @@
 <aside>
-    <div class="header">
-        <p>{{ $student->first_name }}</p>
+    <div class="brand">
+        <a href="{{ route('home') }}">{{ $student->registration_number.' - '.$student->first_name.' '.$student->last_name }}</a>
     </div>
 
+    @php
+        $nav_links = [
+            [
+                'route' => 'student-details',
+                'icon' => 'fas fa-home',
+                'text' => 'Home',
+            ],
+            [
+                'route' => 'student-results',
+                'icon' => 'fas fa-brain',
+                'text' => 'Perfomance',
+            ],
+            [
+                'route' => 'student-payments',
+                'icon' => 'fas fa-money-bill-alt',
+                'text' => 'Payments',
+            ],
+            [
+                'route' => 'student-leaveouts',
+                'icon' => 'fas fa-calendar-minus',
+                'text' => 'Leaveouts',
+            ],
+            [
+                'route' => 'student-disciplinaries',
+                'icon' => 'fas fa-balance-scale-right',
+                'text' => 'Disciplinaries',
+            ],
+            [
+                'route' => 'student-textbooks',
+                'icon' => 'fas fa-book',
+                'text' => 'Textbooks',
+            ],
+        ];
+    @endphp
+
     <ul class="links">
-        <li>
-            <a href="{{ route('student-details') }}">Home</a>
-        </li>
-        <li>
-            <a href="{{ route('student-results') }}">Perfomance</a>
-        </li>
-        <li>
-            <a href="{{ route('student-payments') }}">Payments</a>
-        </li>
-        <li>
-            <a href="{{ route('student-leavouts') }}">Leaveouts</a>
-        </li>
-        <li>
-            <a href="{{ route('student-disciplinaries') }}">Disciplinaries</a>
-        </li>
-        <li>
-            <a href="{{ route('student-textbooks') }}">Textbooks</a>
-        </li>
+        @foreach ($nav_links as $link)
+            <li class="link {{ Route::currentRouteName() === $link['route'] ? 'active' : '' }}">
+                <a href="{{ route($link['route']) }}">
+                    <i class="{{ $link['icon'] }}"></i>
+                    <span class="text">{{ $link['text'] }}</span>
+                </a>
+            </li>
+        @endforeach
     </ul>
 
     <div class="footer">

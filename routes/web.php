@@ -40,12 +40,11 @@ Route::middleware(['student'])
 ->group(function () {
     Route::get('/student-details', [StudentsController::class, 'details'])->name('student-details');
     Route::get('/textbooks', [StudentsController::class, 'textbooks'])->name('student-textbooks');
-    Route::get('/leaveouts', [StudentsController::class, 'leavouts'])->name('student-leavouts');
+    Route::get('/leaveouts', [StudentsController::class, 'leavouts'])->name('student-leaveouts');
     Route::get('/disciplinaries', [StudentsController::class, 'disciplinaries'])->name('student-disciplinaries');
     Route::get('/payments', [StudentsController::class, 'payments'])->name('student-payments');
     Route::get('/results', [StudentsController::class, 'results'])->name('student-results');
-    Route::post('/logout', [StudentsController::class, 'logout_student'])
-                ->name('student_logout');
+    Route::post('/logout', [StudentsController::class, 'logout_student'])->name('student_logout');
 });
 
 Route::middleware(['auth', 'verified', 'active'])->group(function () {
