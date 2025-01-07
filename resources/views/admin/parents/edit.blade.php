@@ -57,7 +57,7 @@
             <div class="buttons">
                 <button type="submit">Update</button>
 
-                <button type="button" class="delete_btn" onclick="deleteItem({{ $parent->id }}, 'parent');"
+                <button type="button" class="btn_danger" onclick="deleteItem({{ $parent->id }}, 'parent');"
                     form="deleteForm_{{ $parent->id }}">
                     <i class="fas fa-trash-alt delete"></i>
                     <span>Delete</span>

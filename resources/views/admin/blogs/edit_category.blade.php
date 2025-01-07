@@ -25,7 +25,7 @@
             @method('DELETE')
 
             <p>Delete this Blog Category</p>
-            <button type="button" class="delete_btn" onclick="deleteItem({{ $blog_category->id }}, 'blog category');">
+            <button type="button" class="btn_danger" onclick="deleteItem({{ $blog_category->id }}, 'blog category');">
                 <i class="fas fa-trash-alt delete"></i>
                 <span>Delete</span>
             </button>

@@ -28,8 +28,19 @@ aside {
         li {
             padding: 4px;
             a {
-                color: darken($aside_text_color, 5);
+                opacity: 0.75;
             }
+        }
+    }
+
+    .active,
+    ul li:hover {
+        background: $faded_background;
+        color: #000;
+        a {
+            color: #000;
+            font-weight: bold;
+            opacity: 1;
         }
     }
 
@@ -58,13 +69,6 @@ aside {
                     }
                 }
             }
-        }
-    }
-
-    .active {
-        a {
-            color: $aside_text_color;
-            font-weight: bold;
         }
     }
 }

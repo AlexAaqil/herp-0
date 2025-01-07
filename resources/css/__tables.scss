@@ -1,0 +1,61 @@
+$thead_background: #fff;
+
+.table {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+    color: #fff;
+
+    thead {
+        background: $thead_background;
+
+        th {
+            padding: 6px;
+            font-size: 0.9em;
+            text-align: left;
+            color: #000;
+
+            &:first-of-type {
+                border-radius: 4px 0 0 0;
+            }
+            &:last-of-type {
+                border-radius: 0 4px 0 0;
+            }
+        }
+    }
+
+    tbody {
+        tr {
+            border-bottom: 1px solid $faded_line;
+
+            td {
+                padding: 4px 8px;
+
+                a {
+                    color: lightblue;
+                }
+
+                .td_span {
+                    padding: 2px 6px;
+                    font-size: 0.6em;
+                    font-weight: bold;
+                    border-radius: 32px;
+                    background: $dashboard_background;
+                    color: #000;
+                }
+
+                .super_admin {
+                    background: $success;
+                    color: #fff;
+                }
+            }
+
+            .actions {
+                display: grid;
+                grid-template-columns: auto auto;
+                justify-content: center;
+                gap: 0 0.5em;
+            }
+        }
+    }
+}

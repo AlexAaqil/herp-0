@@ -5,7 +5,7 @@
             <a href="{{ route('subjects.index') }}">/ Subjects</a>
             <span>/ Edit</span>
         </div>
-        
+
         <header>
             <p>Update Subject</p>
         </header>
@@ -23,7 +23,8 @@
 
             <div class="input_group">
                 <label for="short_name">Short Name</label>
-                <input type="text" name="short_name" id="short_name" value="{{ old('short_name', $subject->short_name) }}">
+                <input type="text" name="short_name" id="short_name"
+                    value="{{ old('short_name', $subject->short_name) }}">
                 <span class="inline_alert">{{ $errors->first('short_name') }}</span>
             </div>
 
@@ -36,7 +37,7 @@
             <div class="buttons">
                 <button type="submit">Update</button>
 
-                <button type="button" class="delete_btn" onclick="deleteItem({{ $subject->id }}, 'subject');"
+                <button type="button" class="btn_danger" onclick="deleteItem({{ $subject->id }}, 'subject');"
                     form="deleteForm_{{ $subject->id }}">
                     <i class="fas fa-trash-alt delete"></i>
                     <span>Delete</span>
@@ -44,8 +45,8 @@
             </div>
         </form>
 
-        <form id="deleteForm_{{ $subject->id }}" action="{{ route('subjects.destroy', $subject->id) }}" method="post"
-            style="display: none;">
+        <form id="deleteForm_{{ $subject->id }}" action="{{ route('subjects.destroy', $subject->id) }}"
+            method="post" style="display: none;">
             @csrf
             @method('DELETE')
         </form>

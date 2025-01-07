@@ -53,7 +53,8 @@
             <div class="buttons">
                 <button type="submit">Update</button>
 
-                <button type="button" class="delete_btn" onclick="deleteItem({{ $disciplinary->id }}, 'disciplinary');"
+                <button type="button" class="btn_danger"
+                    onclick="deleteItem({{ $disciplinary->id }}, 'disciplinary');"
                     form="deleteForm_{{ $disciplinary->id }}">
                     <i class="fas fa-trash-alt delete"></i>
                     <span>Delete</span>
@@ -61,15 +62,15 @@
             </div>
         </form>
 
-        <form id="deleteForm_{{ $disciplinary->id }}" action="{{ route('disciplinaries.destroy', $disciplinary->id) }}" method="post"
-            style="display: none;">
+        <form id="deleteForm_{{ $disciplinary->id }}"
+            action="{{ route('disciplinaries.destroy', $disciplinary->id) }}" method="post" style="display: none;">
             @csrf
             @method('DELETE')
         </form>
 
-    <x-slot name="javascript">
-        <x-searchable-select-js />
-        <x-text-editor />
-        <x-sweetalert />
-    </x-slot>
+        <x-slot name="javascript">
+            <x-searchable-select-js />
+            <x-text-editor />
+            <x-sweetalert />
+        </x-slot>
 </x-authenticated-layout>

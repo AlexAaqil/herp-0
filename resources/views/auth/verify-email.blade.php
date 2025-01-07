@@ -1,22 +1,22 @@
 <x-general-layout class="Authentication">
-    <div class="container Verify_email">
-        <div class="header">
-            <p>Thanks for signing up! Before getting started, kindly verify your email address by clicking on the link we just emailed to you.</p>
-            <p>If you didn't receive the email, we will gladly send you another.</p>
-        </div>
+    <section class="Verify_email">
+        
+        <form method="POST" action="{{ route('verification.send') }}">
+            @csrf
 
-        @if(session('status') == 'verification-link-sent')
-            <div class="alert alert-status">
-                A new verification link has been sent to the email address you provided during registration.
+            <div class="header">
+                <p>Verify your email using the link sent to you.</p>
+                <br>
+                <p>If you didn't receive it, click resend.</p>
             </div>
-        @endif
-
-        <div class="custom_form">
-            <form method="POST" action="{{ route('verification.send') }}">
-                @csrf
     
-                <button type="submit">Resend Verification Email</button>
-            </form>
-        </div>
-    </div>
+            @if(session('status') == 'verification-link-sent')
+                <div class="alert alert-status">
+                    Verification link has been sent. Check your email.
+                </div>
+            @endif
+
+            <button type="submit">Resend Verification Email</button>
+        </form>
+    </section>
 </x-general-layout>

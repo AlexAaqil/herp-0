@@ -1,0 +1,156 @@
+$custom_form_padding: 24px;
+
+.custom_form {
+    background: #ffffff;
+    border-radius: 6px;
+    margin: 1em 0;
+
+    header {
+        border-radius: 6px 6px 0 0;
+        background: #3f3e3e;
+        color: #fff;
+        padding: 0.5em $custom_form_padding;
+        margin: 0 0 0.8em;
+        display: flex;
+        justify-content: space-between;
+
+        p {
+            font-weight: bold;
+        }
+
+        .navigation {
+            a {
+                color: lightblue;
+            }
+        }
+    }
+
+    form {
+        padding: 0 $custom_form_padding 12px;
+
+        label {
+            font-size: 0.9em;
+            color: $faded_text;
+        }
+    
+        label.required {
+            &::after {
+                content: " * ";
+                color: $danger;
+                font-weight: bold;
+                font-size: 1em;
+            }
+        }
+    
+        input,
+        select,
+        textarea {
+            background: transparent;
+            border: 1px solid $faded_line;
+            border-radius: 4px;
+            margin: 0.04em 0 0.5em;
+            padding: 4px 6px;
+            font-size: 1em;
+            width: 100%;
+        }
+
+        .input_group {
+            margin: 0 0 0.3em;
+
+            .custom_radio_buttons {
+                display: flex;
+                align-items: center;
+                gap: 1em;
+                margin: 0.3em 0 0;
+        
+                label {
+                    position: relative;
+                    padding: 0.3em 0;
+                    display: flex;
+                    align-items: center;
+                    cursor: pointer;
+                    width: auto;
+        
+                    .option_radio {
+                        margin: 0 0.5em 0 0;
+                        position: relative;
+                        appearance: none;
+                        cursor: pointer;
+                        border: unset;
+                        width: auto;
+                    }
+        
+                    .option_radio:before {
+                        -webkit-transition: -webkit-transform 0.4s
+                            cubic-bezier(0.45, 1.8, 0.5, 0.75);
+                        -moz-transition: -moz-transform 0.4s
+                            cubic-bezier(0.45, 1.8, 0.5, 0.75);
+                        transition: transform 0.4s
+                            cubic-bezier(0.45, 1.8, 0.5, 0.75);
+                        -webkit-transform: scale(0, 0);
+                        -moz-transform: scale(0, 0);
+                        -ms-transform: scale(0, 0);
+                        -o-transform: scale(0, 0);
+                        transform: scale(0, 0);
+                        position: absolute;
+                        top: 0;
+                        left: 0.125rem;
+                        content: "";
+                        z-index: 1;
+                        width: 0.7rem;
+                        height: 0.7rem;
+                        border-radius: 50%;
+                        background: #16a085;
+                    }
+        
+                    .option_radio:checked:before {
+                        -webkit-transform: scale(1, 1);
+                        -moz-transform: scale(1, 1);
+                        -ms-transform: scale(1, 1);
+                        -o-transform: scale(1, 1);
+                        transform: scale(1, 1);
+                    }
+        
+                    .option_radio:after {
+                        content: "";
+                        position: absolute;
+                        top: -0.25rem;
+                        left: -0.125rem;
+                        width: 0.9rem;
+                        height: 0.9rem;
+                        background: #fff;
+                        border: 2px solid #d6d6d6;
+                        border-radius: 50%;
+                    }
+                }
+            }
+        }
+    
+        button {
+            cursor: pointer;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 1em;
+        }
+    }
+}
+
+@media screen and (width >= 726px) {
+    .custom_form {
+        .row_input_group,
+        .row_input_group_3 {
+            display: grid;
+            gap: 0 1em;
+        }
+        
+        .row_input_group {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .row_input_group_3 {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+    }
+}

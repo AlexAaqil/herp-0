@@ -2,6 +2,11 @@
     <div class="custom_form">
         <header>
             <p>New User</p>
+
+            <div class="navigation">
+                <a href="{{ route('users.index') }}">Users</a>
+                <span>/ Create</span>
+            </div>
         </header>
 
         <form action="{{ route('users.store') }}" method="post">
@@ -9,7 +14,7 @@
 
             <div class="row_input_group">
                 <div class="input_group">
-                    <label for="user_level">User Level</label>
+                    <label for="user_level" class="required">User Level</label>
                     <select name="user_level" id="user_level">
                         <option value="" {{ old('user_level') === null ? 'selected' : '' }}>User Level</option>
                         @foreach ($user_levels as $user_level)
@@ -33,14 +38,14 @@
 
             <div class="row_input_group">
                 <div class="input_group">
-                    <label for="first_name">First Name</label>
+                    <label for="first_name" class="required">First Name</label>
                     <input type="text" name="first_name" id="first_name" placeholder="First Name"
                         value={{ old('first_name') }}>
                     <span class="inline_alert">{{ $errors->first('first_name') }}</span>
                 </div>
 
                 <div class="input_group">
-                    <label for="last_name">Last Name</label>
+                    <label for="last_name" class="required">Last Name</label>
                     <input type="text" name="last_name" id="last_name" placeholder="Last Name"
                         value={{ old('last_name') }}>
                     <span class="inline_alert">{{ $errors->first('last_name') }}</span>
@@ -49,14 +54,14 @@
 
             <div class="row_input_group">
                 <div class="input_group">
-                    <label for="email">Email Address</label>
+                    <label for="email" class="required">Email Address</label>
                     <input type="email" name="email" id="email" placeholder="Email Address"
                         value="{{ old('email') }}">
                     <span class="inline_alert">{{ $errors->first('email') }}</span>
                 </div>
 
                 <div class="input_group">
-                    <label for="phone_main">Phone Number</label>
+                    <label for="phone_main" class="required">Phone Number</label>
                     <input type="text" name="phone_main" id="phone_main" placeholder="Phone Number"
                         value="{{ old('phone_main') }}">
                     <span class="inline_alert">{{ $errors->first('phone_main') }}</span>
@@ -67,14 +72,14 @@
                 <div class="input_group">
                     <label for="password">Password</label>
                     <input type="text" name="password" id="password"
-                        placeholder="Leave as blank for default password (hsms1234)">
+                        placeholder="Enter the password">
                     <span class="inline_alert">{{ $errors->first('password') }}</span>
                 </div>
 
                 <div class="input_group">
                     <label for="password_confirmation">Confirm Password</label>
                     <input type="text" name="password_confirmation" id="password_confirmation"
-                        placeholder="Leave as blank for default password">
+                        placeholder="Confirm the password">
                     <span class="inline_alert">{{ $errors->first('password_confirmation') }}</span>
                 </div>
             </div>

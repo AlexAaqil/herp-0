@@ -16,8 +16,7 @@
 
             <div class="input_group">
                 <label for="title">Exam</label>
-                <input type="text" name="title" id="title"
-                    value="{{ old('title', $exam->title) }}">
+                <input type="text" name="title" id="title" value="{{ old('title', $exam->title) }}">
                 <span class="inline_alert">{{ $errors->first('title') }}</span>
             </div>
 
@@ -41,7 +40,7 @@
             <div class="buttons">
                 <button type="submit">Update</button>
 
-                <button type="button" class="delete_btn" onclick="deleteItem({{ $exam->id }}, 'exam');"
+                <button type="button" class="btn_danger" onclick="deleteItem({{ $exam->id }}, 'exam');"
                     form="deleteForm_{{ $exam->id }}">
                     <i class="fas fa-trash-alt delete"></i>
                     <span>Delete</span>

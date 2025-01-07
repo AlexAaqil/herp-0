@@ -73,7 +73,7 @@
             @method('DELETE')
 
             <p>Delete this Blog</p>
-            <button type="button" class="delete_btn" onclick="deleteItem({{ $blog->id }}, 'blog');">
+            <button type="button" class="btn_danger" onclick="deleteItem({{ $blog->id }}, 'blog');">
                 <i class="fas fa-trash-alt delete"></i>
                 <span>Delete</span>
             </button>

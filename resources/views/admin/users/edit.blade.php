@@ -2,6 +2,11 @@
     <div class="custom_form">
         <header>
             <p>Update User</p>
+
+            <div class="navigation">
+                <a href="{{ route('users.index') }}">Users</a>
+                <span>/ Update</span>
+            </div>
         </header>
 
         <form action="{{ route('users.update', ['user' => $user->id]) }}" method="post">
@@ -10,7 +15,7 @@
 
             <div class="row_input_group">
                 <div class="input_group">
-                    <label for="user_level">User Level</label>
+                    <label for="user_level" class="required">User Level</label>
                     @php
                         $selectedUserLevel = old('user_level', $user->user_level);
                     @endphp
@@ -37,14 +42,14 @@
 
             <div class="row_input_group">
                 <div class="input_group">
-                    <label for="first_name">First Name</label>
+                    <label for="first_name" class="required">First Name</label>
                     <input type="text" name="first_name" id="first_name" placeholder="First Name"
                         value={{ old('first_name', $user->first_name) }}>
                     <span class="inline_alert">{{ $errors->first('first_name') }}</span>
                 </div>
 
                 <div class="input_group">
-                    <label for="last_name">Last Name</label>
+                    <label for="last_name" class="required">Last Name</label>
                     <input type="text" name="last_name" id="last_name" placeholder="Last Name"
                         value={{ old('last_name', $user->last_name) }}>
                     <span class="inline_alert">{{ $errors->first('last_name') }}</span>
@@ -53,14 +58,14 @@
 
             <div class="row_input_group">
                 <div class="input_group">
-                    <label for="email">Email Address</label>
-                    <input type="email" name="email" id="email" placeholder="Email Address"
-                        value="{{ old('email', $user->email) }}">
+                    <label for="email">Email Address (Can't be updated)</label>
+                    <input type="email" class="danger" name="email" id="email" placeholder="Email Address"
+                        value="{{ old('email', $user->email) }}" disabled>
                     <span class="inline_alert">{{ $errors->first('email') }}</span>
                 </div>
 
                 <div class="input_group">
-                    <label for="phone_main">Phone Number</label>
+                    <label for="phone_main" class="required">Phone Number</label>
                     <input type="text" name="phone_main" id="phone_main" placeholder="Phone Number"
                         value="{{ old('phone_main', $user->phone_main) }}">
                     <span class="inline_alert">{{ $errors->first('phone_main') }}</span>
@@ -71,30 +76,33 @@
                 <div class="input_group">
                     <label for="password">Password</label>
                     <input type="text" name="password" id="password"
-                        placeholder="Leave as blank for default password (hsms1234)">
+                        placeholder="Leave as blank for generated password">
                     <span class="inline_alert">{{ $errors->first('password') }}</span>
                 </div>
 
                 <div class="input_group">
                     <label for="password_confirmation">Confirm Password</label>
                     <input type="text" name="password_confirmation" id="password_confirmation"
-                        placeholder="Leave as blank for default password">
+                        placeholder="Leave as blank for generated password">
                     <span class="inline_alert">{{ $errors->first('password_confirmation') }}</span>
                 </div>
             </div>
 
-            <button type="submit">Update</button>
+            <div class="buttons">
+                <button type="submit">Update</button>
+
+                <button type="button" class="btn_danger" onclick="deleteItem({{ $user->id }}, 'user');"
+                    form="deleteForm_{{ $user->id }}">
+                    <i class="fas fa-trash-alt delete"></i>
+                    <span>Delete</span>
+                </button>
+            </div>
         </form>
 
-        <form id="deleteForm_{{ $user->id }}" action="{{ route('users.destroy', ['user' => $user->id]) }}"
-            method="post">
+        <form id="deleteForm_{{ $user->id }}" action="{{ route('users.destroy', $user->id) }}" method="post"
+            style="display: none;">
             @csrf
             @method('DELETE')
-
-            <button type="button" class="delete_btn" onclick="deleteItem({{ $user->id }}, 'user');">
-                <i class="fas fa-trash-alt delete"></i>
-                <span>Delete</span>
-            </button>
         </form>
     </div>
 

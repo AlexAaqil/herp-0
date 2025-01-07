@@ -24,7 +24,7 @@
             @method('DELETE')
 
             <p>Delete this User's Message</p>
-            <button type="button" class="delete_btn" onclick="deleteItem({{ $user_message->id }}, 'user message');">
+            <button type="button" class="btn_danger" onclick="deleteItem({{ $user_message->id }}, 'user message');">
                 <i class="fas fa-trash-alt delete"></i>
                 <span>Delete</span>
             </button>

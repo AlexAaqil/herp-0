@@ -27,7 +27,8 @@
                 <select name="exam_id" id="exam_id">
                     <option value="">Select Exam</option>
                     @foreach ($exams as $exam)
-                        <option value="{{ $exam->id }}" {{ old('exam_id', $exam_result->exam_id) == $exam->id ? 'selected' : '' }}>
+                        <option value="{{ $exam->id }}"
+                            {{ old('exam_id', $exam_result->exam_id) == $exam->id ? 'selected' : '' }}>
                             {{ $exam->title . ' - ' . $exam->year . ' Term - ' . $exam->term }}</option>
                     @endforeach
                 </select>
@@ -40,7 +41,8 @@
                     <option value="">Select Subject</option>
                     @foreach ($subjects as $subject)
                         <option value="{{ $subject->id }}"
-                            {{ old('subject_id', $exam_result->subject_id) == $subject->id ? 'selected' : '' }}>{{ $subject->title }}
+                            {{ old('subject_id', $exam_result->subject_id) == $subject->id ? 'selected' : '' }}>
+                            {{ $subject->title }}
                         </option>
                     @endforeach
                 </select>
@@ -56,7 +58,7 @@
             <div class="buttons">
                 <button type="submit">Update</button>
 
-                <button type="button" class="delete_btn" onclick="deleteItem({{ $exam_result->id }}, 'exam result');"
+                <button type="button" class="btn_danger" onclick="deleteItem({{ $exam_result->id }}, 'exam result');"
                     form="deleteForm_{{ $exam_result->id }}">
                     <i class="fas fa-trash-alt delete"></i>
                     <span>Delete</span>
@@ -64,8 +66,8 @@
             </div>
         </form>
 
-        <form id="deleteForm_{{ $exam_result->id }}" action="{{ route('exam-results.destroy', $exam_result->id) }}" method="post"
-            style="display: none;">
+        <form id="deleteForm_{{ $exam_result->id }}" action="{{ route('exam-results.destroy', $exam_result->id) }}"
+            method="post" style="display: none;">
             @csrf
             @method('DELETE')
         </form>
