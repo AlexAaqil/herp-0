@@ -26,8 +26,8 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        // Define the "view-author-column" gate
-        Gate::define('view-author-column', function (User $user) {
+        // Define the "view-as-admin" gate
+        Gate::define('view-as-admin', function (User $user) {
             return in_array($user->user_level, [0, 1]);
         });
     }

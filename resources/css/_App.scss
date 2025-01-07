@@ -4,7 +4,9 @@ $aside_width: 15%;
     background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url('../../public/assets/images/auth.png');
     background-size: cover;
     background-position: center;
-    height: 100dvh;
+    background-repeat: no-repeat;
+    min-height: 100dvh;
+    height: auto;
     
     aside {
         width: $aside_width;
@@ -51,9 +53,21 @@ $aside_width: 15%;
                     }
                 }
             }
+        }
 
-            .body {
-                overflow: scroll;
+        .body {
+            color: #fff;
+            overflow: scroll;
+        }
+
+        .system_nav {
+            margin: 0 0 0.5em;
+            color: #fff;
+            
+            a {
+                color: lightblue;
+                font-weight: bold;
+                text-decoration: none;
             }
         }
     }
@@ -70,6 +84,12 @@ $aside_width: 15%;
 
             .body {
                 overflow: hidden;
+            }
+
+            .row_container {
+                display: grid;
+                grid-template-columns: 2fr 1fr;
+                gap: 0 1em;
             }
         }
     }

@@ -24,8 +24,8 @@ class Textbooks extends Model
     }
 
     const STATUSES = [
-        'issued', 
-        'returned', 
+        'issued',
+        'returned',
         'lost',
     ];
 
@@ -42,7 +42,7 @@ class Textbooks extends Model
 
     public function student()
     {
-        return $this->belongsTo(Students::class,'student_id', 'id');
+        return $this->belongsTo(Student::class, 'student_id', 'id');
     }
 
     public function issuedBy()

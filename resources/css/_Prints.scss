@@ -1,0 +1,61 @@
+.Printable {
+    // *{border: 1px solid grey}
+    padding: 4px 8px;
+
+    .header {
+        padding: 0 0 0.5em;
+        margin: 0 0 1em;
+        border-bottom: 4px solid rgb(207, 207, 207);
+
+        .row {
+            display: flex;
+            grid-template-columns: 3fr 1fr;
+            justify-content: space-between;
+            gap: 1em;
+
+            .title {
+                font-weight: bold;
+                font-size: 2em;
+            }
+        }
+    }
+
+    .body {
+        div {
+            margin: 0 0 1em;
+        }
+
+        .payment_details {
+            p {
+                span {
+                    &:first-of-type {
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+
+        .payment_receipts {
+            .table {
+                width: 50%;
+                thead {
+                    background: #000;
+                    
+                    th {
+                        color: #fff;
+                    }
+                }
+
+                tbody{
+                    color: #000;
+                }
+            }
+        }
+
+        .payment {
+            p {
+                font-weight: bold;
+            }
+        }
+    }
+}

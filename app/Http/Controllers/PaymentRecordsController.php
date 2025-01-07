@@ -6,7 +6,7 @@ use App\Models\PaymentRecords;
 use App\Models\Payments;
 use App\Models\ClassSections;
 use App\Models\Classes;
-use App\Models\Students;
+use App\Models\Student;
 use App\Models\Receipts;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -18,30 +18,30 @@ class PaymentRecordsController extends Controller
         $class_section_id = $request->query('class_section_id');
         $class_sections = ClassSections::all();
         $classes = Classes::all();
-    
+
         // Fetch students based on the selected class section
-        $studentsQuery = Students::with(['studentClassSection', 'parents']);
+        $studentsQuery = Student::with(['studentClassSection', 'parents']);
         if ($class_section_id) {
             $studentsQuery->where('class_section_id', $class_section_id);
         }
         $students = $studentsQuery->get();
-        
+
         // Fetch payments for the selected class section's class
         $payments = [];
         if ($class_section_id) {
             $class_id = ClassSections::find($class_section_id)->class_id;
             $payments = Payments::where('class_id', $class_id)->get();
         }
-    
+
         return view('admin.payments.payment-records.index', compact('class_sections', 'students', 'classes', 'class_section_id', 'payments'));
     }
 
     public function create($student_id, Request $request)
     {
-        $student = Students::findOrFail($student_id);    
+        $student = Student::findOrFail($student_id);
         $class_id = ClassSections::find($student->class_section_id)->class_id;
         $payments = Payments::where('class_id', $class_id)->get();
-    
+
         // Create payment records for the student if they don't already exist
         foreach ($payments as $payment) {
             PaymentRecords::firstOrCreate(
@@ -56,14 +56,14 @@ class PaymentRecordsController extends Controller
                 ]
             );
         }
-    
+
         // Fetch all payment records for the student for display
         $paymentRecords = PaymentRecords::with('payment')
             ->where('student_id', $student_id)
             ->get();
-    
+
         return view('admin.payments.payment-records.create', compact('paymentRecords', 'student', 'student_id'));
-    }   
+    }
 
     public function store(Request $request)
     {
@@ -73,7 +73,7 @@ class PaymentRecordsController extends Controller
             'amount_paid' => 'required|array',
             'amount_paid.*' => 'required|numeric|min:0',
         ]);
-    
+
         // Used a transaction to ensure all operations succeed or fail together
         DB::beginTransaction();
 
@@ -116,7 +116,7 @@ class PaymentRecordsController extends Controller
 
             return back()->with('error', ['message' => $e->getMessage()]);
         }
-    }    
+    }
 
     /**
      * Display the specified resource.

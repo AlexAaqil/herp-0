@@ -2,13 +2,13 @@
     <x-searchable-select-header />
 
     <div class="custom_form">
-        <div class="system_nav">
-            <a href="{{ route('exam-results.index') }}">Exam Results</a>
-            <span>/ Edit</span>
-        </div>
-
         <header>
             <p>Update Exam Result</p>
+
+            <div class="navigation">
+                <a href="{{ route('exam-results.index') }}">Exam Results</a>
+                <span>/ Edit</span>
+            </div>
         </header>
 
         <form action="{{ route('exam-results.update', $exam_result->id) }}" method="post">

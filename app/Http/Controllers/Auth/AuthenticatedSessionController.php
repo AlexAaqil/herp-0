@@ -8,7 +8,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
-use App\Models\Students;
+use App\Models\Student;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -57,7 +57,7 @@ class AuthenticatedSessionController extends Controller
             'registration_number' => 'required|string|exists:students,registration_number',
         ]);
 
-        $student = Students::where('registration_number', $validated['registration_number'])->first();
+        $student = Student::where('registration_number', $validated['registration_number'])->first();
 
         if ($student) {
             session(['student_registration_number' => $student->registration_number]);

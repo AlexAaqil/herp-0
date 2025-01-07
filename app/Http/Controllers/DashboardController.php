@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Students;
+use App\Models\Student;
 use App\Models\Parents;
 use App\Models\UserMessage;
 use App\Models\Blog;
@@ -13,21 +13,14 @@ class DashboardController extends Controller
     public function index()
     {
         $user_level = Auth()->user()->user_level;
-        
-        if($user_level == 2)
-        {
+
+        if ($user_level == 2) {
             return redirect()->route('accountant.dashboard');
-        }
-        else if($user_level == 0 || $user_level == 1)
-        {
+        } else if ($user_level == 0 || $user_level == 1) {
             return redirect()->route('admin.dashboard');
-        }
-        else if($user_level == 3)
-        {
+        } else if ($user_level == 3) {
             return redirect()->route('teacher.dashboard');
-        }
-        else
-        {
+        } else {
             return redirect()->back();
         }
     }
@@ -39,10 +32,10 @@ class DashboardController extends Controller
 
     public function admin_dashboard()
     {
-        $count_admins = User::whereIn('user_level', [0,1])->count();
+        $count_admins = User::whereIn('user_level', [0, 1])->count();
         $count_teachers = User::where('user_level', 3)->count();
         $count_accountants = User::where('user_level', 2)->count();
-        $count_students = Students::count();
+        $count_students = Student::count();
         $count_parents = Parents::count();
         $count_user_messages = UserMessage::count();
         $count_blogs = Blog::count();

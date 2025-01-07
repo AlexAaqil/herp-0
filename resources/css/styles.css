@@ -29,6 +29,12 @@ a {
   color: red;
 }
 
+.columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1em;
+}
+
 form button {
   margin: 0.5em 0;
   border: none;
@@ -467,6 +473,27 @@ footer .copyright {
 .custom_form header .navigation a {
   color: lightblue;
 }
+.custom_form .show_details {
+  padding: 0.5em 24px;
+}
+.custom_form .show_details .details p {
+  display: grid;
+  grid-template-columns: 25% 1fr;
+  gap: 1em;
+}
+.custom_form .show_details .details p span:first-of-type {
+  color: rgb(77, 77, 77);
+}
+.custom_form .show_details .column p {
+  margin: 0 0 0.5em;
+}
+.custom_form .show_details .column:last-of-type p {
+  display: flex;
+  flex-direction: column;
+}
+.custom_form .show_details .column:last-of-type p span {
+  margin: 0 0 0.2em;
+}
 .custom_form form {
   padding: 0 24px 12px;
 }
@@ -551,6 +578,23 @@ footer .copyright {
 .custom_form form .buttons {
   display: flex;
   gap: 1em;
+}
+
+.inline {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  margin: 0.2em 0;
+}
+.inline input {
+  width: auto;
+  margin: 0;
+  padding: 4px 8px;
+}
+.inline button {
+  padding: 4px 8px;
+  background: #fff;
+  color: #000;
 }
 
 @media screen and (width >= 726px) {
@@ -745,7 +789,9 @@ footer .copyright {
   background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url("../../public/assets/images/auth.png");
   background-size: cover;
   background-position: center;
-  height: 100dvh;
+  background-repeat: no-repeat;
+  min-height: 100dvh;
+  height: auto;
 }
 .app_main aside {
   width: 15%;
@@ -793,8 +839,18 @@ footer .copyright {
   color: #fff;
   transition: all 0.3s ease-in-out;
 }
-.app_main .app_content .header .body {
+.app_main .app_content .body {
+  color: #fff;
   overflow: scroll;
+}
+.app_main .app_content .system_nav {
+  margin: 0 0 0.5em;
+  color: #fff;
+}
+.app_main .app_content .system_nav a {
+  color: lightblue;
+  font-weight: bold;
+  text-decoration: none;
 }
 
 @media screen and (width >= 726px) {
@@ -803,6 +859,11 @@ footer .copyright {
   }
   .app_main .app_content .body {
     overflow: hidden;
+  }
+  .app_main .app_content .row_container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 0 1em;
   }
 }
 .StudentPortal .separator {
@@ -878,4 +939,62 @@ footer .copyright {
   display: flex;
   align-items: center;
   gap: 1em;
+}
+
+.Settings {
+  color: #fff;
+}
+.Settings ul {
+  list-style: none;
+  margin: 0.8em 0;
+}
+.Settings ul li {
+  width: 15%;
+  border-bottom: 2px solid rgb(204, 204, 204);
+  padding: 4px 2px;
+}
+.Settings ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+}
+
+.Printable {
+  padding: 4px 8px;
+}
+.Printable .header {
+  padding: 0 0 0.5em;
+  margin: 0 0 1em;
+  border-bottom: 4px solid rgb(207, 207, 207);
+}
+.Printable .header .row {
+  display: flex;
+  grid-template-columns: 3fr 1fr;
+  justify-content: space-between;
+  gap: 1em;
+}
+.Printable .header .row .title {
+  font-weight: bold;
+  font-size: 2em;
+}
+.Printable .body div {
+  margin: 0 0 1em;
+}
+.Printable .body .payment_details p span:first-of-type {
+  font-weight: bold;
+}
+.Printable .body .payment_receipts .table {
+  width: 50%;
+}
+.Printable .body .payment_receipts .table thead {
+  background: #000;
+}
+.Printable .body .payment_receipts .table thead th {
+  color: #fff;
+}
+.Printable .body .payment_receipts .table tbody {
+  color: #000;
+}
+.Printable .body .payment p {
+  font-weight: bold;
 }/*# sourceMappingURL=styles.css.map */

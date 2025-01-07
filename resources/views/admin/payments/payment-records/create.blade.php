@@ -14,9 +14,8 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>Title</th>
                     <th>Period</th>
-                    <th>Ref No.</th>
+                    <th>Title</th>
                     <th>Amount</th>
                     <th>Paid</th>
                     <th>Balance</th>
@@ -28,9 +27,8 @@
             <tbody>
                 @foreach ($paymentRecords as $record)
                     <tr>
-                        <td>{{ $record->payment->title }}</td>
                         <td>{{ $record->payment->year.' - Term '.$record->payment->term }}</td>
-                        <td>{{ $record->reference_number }}</td>
+                        <td>{{ $record->payment->title }}</td>
                         <td>{{ $record->payment->amount }}</td>
                         <td class="info">{{ $record->amount_paid }}</td>
                         <td class="{{ $record->balance == 0 ? 'success' : 'danger' }}">{{ $record->balance }}</td>
@@ -39,7 +37,7 @@
                                 @csrf
                                 <input type="hidden" name="student_id" value="{{ $student_id }}">
                             
-                                <input type="number" name="amount_paid[{{ $record->id }}]" value="{{ old('amount_paid.'.$record->id, '') }}" min="0" step="0.01">
+                                <input type="number" name="amount_paid[{{ $record->id }}]" value="{{ old('amount_paid.'.$record->id, '') }}" min="0" step="0.01" placeholder="Amount Paid">
                                 @if ($errors->has("amount_paid.{$record->id}"))
                                     <span class="error">{{ $errors->first("amount_paid.{$record->id}") }}</span>
                                 @endif

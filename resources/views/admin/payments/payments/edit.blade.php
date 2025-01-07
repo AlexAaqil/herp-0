@@ -1,40 +1,41 @@
 <x-authenticated-layout class="Payments">
     <div class="custom_form">
-        <div class="system_nav">
-            <a href="{{ route('settings.index') }}">Settings</a>
-            <a href="{{ route('payments.index') }}">/ Payments</a>
-            <span>/ Edit</span>
-        </div>
-
         <header>
             <p>Update Payment</p>
+
+            <div class="navigation">
+                <a href="{{ route('settings.index') }}">Settings</a>
+                <a href="{{ route('payments.index') }}">/ Payments</a>
+                <span>/ Edit</span>
+            </div>
         </header>
+
+        <div class="show_details">
+            <p class="title">Payment Details</p>
+            <div class="details">
+                <p>
+                    <span>Ref No.</span>
+                    <span>{{ $payment->reference_number }}</span>
+                </p>
+                <p>
+                    <span>Class</span>
+                    <span>{{ $payment->myClass->class_name }}</span>
+                </p>
+                <p>
+                    <span>Payment Method</span>
+                    <span>{{ $payment->payment_method }}</span>
+                </p>
+                <p>
+                    <span>Period</span>
+                    <span>{{ $payment->year . ' Term - ' . $payment->term }}</span>
+                </p>
+            </div>
+        </div>
 
         <form action="{{ route('payments.update', $payment->id) }}" method="post">
             @csrf
             @method('PATCH')
 
-            <div class="info_wrapper">
-                <p class="title">Payment Details</p>
-                <div class="info">
-                    <p>
-                        <span>Ref No.</span>
-                        <span>{{ $payment->reference_number }}</span>
-                    </p>
-                    <p>
-                        <span>Class</span>
-                        <span>{{ $payment->myClass->class_name }}</span>
-                    </p>
-                    <p>
-                        <span>Payment Method</span>
-                        <span>{{ $payment->payment_method }}</span>
-                    </p>
-                    <p>
-                        <span>Period</span>
-                        <span>{{ $payment->year . ' Term - ' . $payment->term }}</span>
-                    </p>
-                </div>
-            </div>
 
             <div class="row_input_group">
                 <div class="input_group">

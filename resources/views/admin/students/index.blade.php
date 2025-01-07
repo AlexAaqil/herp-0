@@ -1,5 +1,5 @@
 <x-authenticated-layout class="Users">
-    <x-admin-header header_title="Students" :total_count="count($students)" route="{{ route('students.create') }}" />
+    <x-admin-header header_title="Students" :total_count="count($students)" :route="auth()->user()->can('view-as-admin') ? route('students.create') : null" />
 
     <div class="body">
         @if (count($students) > 0)

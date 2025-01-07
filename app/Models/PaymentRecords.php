@@ -25,7 +25,7 @@ class PaymentRecords extends Model
 
     public function student()
     {
-        return $this->belongsTo(Students::class);
+        return $this->belongsTo(Student::class);
     }
 
     public function payment()

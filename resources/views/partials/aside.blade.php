@@ -36,12 +36,6 @@
                 'level' => [0, 1, 2, 3],
             ],
             [
-                'route' => 'parents.index',
-                'icon' => 'fas fa-users',
-                'text' => 'Parents',
-                'level' => [0, 1, 2, 3],
-            ],
-            [
                 'route' => 'payment-records.index',
                 'icon' => 'fas fa-money-bill-alt',
                 'text' => 'Payments',

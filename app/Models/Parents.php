@@ -17,13 +17,13 @@ class Parents extends Model
         'phone_other',
         'address',
         'password',
-    ]; 
+    ];
 
     public function students()
     {
-        return $this->belongsToMany(Students::class, 'parent_student',  'parent_id', 'student_id');
-    } 
-    
+        return $this->belongsToMany(Student::class, 'parent_student', 'parent_id', 'student_id');
+    }
+
     public function getFullNameAttribute()
     {
         return $this->first_name . ' ' . $this->last_name;

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Students;
+use App\Models\Student;
 use App\Models\ClassSections;
 use App\Models\Parents;
 use Illuminate\Http\Request;
@@ -10,7 +10,7 @@ use Illuminate\Validation\Rules;
 use Illuminate\Support\Facades\Hash;
 
 
-class StudentsController extends Controller
+class StudentController extends Controller
 {
     private function getClassSections()
     {
@@ -19,7 +19,7 @@ class StudentsController extends Controller
 
     public function index()
     {
-        $students = Students::all();
+        $students = Student::all();
         return view('admin.students.index', compact('students'));
     }
 
@@ -33,7 +33,7 @@ class StudentsController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'registration_number' => 'required|string|unique:Students,registration_number',
+            'registration_number' => 'required|string|unique:students,registration_number',
             'first_name' => 'required|string|max:80',
             'last_name' => 'required|string|max:120',
             'dob' => 'nullable|date|before:today',
@@ -43,34 +43,39 @@ class StudentsController extends Controller
             'graduation_status' => 'required|boolean',
             'graduation_date' => 'nullable|date',
             'class_section_id' => 'required|integer',
-            'parent_id' => 'nullable|array',
-            'parent_id.*' => 'exists:parents,id',
             'password' => ['nullable', Rules\Password::defaults()],
         ]);
+        
+        if ($request->has('parent_id')) {
+            $request->validate([
+                'parent_id' => 'array',
+                'parent_id.*' => 'exists:parents,id',
+            ]);
+        }
 
         $validated['password'] = Hash::make($request->password ?? 'st123456');
 
-        $student = new Students($validated);
+        $student = new Student($validated);
         $student->save();
 
-        if($request->has('parent_id')) {
-            $student->parents()->attach($request->parent_id);
+        if ($request->has('parent_id')) {
+            $student->parents()->attach($request->parent_id); // Attach parents to student
         }
 
         return redirect()->route('students.index')->with('success', ['message' => 'Student has been admitted']);
     }
 
-    public function edit(Students $student)
+    public function edit(Student $student)
     {
         $parents = Parents::orderBy('first_name')->get();
         $class_sections = $this->getClassSections();
         return view('admin.students.edit', compact('student', 'class_sections', 'parents'));
     }
 
-    public function update(Students $student, Request $request)
+    public function update(Student $student, Request $request)
     {
         $validated = $request->validate([
-            'registration_number' => 'required|string|unique:Students,registration_number,'.$student->id,
+            'registration_number' => 'required|string|unique:Students,registration_number,' . $student->id,
             'first_name' => 'required|string|max:80',
             'last_name' => 'required|string|max:120',
             'dob' => 'nullable|date|before:today',
@@ -80,18 +85,29 @@ class StudentsController extends Controller
             'graduation_status' => 'required|boolean',
             'graduation_date' => 'nullable|date',
             'class_section_id' => 'required|integer',
-            'parent_id' => 'nullable|integer',
             'password' => ['nullable', Rules\Password::defaults()],
         ]);
+
+        if ($request->has('parent_id')) {
+            $request->validate([
+                'parent_id' => 'array',
+                'parent_id.*' => 'exists:parents,id',
+            ]);
+        }
 
         $validated['password'] = Hash::make($request->password ?? 'st123456');
 
         $student->update($validated);
 
-        return redirect()->route('students.index')->with('success', ['message' => 'Student details have been updated.']);
+        // Update pivot table with parents (if provided)
+        if ($request->has('parent_id')) {
+            $student->parents()->sync($request->parent_id); // Sync parents to ensure proper relationship
+        }
+
+        return redirect()->back()->with('success', ['message' => 'Student details have been updated.']);
     }
 
-    public function destroy(Students $student)
+    public function destroy(Student $student)
     {
         $student->delete();
 

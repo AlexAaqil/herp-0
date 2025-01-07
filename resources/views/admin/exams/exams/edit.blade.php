@@ -1,13 +1,13 @@
 <x-authenticated-layout class="Exams">
     <div class="custom_form">
-        <div class="system_nav">
-            <a href="{{ route('settings.index') }}">Settings</a>
-            <a href="{{ route('exams.index') }}">/ Exams</a>
-            <span>/ Edit</span>
-        </div>
-
         <header>
             <p>Update Exam</p>
+
+            <div class="navigation">
+                <a href="{{ route('settings.index') }}">Settings</a>
+                <a href="{{ route('exams.index') }}">/ Exams</a>
+                <span>/ Edit</span>
+            </div>
         </header>
 
         <form action="{{ route('exams.update', $exam->id) }}" method="post">

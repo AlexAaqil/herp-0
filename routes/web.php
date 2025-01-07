@@ -12,7 +12,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\ClassesController;
 use App\Http\Controllers\ClassSectionsController;
-use App\Http\Controllers\StudentsController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\ParentsController;
 use App\Http\Controllers\DisciplinariesController;
 use App\Http\Controllers\LeaveoutsController;
@@ -38,13 +38,13 @@ Route::get('/receipts/{payment_record_id}', [ReceiptsController::class, 'print']
 Route::middleware(['student'])
 ->prefix('student')
 ->group(function () {
-    Route::get('/student-details', [StudentsController::class, 'details'])->name('student-details');
-    Route::get('/textbooks', [StudentsController::class, 'textbooks'])->name('student-textbooks');
-    Route::get('/leaveouts', [StudentsController::class, 'leavouts'])->name('student-leaveouts');
-    Route::get('/disciplinaries', [StudentsController::class, 'disciplinaries'])->name('student-disciplinaries');
-    Route::get('/payments', [StudentsController::class, 'payments'])->name('student-payments');
-    Route::get('/results', [StudentsController::class, 'results'])->name('student-results');
-    Route::post('/logout', [StudentsController::class, 'logout_student'])->name('student_logout');
+    Route::get('/student-details', [StudentController::class, 'details'])->name('student-details');
+    Route::get('/textbooks', [StudentController::class, 'textbooks'])->name('student-textbooks');
+    Route::get('/leaveouts', [StudentController::class, 'leavouts'])->name('student-leaveouts');
+    Route::get('/disciplinaries', [StudentController::class, 'disciplinaries'])->name('student-disciplinaries');
+    Route::get('/payments', [StudentController::class, 'payments'])->name('student-payments');
+    Route::get('/results', [StudentController::class, 'results'])->name('student-results');
+    Route::post('/logout', [StudentController::class, 'logout_student'])->name('student_logout');
 });
 
 Route::middleware(['auth', 'verified', 'active'])->group(function () {
@@ -57,7 +57,8 @@ Route::middleware(['auth', 'verified', 'active'])->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::resource('students', StudentsController::class)->except('show');
+    Route::get('/students', [StudentController::class, 'index'])->name('students.index');
+    Route::get('/students/{student}/edit', [StudentController::class, 'edit'])->name('students.edit');
 
     Route::resource('/parents', ParentsController::class)->except('show');
 
@@ -72,6 +73,8 @@ Route::middleware(['auth', 'verified', 'active'])->group(function () {
     Route::get('/payment-records/create/{student_id}', [PaymentRecordsController::class, 'create'])->name('payment-records.create');
     Route::post('/payment-records', [PaymentRecordsController::class, 'store'])->name('payment-records.store');
     Route::post('/payment-records/update', [PaymentRecordsController::class, 'update'])->name('payment-records.update');
+
+    Route::resource('/exam-results', ExamResultController::class)->except('show');
 });
 
 require __DIR__ . '/auth.php';
@@ -83,6 +86,11 @@ Route::middleware(['auth', 'verified', 'active', 'admin'])
 
         Route::resource('/user-levels', UserLevelController::class)->except('show');
         Route::resource('/users', UserController::class)->except('show');
+
+        Route::get('/students/create', [StudentController::class, 'create'])->name('students.create');
+        Route::post('/students', [StudentController::class, 'store'])->name('students.store');
+        Route::patch('/students/{student}', [StudentController::class, 'update'])->name('students.update');
+        Route::delete('/students/{student}', [StudentController::class, 'destroy'])->name('students.destroy');
 
         Route::resource('user-messages', UserMessageController::class)->only('index', 'show', 'destroy');
 
@@ -110,5 +118,4 @@ Route::middleware(['auth', 'verified', 'active', 'admin'])
         Route::resource('/subject-teachers', SectionSubjectTeacherController::class)->except('show');
 
         Route::resource('/exams', ExamController::class)->except('create', 'show');
-        Route::resource('/exam-results', ExamResultController::class)->except('show');
     });

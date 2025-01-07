@@ -19,7 +19,7 @@ class ExamResult extends Model
 
     public function student()
     {
-        return $this->belongsTo(Students::class);
+        return $this->belongsTo(Student::class);
     }
 
     /**
@@ -49,8 +49,8 @@ class ExamResult extends Model
     public static function determineGrade(int $marks): ?string
     {
         $grade = Grades::where('min_marks', '<=', $marks)
-                      ->where('max_marks', '>=', $marks)
-                      ->first();
+            ->where('max_marks', '>=', $marks)
+            ->first();
 
         return $grade ? $grade->grade : null;
     }

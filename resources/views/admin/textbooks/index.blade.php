@@ -10,7 +10,7 @@
                     <th>Book Name</th>
                     <th>Reg. No.</th>
                     <th>Student</th>
-                    @can('view-author-column')
+                    @can('view-as-admin')
                         <th>Author</th>
                     @endcan
                     <th>Status</th>
@@ -31,7 +31,7 @@
                             <td>{{ $textbook->book_name }}</td>
                             <td>{{ $textbook->student->registration_number }}</td>
                             <td>{{ $textbook->student->first_name . ' ' . $textbook->student->last_name }}</td>
-                            @can('view-author-column')
+                            @can('view-as-admin')
                                 <td>{{ $textbook->issuedBy->first_name . ' ' . $textbook->issuedBy->last_name }}</td>
                             @endcan
                             <td>{{ ucfirst($textbook->status) }}</td>

@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Students;
+use App\Models\Student;
 use App\Models\Parents;
 
 class ParentStudentSeeder extends Seeder
@@ -14,7 +14,7 @@ class ParentStudentSeeder extends Seeder
      */
     public function run(): void
     {
-        $student = Students::find(1);
+        $student = Student::find(1);
         $student->parents()->attach([1, 2]); // Student 1 has Parent 1 and 2
     }
 }

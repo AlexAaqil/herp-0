@@ -25,6 +25,41 @@ $custom_form_padding: 24px;
         }
     }
 
+    .show_details {
+        padding: 0.5em $custom_form_padding;
+
+        .details {
+            p {
+                display: grid;
+                grid-template-columns: 25% 1fr;
+                gap: 1em;
+                
+                span {
+                    &:first-of-type {
+                        color: $faded_text;
+                    }
+                }
+            }
+        }
+
+        .column {
+            p {
+                margin: 0 0 0.5em;
+            }
+
+            &:last-of-type {
+               p {
+                    display: flex;
+                    flex-direction: column;
+
+                    span {
+                        margin: 0 0 0.2em;
+                    }
+               } 
+            }
+        }
+    }
+
     form {
         padding: 0 $custom_form_padding 12px;
 
@@ -134,6 +169,25 @@ $custom_form_padding: 24px;
             display: flex;
             gap: 1em;
         }
+    }
+}
+
+.inline {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    margin: 0.2em 0;
+
+    input {
+        width: auto;
+        margin: 0;
+        padding: 4px 8px;
+    }
+
+    button {
+        padding: 4px 8px;
+        background: #fff;
+        color: #000;
     }
 }
 

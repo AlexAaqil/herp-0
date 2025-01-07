@@ -1,9 +1,5 @@
 <x-authenticated-layout class="Leaveouts">
-    <x-admin-header 
-        header_title="Leaveouts" 
-        :total_count="count($leaveouts)" 
-        route="{{ route('leaveouts.create') }}" 
-    />
+    <x-admin-header header_title="Leaveouts" :total_count="count($leaveouts)" route="{{ route('leaveouts.create') }}" />
 
     <div class="body">
         @if (count($leaveouts) > 0)
@@ -12,7 +8,7 @@
                     <th class="center">ID</th>
                     <th>Reg. No.</th>
                     <th>Student</th>
-                    @can('view-author-column')
+                    @can('view-as-admin')
                         <th>Author</th>
                     @endcan
                     <th>Category</th>
@@ -31,11 +27,11 @@
                             </td>
                             <td>{{ $leaveout->student->registration_number }}</td>
                             <td>{{ $leaveout->student->first_name . ' ' . $leaveout->student->last_name }}</td>
-                            @can('view-author-column')
+                            @can('view-as-admin')
                                 <td>{{ $leaveout->createdBy->first_name . ' ' . $leaveout->createdBy->last_name }}</td>
                             @endcan
                             <td>{{ ucfirst($leaveout->category) }}</td>
-                            <td>{{ $leaveout->from_date. ' to '.$leaveout->to_date }}</td>
+                            <td>{{ $leaveout->from_date . ' to ' . $leaveout->to_date }}</td>
                             <td>{!! Illuminate\Support\Str::limit($leaveout->reason, 30, ' ...') !!}</td>
                         </tr>
                     @endforeach

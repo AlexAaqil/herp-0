@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Students;
+use App\Models\Student;
 use Hash;
 
 class StudentsSeeder extends Seeder
@@ -46,8 +46,8 @@ class StudentsSeeder extends Seeder
             ],
         ];
 
-        foreach($students as $student) {
-            Students::create($student);
+        foreach ($students as $student) {
+            Student::create($student);
         }
     }
 }

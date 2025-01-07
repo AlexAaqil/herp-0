@@ -4,6 +4,11 @@
     <div class="custom_form">
         <header>
             <p>New Student</p>
+
+            <div class="navigation">
+                <a href="{{ route('students.index') }}">Students</a>
+                <span>/ Create</span>
+            </div>
         </header>
 
         <form action="{{ route('students.store') }}" method="post" enctype="multipart/form-data">
@@ -13,20 +18,20 @@
 
             <div class="row_input_group_3">
                 <div class="input_group">
-                    <label for="registration_number">Registration Number</label>
+                    <label for="registration_number" class="required">Registration Number</label>
                     <input type="text" name="registration_number" id="registration_number"
                         value="{{ old('registration_number') }}">
                     <span class="inline_alert">{{ $errors->first('registration_number') }}</span>
                 </div>
 
                 <div class="input_group">
-                    <label for="first_name">First Name</label>
+                    <label for="first_name" class="required">First Name</label>
                     <input type="text" name="first_name" id="first_name" value="{{ old('first_name') }}">
                     <span class="inline_alert">{{ $errors->first('first_name') }}</span>
                 </div>
 
                 <div class="input_group">
-                    <label for="last_name">Last Name</label>
+                    <label for="last_name" class="required">Last Name</label>
                     <input type="text" name="last_name" id="last_name" value="{{ old('last_name') }}">
                     <span class="inline_alert">{{ $errors->first('last_name') }}</span>
                 </div>
@@ -34,7 +39,7 @@
 
             <div class="row_input_group_3">
                 <div class="input_group">
-                    <label for="class_section_id">Class Section</label>
+                    <label for="class_section_id" class="required">Class</label>
                     <select name="class_section_id" id="class_section_id">
                         <option value="">Select Class</option>
                         @foreach ($class_sections as $class_section)
@@ -170,14 +175,14 @@
                     <div class="input_group">
                         <label for="phone_main">Phone Number</label>
                         <input type="text" name="phone_main" id="phone_main"
-                            placeholder="0746055487 or 0114055487" value="{{ old('phone_main') }}">
+                            placeholder="07xxxxxxxx or 01xxxxxxxx" value="{{ old('phone_main') }}">
                         <span class="inline_alert">{{ $errors->first('phone_main') }}</span>
                     </div>
 
                     <div class="input_group">
                         <label for="phone_other">Other Phone Number</label>
                         <input type="text" name="phone_other" id="phone_other"
-                            placeholder="0746055487 or 0114055487" value="{{ old('phone_other') }}">
+                            placeholder="07xxxxxxxx or 01xxxxxxxx" value="{{ old('phone_other') }}">
                         <span class="inline_alert">{{ $errors->first('phone_other') }}</span>
                     </div>
 

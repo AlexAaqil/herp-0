@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
-use App\Models\Students;
+use App\Models\Student as StudentModel;
 
 class Student
 {
@@ -17,7 +17,7 @@ class Student
     public function handle(Request $request, Closure $next): Response
     {
         if (session()->has('student_registration_number')) {
-            $student = Students::where('registration_number', session('student_registration_number'))->first();
+            $student = StudentModel::where('registration_number', session('student_registration_number'))->first();
 
             if (!$student) {
                 return redirect('/student-login')->with('error', 'Student not found.');

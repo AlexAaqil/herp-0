@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Students extends Model
+class Student extends Model
 {
     use HasFactory;
 
@@ -14,6 +14,11 @@ class Students extends Model
     public function studentClassSection()
     {
         return $this->belongsTo(ClassSections::class, 'class_section_id');
+    }
+
+    public function dorm()
+    {
+        return $this->belongsTo(Dorm::class, 'student_id');
     }
 
     public function parents()
