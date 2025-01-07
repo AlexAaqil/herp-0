@@ -9,9 +9,9 @@
         @php
             $nav_links = [
                 ['route' => 'about', 'text' => 'About'],
-                ['route' => 'services', 'text' => 'Services'],
+                ['route' => 'services', 'text' => 'Gallery'],
+                ['route' => 'users.blogs', 'text' => 'News'],
                 ['route' => 'contact', 'text' => 'Contact'],
-                ['route' => 'users.blogs', 'text' => 'Blogs'],
             ];
         @endphp
 

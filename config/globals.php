@@ -1,12 +1,12 @@
 <?php
 
 return [
-    'app_short_name' => 'HSMS',
-    'app_full_name' => 'High School Management System',
-    'app_slogan' => 'Cool app',
+    'app_short_name' => 'G.H.S',
+    'app_full_name' => 'Gachie High School',
+    'app_slogan' => 'Striving to be the best',
     'students_gender' => 'M',
     'phone_number' => '+254 746 055 487',
     'whatsapp_number' => '254746055487',
-    'email' => 'alexaaqil.se@gmail.com',
-    'address' => 'Harvest Hill Plaza, Ruii, Kiambu',
+    'email' => 'info@gachiehighschool.com',
+    'address' => 'Rwaka, Kiambu',
 ];

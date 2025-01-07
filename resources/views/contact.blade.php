@@ -1,4 +1,4 @@
-<x-general-layout class="Contact">
+<x-general-layout class="Contact_Page">
     <div class="container">
         <div class="text">
             <h1>Get in Touch</h1>
