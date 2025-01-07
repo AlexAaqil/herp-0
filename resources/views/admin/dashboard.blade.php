@@ -44,11 +44,35 @@
 
         <div class="stat">
             <div class="icon">
+                <i class="fas fa-cog"></i>
+            </div>
+            <div class="text">
+                <p class="title">General</p>
+                <p>
+                    <a href="{{ route('subjects.index') }}">Subjects:</a>
+                    <span>{{ $count_subjects }}</span>
+                </p>
+                <p>
+                    <a href="{{ route('class_sections.index') }}">Classes:</a>
+                    <span>{{ $count_classes }}</span>
+                </p>
+                <p>
+                    <a href="#">Dorms:</a>
+                    <span>{{ $count_dorms }}</span>
+                </p>
+            </div>
+        </div>
+
+        <div class="stat">
+            <div class="icon">
                 <i class="fas fa-blog"></i>
             </div>
             <div class="text">
-                <span>{{ $count_blogs }}</span>
-                <a href="{{ route('blogs.index') }}">Blogs</a>
+                <p class="title">Blogs</p>
+                <p>
+                    <a href="{{ route('blogs.index') }}">Blogs:</a>
+                    <span>{{ $count_blogs }}</span>
+                </p>
             </div>
         </div>
 
@@ -57,8 +81,11 @@
                 <i class="fas fa-comment"></i>
             </div>
             <div class="text">
-                <span>{{ $count_user_messages }}</span>
-                <a href="{{ route('user-messages.index') }}">Messages</a>
+                <p class="title">Messages</p>
+                <p>
+                    <a href="{{ route('user-messages.index') }}">Messages:</a>
+                    <span>{{ $count_user_messages }}</span>
+                </p>
             </div>
         </div>
     </section>

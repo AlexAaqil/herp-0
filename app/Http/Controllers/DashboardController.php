@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Student;
 use App\Models\Parents;
+use App\Models\ClassSections;
+use App\Models\Dorm;
+use App\Models\Subjects;
 use App\Models\UserMessage;
 use App\Models\Blog;
 
@@ -37,6 +40,9 @@ class DashboardController extends Controller
         $count_accountants = User::where('user_level', 2)->count();
         $count_students = Student::count();
         $count_parents = Parents::count();
+        $count_classes = ClassSections::count();
+        $count_dorms = Dorm::count();
+        $count_subjects = Subjects::count();
         $count_user_messages = UserMessage::count();
         $count_blogs = Blog::count();
 
@@ -46,6 +52,9 @@ class DashboardController extends Controller
             'count_accountants',
             'count_students',
             'count_parents',
+            'count_classes',
+            'count_dorms',
+            'count_subjects',
             'count_user_messages',
             'count_blogs',
         ));
