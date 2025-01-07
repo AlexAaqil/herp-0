@@ -620,4 +620,62 @@ footer .copyright {
 }
 .StudentPortal .details p span:first-of-type {
   font-style: italic;
+}
+
+.Admin_Dashboard .Hero p {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+.Admin_Dashboard .Stats {
+  margin: 1em 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5em;
+  align-items: start;
+}
+@media screen and (width >= 726px) {
+  .Admin_Dashboard .Stats {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+.Admin_Dashboard .Stats .stat {
+  border-radius: 8px;
+  padding: 6px 12px;
+  display: grid;
+  gap: 0.8em;
+  align-items: center;
+  grid-template-columns: 25px auto;
+  background: #cef9fb;
+}
+.Admin_Dashboard .Stats .stat .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 4px;
+  border-radius: 50%;
+  background: #58ebf2;
+  color: #fff;
+}
+.Admin_Dashboard .Stats .stat .text {
+  display: grid;
+  gap: 0.2em;
+}
+.Admin_Dashboard .Stats .stat .text p {
+  font-size: 0.95em;
+}
+.Admin_Dashboard .Stats .stat .text a {
+  color: #000;
+  text-decoration: none;
+}
+
+.UserDashboard .container h1 {
+  font-size: 1.35em;
+}
+.UserDashboard .container .custom_form {
+  margin: 1em 0;
+  display: flex;
+  align-items: center;
+  gap: 1em;
 }/*# sourceMappingURL=styles.css.map */

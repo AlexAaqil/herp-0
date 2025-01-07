@@ -41,6 +41,7 @@ class DashboardController extends Controller
     {
         $count_admins = User::whereIn('user_level', [0,1])->count();
         $count_teachers = User::where('user_level', 3)->count();
+        $count_accountants = User::where('user_level', 2)->count();
         $count_students = Students::count();
         $count_parents = Parents::count();
         $count_user_messages = UserMessage::count();
@@ -49,6 +50,7 @@ class DashboardController extends Controller
         return view('admin.dashboard', compact(
             'count_admins',
             'count_teachers',
+            'count_accountants',
             'count_students',
             'count_parents',
             'count_user_messages',

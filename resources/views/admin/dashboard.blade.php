@@ -1,4 +1,4 @@
-<x-authenticated-layout class="Admin_dashboard">
+<x-authenticated-layout class="Admin_Dashboard">
     <section class="Hero">
         <p>Hi {{ Auth::user()->first_name }}</p>
     </section>
@@ -9,8 +9,19 @@
                 <i class="fas fa-users"></i>
             </div>
             <div class="text">
-                <span>{{ $count_admins }}</span>
-                <a href="{{ route('users.index') }}">Admins</a>
+                <p class="title">Staff</p>
+                <p>
+                    <a href="{{ route('users.index') }}">Admins: </a>
+                    <span>{{ $count_admins }}</span>
+                </p>
+                <p>
+                    <a href="{{ route('users.index') }}">Teachers: </a>
+                    <span>{{ $count_teachers }}</span>
+                </p>
+                <p>
+                    <a href="{{ route('users.index') }}">Accountants: </a>
+                    <span>{{ $count_accountants }}</span>
+                </p>
             </div>
         </div>
 
@@ -19,28 +30,15 @@
                 <i class="fas fa-users"></i>
             </div>
             <div class="text">
-                <span>{{ $count_teachers }}</span>
-                <a href="{{ route('users.index') }}">Teachers</a>
-            </div>
-        </div>
-
-        <div class="stat">
-            <div class="icon">
-                <i class="fas fa-users"></i>
-            </div>
-            <div class="text">
-                <span>{{ $count_students }}</span>
-                <a href="{{ route('students.index') }}">Students</a>
-            </div>
-        </div>
-
-        <div class="stat">
-            <div class="icon">
-                <i class="fas fa-users"></i>
-            </div>
-            <div class="text">
-                <span>{{ $count_parents }}</span>
-                <a href="{{ route('parents.index') }}">Parents</a>
+                <p class="title">Users</p>
+                <p>
+                    <a href="{{ route('parents.index') }}">Parents:</a>
+                    <span>{{ $count_parents }}</span>
+                </p>
+                <p>
+                    <a href="{{ route('students.index') }}">Students:</a>
+                    <span>{{ $count_students }}</span>
+                </p>
             </div>
         </div>
 
