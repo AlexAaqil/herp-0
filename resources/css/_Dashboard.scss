@@ -1,24 +1,29 @@
+$dashboard_background: #dedefd;
+
 .Admin_Dashboard {
     .Hero {
         p {
             font-size: 1.2em;
             font-weight: bold;
+            color: #fff;
         }
     }
 
     .Stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        align-items: strecth;
+        gap: 1em;
         margin: 1em 0;
-        @include grid(6);
-        align-items: start;
 
         .stat {
+            display: grid;
+            grid-template-columns: 25px auto;
+            align-items: start;
+            gap: 0.8em;
+            background: $dashboard_background;
             border-radius: 8px;
             padding: 6px 12px;
-            display: grid;
-            gap: 0.8em;
-            align-items: center;
-            grid-template-columns: 25px auto;
-            background: darken($faded_background, 5);
 
             .icon {
                 display: flex;
@@ -28,8 +33,9 @@
                 height: 28px;
                 padding: 4px;
                 border-radius: 50%;
-                background: darken($faded_background, 30);
+                background: darken($dashboard_background, 30);
                 color: #fff;
+                align-self: center;
             }
 
             .text {

@@ -1,4 +1,4 @@
-$aside_text_color: #000;
+$aside_text_color: #fff;
 
 aside {
     height: 100%;
@@ -28,7 +28,7 @@ aside {
         li {
             padding: 4px;
             a {
-                color: darken($faded_line, 30);
+                color: darken($aside_text_color, 5);
             }
         }
     }
@@ -121,6 +121,7 @@ aside {
 
                 span {
                     font-size: 0.8em;
+                    color: $aside_text_color;
                 }
             }
 

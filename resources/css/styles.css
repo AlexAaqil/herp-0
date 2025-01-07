@@ -188,7 +188,7 @@ aside i {
   font-size: 1.5em;
 }
 aside a {
-  color: #000;
+  color: #fff;
   text-decoration: none;
 }
 aside ul {
@@ -199,7 +199,7 @@ aside ul li {
   padding: 4px;
 }
 aside ul li a {
-  color: gray;
+  color: #f2f2f2;
 }
 aside .footer {
   position: absolute;
@@ -223,7 +223,7 @@ aside .footer .logout form button i {
   color: red;
 }
 aside .active a {
-  color: #000;
+  color: #fff;
   font-weight: bold;
 }
 
@@ -269,6 +269,7 @@ aside .active a {
   }
   aside .footer .profile span {
     font-size: 0.8em;
+    color: #fff;
   }
   aside .footer .logout form button {
     justify-content: center;
@@ -553,6 +554,12 @@ footer .copyright {
     width: 350px;
   }
 }
+.app_main {
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../../public/assets/images/auth.png");
+  background-size: cover;
+  background-position: center;
+  height: 100dvh;
+}
 .app_main aside {
   width: 15%;
 }
@@ -625,27 +632,23 @@ footer .copyright {
 .Admin_Dashboard .Hero p {
   font-size: 1.2em;
   font-weight: bold;
+  color: #fff;
 }
 .Admin_Dashboard .Stats {
-  margin: 1em 0;
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.5em;
-  align-items: start;
-}
-@media screen and (width >= 726px) {
-  .Admin_Dashboard .Stats {
-    grid-template-columns: repeat(6, 1fr);
-  }
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  align-items: strecth;
+  gap: 1em;
+  margin: 1em 0;
 }
 .Admin_Dashboard .Stats .stat {
+  display: grid;
+  grid-template-columns: 25px auto;
+  align-items: start;
+  gap: 0.8em;
+  background: #dedefd;
   border-radius: 8px;
   padding: 6px 12px;
-  display: grid;
-  gap: 0.8em;
-  align-items: center;
-  grid-template-columns: 25px auto;
-  background: #cef9fb;
 }
 .Admin_Dashboard .Stats .stat .icon {
   display: flex;
@@ -655,8 +658,9 @@ footer .copyright {
   height: 28px;
   padding: 4px;
   border-radius: 50%;
-  background: #58ebf2;
+  background: #4e4ef4;
   color: #fff;
+  align-self: center;
 }
 .Admin_Dashboard .Stats .stat .text {
   display: grid;
