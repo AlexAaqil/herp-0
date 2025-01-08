@@ -75,7 +75,7 @@ class StudentController extends Controller
     public function update(Student $student, Request $request)
     {
         $validated = $request->validate([
-            'registration_number' => 'required|string|unique:Students,registration_number,' . $student->id,
+            'registration_number' => 'required|string|unique:students,registration_number,' . $student->id,
             'first_name' => 'required|string|max:80',
             'last_name' => 'required|string|max:120',
             'dob' => 'nullable|date|before:today',
