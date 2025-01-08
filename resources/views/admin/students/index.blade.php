@@ -21,7 +21,7 @@
                                 </a>
                             </td>
                             <td>{{ $student->registration_number }}</td>
-                            <td>{{ $student->first_name . ' ' . Auth::user()->last_name }}</td>
+                            <td>{{ $student->first_name . ' ' . $student->last_name }}</td>
                             <td>{{ $student->studentClassSection->title }}</td>
                         </tr>
                     @endforeach
