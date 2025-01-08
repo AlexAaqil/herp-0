@@ -43,7 +43,7 @@
                     <select name="class_section_id" id="class_section_id">
                         <option value="">Select Class</option>
                         @foreach ($class_sections as $class_section)
-                            <option value="1"
+                            <option value="{{ $class_section->id }}"
                                 {{ old('class_section_id') == $class_section->id ? 'selected' : '' }}>
                                 {{ $class_section->title }}</option>
                         @endforeach
