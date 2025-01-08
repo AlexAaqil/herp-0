@@ -29,6 +29,10 @@ a {
   color: red;
 }
 
+.success {
+  color: green;
+}
+
 .columns {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -439,7 +443,7 @@ footer .copyright {
   font-size: 0.6em;
   font-weight: bold;
   border-radius: 32px;
-  background: #dedefd;
+  background: #ffffff;
   color: #000;
 }
 .table tbody tr td .super_admin {
@@ -951,49 +955,76 @@ footer .copyright {
   font-style: italic;
 }
 
-.Admin_Dashboard .Hero p {
+.Dashboard .Hero p {
   font-size: 1.2em;
   font-weight: bold;
   color: #fff;
 }
-.Admin_Dashboard .Stats {
+.Dashboard .Stats {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   align-items: strecth;
   gap: 1em;
   margin: 1em 0;
 }
-.Admin_Dashboard .Stats .stat {
+.Dashboard .Stats .stat {
   display: grid;
   grid-template-columns: 25px auto;
   align-items: start;
-  gap: 0.8em;
-  background: #dedefd;
-  border-radius: 8px;
-  padding: 6px 12px;
+  gap: 1em;
+  background: #ffffff;
+  border-radius: 4px;
+  padding: 16px 12px;
 }
-.Admin_Dashboard .Stats .stat .icon {
+.Dashboard .Stats .stat .icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 28px;
-  height: 28px;
-  padding: 4px;
+  width: 36px;
+  height: 36px;
+  padding: 12px;
   border-radius: 50%;
-  background: #4e4ef4;
+  background: #3636ff;
   color: #fff;
   align-self: center;
 }
-.Admin_Dashboard .Stats .stat .text {
+.Dashboard .Stats .stat .text {
   display: grid;
   gap: 0.2em;
 }
-.Admin_Dashboard .Stats .stat .text p {
+.Dashboard .Stats .stat .text p {
   font-size: 0.95em;
 }
-.Admin_Dashboard .Stats .stat .text a {
+.Dashboard .Stats .stat .text a {
   color: #000;
   text-decoration: none;
+}
+.Dashboard .Teacher_Dashboard .text a,
+.Dashboard .Accountant_Dashboard .text a,
+.Dashboard .Accountant_Dashboard > .Payments .text a,
+.Dashboard .Admin_Dashboard > .Payments .text a {
+  font-size: 0.85em;
+  color: #000;
+}
+.Dashboard .Teacher_Dashboard .text span,
+.Dashboard .Accountant_Dashboard .text span,
+.Dashboard .Accountant_Dashboard > .Payments .text span,
+.Dashboard .Admin_Dashboard > .Payments .text span {
+  font-size: 1.2em;
+}
+.Dashboard .Payments {
+  grid-template-columns: repeat(3, 1fr);
+  margin: 2.5em 0 0.5em;
+}
+.Dashboard .Payments .stat {
+  padding: 16px 20px;
+}
+.Dashboard .Payments .stat .text span:first-of-type {
+  font-weight: bold;
+  font-size: 1.5em;
+}
+.Dashboard .Payments .stat .text span:last-of-type {
+  font-size: 0.85em;
 }
 
 .UserDashboard .container h1 {

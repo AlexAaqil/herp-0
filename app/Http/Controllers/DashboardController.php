@@ -9,7 +9,10 @@ use App\Models\ClassSections;
 use App\Models\Dorm;
 use App\Models\Subjects;
 use App\Models\UserMessage;
+use App\Models\Payments;
+use App\Models\PaymentRecords;
 use App\Models\Blog;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
@@ -46,6 +49,14 @@ class DashboardController extends Controller
         $count_user_messages = UserMessage::count();
         $count_blogs = Blog::count();
 
+        $total_payments_expected = DB::table('payment_records')
+            ->join('payments', 'payment_records.payment_id', '=', 'payments.id')
+            ->sum('payments.amount');
+        $total_payments_made = DB::table('payment_records')
+            ->sum('payment_records.amount_paid');
+        $total_pending_payments = DB::table('payment_records')
+        ->sum('payment_records.balance');
+
         return view('admin.dashboard', compact(
             'count_admins',
             'count_teachers',
@@ -57,16 +68,46 @@ class DashboardController extends Controller
             'count_subjects',
             'count_user_messages',
             'count_blogs',
+
+            'total_payments_expected',
+            'total_payments_made',
+            'total_pending_payments',
         ));
     }
 
     public function accountant_dashboard()
     {
-        return view('dashboards.accountant_dashboard');
+        $count_students = Student::count();
+        $count_classes = ClassSections::count();
+        $count_payments = PaymentRecords::count();
+        
+        $total_payments_expected = DB::table('payment_records')
+            ->join('payments', 'payment_records.payment_id', '=', 'payments.id')
+            ->sum('payments.amount');
+        $total_payments_made = DB::table('payment_records')
+            ->sum('payment_records.amount_paid');
+        $total_pending_payments = DB::table('payment_records')
+        ->sum('payment_records.balance');
+        return view('dashboards/accountant_dashboard', compact(
+            'count_classes',
+            'count_students',
+            'count_payments',
+
+            'total_payments_expected',
+            'total_payments_made',
+            'total_pending_payments',
+        ));
     }
 
     public function teacher_dashboard()
     {
-        return view('dashboards.teacher_dashboard');
+        $count_students = Student::count();
+        $count_classes = ClassSections::count();
+        $count_subjects = Subjects::count();
+        return view('dashboards.teacher_dashboard', compact(
+            'count_students',
+            'count_classes',
+            'count_subjects',
+        ));
     }
 }

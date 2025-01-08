@@ -1,4 +1,4 @@
-.Admin_Dashboard {
+.Dashboard {
     .Hero {
         p {
             font-size: 1.2em;
@@ -18,20 +18,20 @@
             display: grid;
             grid-template-columns: 25px auto;
             align-items: start;
-            gap: 0.8em;
+            gap: 1em;
             background: $dashboard_background;
-            border-radius: 8px;
-            padding: 6px 12px;
+            border-radius: 4px;
+            padding: 16px 12px;
 
             .icon {
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                width: 28px;
-                height: 28px;
-                padding: 4px;
+                width: 36px;
+                height: 36px;
+                padding: 12px;
                 border-radius: 50%;
-                background: darken($dashboard_background, 30);
+                background: darken($dashboard_background_2, 30);
                 color: #fff;
                 align-self: center;
             }
@@ -47,6 +47,43 @@
                 a {
                     color: #000;
                     text-decoration: none;
+                }
+            }
+        }
+    }
+
+    .Teacher_Dashboard,
+    .Accountant_Dashboard,
+    .Accountant_Dashboard > .Payments,
+    .Admin_Dashboard > .Payments {
+        .text {
+            a {
+                font-size: 0.85em;
+                color: #000;
+            }
+
+            span {
+                font-size: 1.2em;
+            }
+        }
+    }
+
+    .Payments {
+        grid-template-columns: repeat(3, 1fr);
+        margin: 2.5em 0 0.5em;
+
+        .stat {
+            padding: 16px 20px;
+
+            .text {
+                span {
+                    &:first-of-type {
+                        font-weight: bold;
+                        font-size: 1.5em;
+                    }
+                    &:last-of-type {
+                        font-size: 0.85em;
+                    }
                 }
             }
         }
