@@ -36,6 +36,7 @@ class StudentController extends Controller
             'registration_number' => 'required|string|unique:students,registration_number',
             'first_name' => 'required|string|max:80',
             'last_name' => 'required|string|max:120',
+            'gender' => 'required|in:M,F',
             'dob' => 'nullable|date|before:today',
             'dorm_id' => 'nullable|integer',
             'dorm_room_number' => 'nullable|string',
@@ -44,7 +45,18 @@ class StudentController extends Controller
             'graduation_date' => 'nullable|date',
             'class_section_id' => 'required|integer',
             'password' => ['nullable', Rules\Password::defaults()],
+            'image' => 'nullable|file|image|max:1024',
         ]);
+
+        if($request->hasFile('image')) {
+            $file = $request->file('image');
+
+            $student_details = $request->input('registration_number').'_'.$request->input('first_name').'_'.$request->input('last_name');
+            $file_name = "{$student_details}.{$file->extension()}";
+
+            $file_path = $file->storeAs('students', $file_name, 'public');
+            $validated['image'] = $file_path;
+        }
         
         if ($request->has('parent_id')) {
             $request->validate([
@@ -78,6 +90,7 @@ class StudentController extends Controller
             'registration_number' => 'required|string|unique:students,registration_number,' . $student->id,
             'first_name' => 'required|string|max:80',
             'last_name' => 'required|string|max:120',
+            'gender' => 'required|in:M,F',
             'dob' => 'nullable|date|before:today',
             'dorm_id' => 'nullable|integer',
             'dorm_room_number' => 'nullable|string',
@@ -86,7 +99,26 @@ class StudentController extends Controller
             'graduation_date' => 'nullable|date',
             'class_section_id' => 'required|integer',
             'password' => ['nullable', Rules\Password::defaults()],
+            'image' => 'nullable|file|image|max:1024',
         ]);
+
+        if($request->hasFile('image')) {
+            if($student->image && \Storage::disk('public')->exists($student->image)) {
+                \Storage::disk('public')->delete($student->image);
+            }
+
+            $file = $request->file('image');
+
+            $student_details = $request->input('registration_number').'_'.$request->input('first_name').'_'.$request->input('last_name');
+            $file_name = "{$student_details}.{$file->extension()}";
+
+            $file_path = $file->storeAs('students', $file_name, 'public');
+            $validated['image'] = $file_path;
+        }
+
+        $validated['password'] = Hash::make($request->password ?? 'st123456');
+
+        $student->update($validated);
 
         if ($request->has('parent_id')) {
             $request->validate([
@@ -94,10 +126,6 @@ class StudentController extends Controller
                 'parent_id.*' => 'exists:parents,id',
             ]);
         }
-
-        $validated['password'] = Hash::make($request->password ?? 'st123456');
-
-        $student->update($validated);
 
         // Update pivot table with parents (if provided)
         if ($request->has('parent_id')) {

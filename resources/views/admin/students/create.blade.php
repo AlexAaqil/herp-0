@@ -37,6 +37,32 @@
                 </div>
             </div>
 
+            <div class="row_input_group">
+                <div class="input_group">
+                    <label for="gender" class="required">Gender</label>
+                    <div class="custom_radio_buttons">
+                        <label>
+                            <input class="option_radio" type="radio" name="gender" id="M" value="M"
+                                {{ old('gender', 'M') == 'M' ? 'checked' : '' }}>
+                            <span>Male</span>
+                        </label>
+
+                        <label>
+                            <input class="option_radio" type="radio" name="gender" id="F" value="F"
+                                {{ old('gender') == 'F' ? 'checked' : '' }}>
+                            <span>Female</span>
+                        </label>
+                    </div>
+                    <span class="inline_alert">{{ $errors->first('gender') }}</span>
+                </div>
+
+                <div class="input_group">
+                    <label for="dob">Date of Birth</label>
+                    <input type="date" name="dob" id="dob" value="{{ old('dob') }}">
+                    <span class="inline_alert">{{ $errors->first('dob') }}</span>
+                </div>
+            </div>
+
             <div class="row_input_group_3">
                 <div class="input_group">
                     <label for="class_section_id" class="required">Class</label>
@@ -104,9 +130,9 @@
 
             <div class="row_input_group">
                 <div class="input_group">
-                    <label for="dob">Date of Birth</label>
-                    <input type="date" name="dob" id="dob" value="{{ old('dob') }}">
-                    <span class="inline_alert">{{ $errors->first('dob') }}</span>
+                    <label for="image">Image</label>
+                    <input type="file" name="image" id="image">
+                    <span class="inline_alert">{{ $errors->first('image') }}</span>
                 </div>
 
                 <div class="input_group">
@@ -130,7 +156,7 @@
                                 {{ $parent->phone_main }} - {{ $parent->first_name }} {{ $parent->last_name }}
                             </option>
                         @endforeach
-                    </select>                    
+                    </select>
                     <span class="inline_alert">{{ $errors->first('parent_id') }}</span>
                 </div>
             </div>

@@ -25,6 +25,20 @@
                 <div class="column">
                     <p class="title">Student</p>
                     <div class="details">
+                        @if ($student->image)
+                            <p>
+                                <span>Student Image</span>
+                                <span>
+                                    <img src="{{ asset('storage/' . $student->image) }}" alt="Student Image"
+                                        style="max-width: 100px;">
+                                </span>
+                            </p>
+                        @else
+                            <p>
+                                <span>Student Image</span>
+                                <span>Not uploaded</span>
+                            </p>
+                        @endif
                         <p>
                             <span>Reg No:</span>
                             <span>{{ $student->registration_number }}</span>
@@ -33,6 +47,10 @@
                             <span>Name:</span>
                             <span>{{ $student->first_name . ' ' . $student->last_name }}</span>
                         </p>
+                        <p>
+                            <span>Gender:</span>
+                            <span>{{ $student->gender }}</span>
+                        </p>                    
                         <p>
                             <span>Class:</span>
                             <span>{{ $student->studentClassSection->title }}</span>
@@ -87,8 +105,6 @@
                 @csrf
                 @method('PATCH')
 
-                <input type="hidden" name="gender" value="{{ config('globals.students_gender', $student->gender) }}">
-
                 <div class="row_input_group_3">
                     <div class="input_group">
                         <label for="registration_number" class="required">Registration Number</label>
@@ -109,6 +125,32 @@
                         <input type="text" name="last_name" id="last_name"
                             value="{{ old('last_name', $student->last_name) }}">
                         <span class="inline_alert">{{ $errors->first('last_name') }}</span>
+                    </div>
+                </div>
+
+                <div class="row_input_group">
+                    <div class="input_group">
+                        <label for="gender" class="required">Gender</label>
+                        <div class="custom_radio_buttons">
+                            <label>
+                                <input class="option_radio" type="radio" name="gender" id="M" value="M"
+                                    {{ old('gender', $student->gender ?? '') == 'M' ? 'checked' : '' }}>
+                                <span>Male</span>
+                            </label>
+
+                            <label>
+                                <input class="option_radio" type="radio" name="gender" id="F" value="F"
+                                    {{ old('gender', $student->gender ?? '') == 'F' ? 'checked' : '' }}>
+                                <span>Female</span>
+                            </label>
+                        </div>
+                        <span class="inline_alert">{{ $errors->first('gender') }}</span>
+                    </div>
+
+                    <div class="input_group">
+                        <label for="dob">Date of Birth</label>
+                        <input type="date" name="dob" id="dob" value="{{ old('dob', $student->dob) }}">
+                        <span class="inline_alert">{{ $errors->first('dob') }}</span>
                     </div>
                 </div>
 
@@ -181,9 +223,9 @@
 
                 <div class="row_input_group">
                     <div class="input_group">
-                        <label for="dob">Date of Birth</label>
-                        <input type="date" name="dob" id="dob" value="{{ old('dob', $student->dob) }}">
-                        <span class="inline_alert">{{ $errors->first('dob') }}</span>
+                        <label for="image">Image</label>
+                        <input type="file" name="image" id="image">
+                        <span class="inline_alert">{{ $errors->first('image') }}</span>
                     </div>
 
                     <div class="input_group">

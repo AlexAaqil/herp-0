@@ -6,9 +6,10 @@
             <table class="table">
                 <thead>
                     <th class="center">ID</th>
-                    <th>Reg No.</th>
-                    <th>Name</th>
+                    <th>Image</th>
+                    <th>Student</th>
                     <th>Class</th>
+                    <th>Parents</th>
                 </thead>
 
                 <tbody>
@@ -20,9 +21,20 @@
                                     {{ $id++ }}
                                 </a>
                             </td>
-                            <td>{{ $student->registration_number }}</td>
-                            <td>{{ $student->first_name . ' ' . $student->last_name }}</td>
+                            <td>
+                                <img src="{{ $student->image ? asset('storage/'.$student->image) : asset('assets/images/default_profile.jpg') }}" alt="Student Image" style="max-width: 25px;">
+                            </td>
+                            <td>{{ $student->registration_number . ' - ' . $student->first_name . ' ' . $student->last_name }}
+                            </td>
                             <td>{{ $student->studentClassSection->title }}</td>
+                            <td>
+                                @forelse ($student->parents as $parent)
+                                    <span>{{ $parent->first_name.' '.$parent->last_name.' - '.$parent->phone_main }}</span>
+                                    <br>
+                                @empty
+                                    <span>N/A</span>
+                                @endforelse
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

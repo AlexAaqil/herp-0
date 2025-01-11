@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Settings;
-use Illuminate\Support\Str;
 
 class SettingsController extends Controller
 {
@@ -47,7 +46,6 @@ class SettingsController extends Controller
             $settings = Settings::allSettings();
         }
 
-        // Pass settings to view
         return view('admin.settings.edit', compact('settings'));
     }
 
@@ -72,7 +70,7 @@ class SettingsController extends Controller
                 // Fetch the current logo path from settings
                 $currentLogo = Settings::getSettingValue('school_logo');
                 
-                // Create a new filename with current date, school name, and random 4 letters
+                // Create a new filename school name and date
                 $schoolName = str_replace(' ', '_', strtolower($request->input('school_name'))).'_logo';
                 $date = now()->format('dmy');
                 $fileName = "{$schoolName}_{$date}.{$request->file('school_logo')->extension()}";
