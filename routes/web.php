@@ -79,7 +79,7 @@ Route::middleware(['auth', 'verified', 'active'])->group(function () {
 
 require __DIR__ . '/auth.php';
 
-Route::middleware(['auth', 'verified', 'active', 'admin'])
+Route::middleware('admin_auth')
     ->prefix('admin')
     ->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'admin_dashboard'])->name('admin.dashboard');
@@ -98,7 +98,19 @@ Route::middleware(['auth', 'verified', 'active', 'admin'])
         Route::resource('/blogs', BlogController::class)->except('show');
         Route::post('/blogs/sort-lessons', [BlogController::class, 'sort_blogs'])->name('blogs.sort');
 
-        Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
+        Route::prefix('settings')->group(function() {
+            Route::get('/all', [SettingsController::class, 'index'])->name('settings.index');
+
+            Route::resource('/payments', PaymentsController::class)->except('create', 'show');
+
+            Route::resource('/grades', GradesController::class)->except('show');
+
+            Route::resource('/subjects', SubjectsController::class)->except('show');
+
+            Route::resource('/subject-teachers', SectionSubjectTeacherController::class)->except('show');
+
+            Route::resource('/exams', ExamController::class)->except('create', 'show');
+        });
 
         Route::get('/classes', [ClassesController::class, 'index'])->name('classes.index');
         Route::get('/classes/create', [ClassesController::class, 'create'])->name('classes.create');
@@ -108,14 +120,4 @@ Route::middleware(['auth', 'verified', 'active', 'admin'])
         Route::patch('/classes/{classes}', [ClassesController::class, 'update'])->name('classes.update');
         Route::delete('/classes/{classes}', [ClassesController::class, 'destroy'])->name('classes.destroy');
         Route::resource('class_sections', ClassSectionsController::class)->except('show');
-
-        Route::resource('/payments', PaymentsController::class)->except('create', 'show');
-
-        Route::resource('/grades', GradesController::class)->except('show');
-
-        Route::resource('/subjects', SubjectsController::class)->except('show');
-
-        Route::resource('/subject-teachers', SectionSubjectTeacherController::class)->except('show');
-
-        Route::resource('/exams', ExamController::class)->except('create', 'show');
     });

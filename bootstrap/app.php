@@ -19,6 +19,13 @@ return Application::configure(basePath: dirname(__DIR__))
             'active' => Active::class,
             'student' => Student::class,
         ]);
+
+        $middleware->group('admin_auth', [
+            'auth',
+            'verified',
+            'active',
+            'admin',
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
