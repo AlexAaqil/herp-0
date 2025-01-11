@@ -479,11 +479,13 @@ footer .copyright {
 }
 .custom_form .show_details {
   padding: 0.5em 24px;
+  color: #000;
 }
 .custom_form .show_details .details p {
   display: grid;
   grid-template-columns: 25% 1fr;
   gap: 1em;
+  margin: 0 0 0.5em;
 }
 .custom_form .show_details .details p span:first-of-type {
   color: rgb(77, 77, 77);

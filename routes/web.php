@@ -101,6 +101,10 @@ Route::middleware('admin_auth')
         Route::prefix('settings')->group(function() {
             Route::get('/all', [SettingsController::class, 'index'])->name('settings.index');
 
+            Route::get('/general', [SettingsController::class, 'general'])->name('settings.general');
+
+            Route::patch('/update', [SettingsController::class, 'update'])->name('settings.update');
+
             Route::resource('/payments', PaymentsController::class)->except('create', 'show');
 
             Route::resource('/grades', GradesController::class)->except('show');

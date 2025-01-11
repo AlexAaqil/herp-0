@@ -1,7 +1,7 @@
 <nav>
     <div class="brand">
         <a href="{{ route('home') }}">
-            <h1>{{ config('globals.app_short_name') }}</h1>
+            <h1>{{ $appSettings['school_acronym'] ?? config('globals.school_acronym') }}</h1>
         </a>
     </div>
 

@@ -27,12 +27,14 @@ $custom_form_padding: 24px;
 
     .show_details {
         padding: 0.5em $custom_form_padding;
+        color: #000;
 
         .details {
             p {
                 display: grid;
                 grid-template-columns: 25% 1fr;
                 gap: 1em;
+                margin: 0 0 0.5em;
                 
                 span {
                     &:first-of-type {

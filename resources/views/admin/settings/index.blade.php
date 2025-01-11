@@ -3,7 +3,7 @@
 
     <ul>
         <li>
-            <a href="#">--General</a>
+            <a href="{{ route('settings.general') }}">General</a>
         </li>
         <li>
             <a href="{{ route('payments.index') }}">Payments</a>

@@ -1,6 +1,6 @@
 <aside>
     <div class="brand">
-        <a href="{{ route('home') }}">{{ config('globals.app_short_name') }}</a>
+        <a href="{{ route('home') }}">{{ $appSettings['school_acronym'] ?? config('globals.school_acronym') }}</a>
     </div>
 
     @php

@@ -1,12 +1,12 @@
 <?php
 
 return [
-    'app_short_name' => 'G.H.S',
-    'app_full_name' => 'Gachie High School',
-    'app_slogan' => 'Striving to be the best',
-    'students_gender' => 'M',
-    'phone_number' => '+254 746 055 487',
-    'whatsapp_number' => '254746055487',
-    'email' => 'info@gachiehighschool.com',
-    'address' => 'Rwaka, Kiambu',
+    'school_acronym' => 'HSMS',
+    'school_name' => 'High School Management System',
+    'school_slogan' => 'Striving to be the best',
+    'school_email' => 'alexaaqil.se@gmail.com',
+    'school_phone_main' => '+254 746 055 487',
+    'school_phone_other' => '',
+    'whatsapp_number' => '',
+    'school_address' => 'Ruii, Kiambu',
 ];
