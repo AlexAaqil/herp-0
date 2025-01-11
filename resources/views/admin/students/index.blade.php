@@ -22,7 +22,7 @@
                                 </a>
                             </td>
                             <td>
-                                <img src="{{ $student->image ? asset('storage/'.$student->image) : asset('assets/images/default_profile.jpg') }}" alt="Student Image" style="max-width: 25px;">
+                                <img src="{{ $student->image ? asset('storage/'.$student->image) : asset('assets/images/default_profile.jpg') }}" alt="Student Image" style="max-width: 25px; border-radius: 50%;">
                             </td>
                             <td>{{ $student->registration_number . ' - ' . $student->first_name . ' ' . $student->last_name }}
                             </td>
