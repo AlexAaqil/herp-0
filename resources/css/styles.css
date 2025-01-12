@@ -413,6 +413,7 @@ footer .copyright {
   border-spacing: 0;
   border-collapse: collapse;
   color: #fff;
+  overflow: auto;
 }
 .table thead {
   background: #fff;
@@ -924,9 +925,6 @@ footer .copyright {
 @media screen and (width >= 726px) {
   .app_main .app_content .header .header_btn {
     justify-self: right;
-  }
-  .app_main .app_content .body {
-    overflow: hidden;
   }
   .app_main .app_content .row_container {
     display: grid;

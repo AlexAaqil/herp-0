@@ -1,104 +1,84 @@
 <x-authenticated-layout class="Exams">
-    <x-searchable-select-header />
+    <x-admin-header header_title="Exams Results" route="{{ route('exam-results.create') }}" />
 
-    <x-admin-header header_title="Exams Results" :total_count="count($results)" />
-
-    <div class="row_container">
-        <div class="body">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Student</th>
-                        <th>Class</th>
-                        <th>Exam</th>
-                        <th>Subject</th>
-                        <th>Marks</th>
-                        <th>Grade</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    @if (count($results) > 0)
-                        @foreach ($results as $result)
-                            <tr class="searchable">
-                                <td>
-                                    <a href="{{ route('exam-results.edit', $result->id) }}">{{ $result->student->registration_number . ' - ' . $result->student->first_name . ' ' . $result->student->last_name }}</a>
-                                </td>
-                                <td>{{ $result->student->studentClassSection->title }}</td>
-                                <td>{{ $result->exam->year . ' Term - ' . $result->exam->term }}</td>
-                                <td>{{ $result->subject->title }}</td>
-                                <td>{{ $result->marks }}</td>
-                                <td>{{ $result->grade }}</td>
-                            </tr>
+    <div class="custom_form">
+        <!-- Exam Selection Dropdown -->
+        <form action="{{ route('exam-results.index') }}" method="get">
+            <div class="row_input_group">
+                <div class="input_group">
+                    <label for="exam_id">Exams</label>
+                    <select name="exam_id" id="exam_id" onchange="this.form.submit()">
+                        <option value="">Select Exam</option>
+                        @foreach ($exams as $exam)
+                            <option value="{{ $exam->id }}" {{ request('exam_id') == $exam->id ? 'selected' : '' }}>
+                                {{ $exam->title.' - '.$exam->year.' '.$exam->term }}
+                            </option>
                         @endforeach
-                    @else
-                        <tr>
-                            <td colspan="6">No exam results have been added yet</td>
-                        </tr>
-                    @endif
-                </tbody>
-            </table>
-        </div>
+                    </select>
+                </div>
+            </div>
+        </form>
+    </div>
 
-        <div class="custom_form">
-            <header>
-                <p>New Exam Result</p>
-            </header>
+    <div class="body">
+        <p class="title">{{ request('exam_id') ? 'Students Results' : 'Select an Exam to View Results' }}</p>
 
+        @if (request('exam_id'))
+            <!-- Results Table -->
             <form action="{{ route('exam-results.store') }}" method="post">
                 @csrf
 
-                <div class="input_group">
-                    <label for="student_id">Student</label>
-                    <select name="student_id" id="student_id" class="searchable_select">
-                        <option value="">Select Student</option>
+                <!-- Hidden field for exam_id -->
+                <input type="hidden" name="exam_id" value="{{ request('exam_id') }}">
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Student</th>
+                            @foreach ($subjects as $subject)
+                                <th>{!! Illuminate\Support\Str::limit($subject->title, 4, '') !!}</th>
+                            @endforeach
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
                         @foreach ($students as $student)
-                            <option value="{{ $student->id }}"
-                                {{ old('student_id') == $student->id ? 'selected' : '' }}>
-                                {{ $student->registration_number . ' - ' . $student->first_name . ' ' . $student->last_name }}
-                            </option>
+                            <tr class="searchable">
+                                <td>{{ $student->registration_number }}</td>
+
+                                <!-- Display and Update Marks for Each Student and Subject -->
+                                @foreach ($subjects as $subject)
+                                    @php
+                                        // Get the existing result for the student and subject for this exam
+                                        $result = $student->examResults
+                                            ->where('exam_id', request('exam_id'))
+                                            ->where('subject_id', $subject->id)
+                                            ->first();
+                                    @endphp
+                                    <td>
+                                        <div class="input_group">
+                                            <input type="number"
+                                                name="marks[{{ $student->id }}][{{ $subject->id }}]"
+                                                value="{{ $result ? $result->marks : 0 }}" min="0"
+                                                max="100" placeholder="Enter marks">
+                                            <span class="inline_alert">{{ $errors->first('marks') }}</span>
+                                        </div>
+                                    </td>
+                                @endforeach
+
+                                <td>
+                                    <button type="submit" class="btn btn-primary">Save</button>
+                                </td>
+                            </tr>
                         @endforeach
-                    </select>
-                    <span class="inline_alert">{{ $errors->first('student_id') }}</span>
-                </div>
-
-                <div class="input_group">
-                    <label for="exam_id">Exam</label>
-                    <select name="exam_id" id="exam_id">
-                        <option value="">Select Exam</option>
-                        @foreach ($exams as $exam)
-                            <option value="{{ $exam->id }}" {{ old('exam_id') == $exam->id ? 'selected' : '' }}>
-                                {{ $exam->title . ' - ' . $exam->year . ' Term - ' . $exam->term }}</option>
-                        @endforeach
-                    </select>
-                    <span class="inline_alert">{{ $errors->first('exam_id') }}</span>
-                </div>
-
-                <div class="input_group">
-                    <label for="subject_id">Subject</label>
-                    <select name="subject_id" id="subject_id">
-                        <option value="">Select Subject</option>
-                        @foreach ($subjects as $subject)
-                            <option value="{{ $subject->id }}"
-                                {{ old('subject_id') == $subject->id ? 'selected' : '' }}>{{ $subject->title }}
-                            </option>
-                        @endforeach
-                    </select>
-                    <span class="inline_alert">{{ $errors->first('subject_id') }}</span>
-                </div>
-
-                <div class="input_group">
-                    <label for="marks">Marks</label>
-                    <input type="number" name="marks" id="marks" value="{{ old('marks') }}">
-                    <span class="inline_alert">{{ $errors->first('marks') }}</span>
-                </div>
-
-                <button type="submit">Save</button>
+                    </tbody>
+                </table>
             </form>
-        </div>
+        @else
+            <div class="no-exam-selected">
+                <p>Please select an exam to view and update results.</p>
+            </div>
+        @endif
     </div>
-
-    <x-slot name="javascript">
-        <x-searchable-select-js />
-    </x-slot>
 </x-authenticated-layout>

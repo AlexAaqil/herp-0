@@ -74,7 +74,8 @@ Route::middleware(['auth', 'verified', 'active'])->group(function () {
     Route::post('/payment-records', [PaymentRecordsController::class, 'store'])->name('payment-records.store');
     Route::post('/payment-records/update', [PaymentRecordsController::class, 'update'])->name('payment-records.update');
 
-    Route::resource('/exam-results', ExamResultController::class)->except('show');
+    Route::get('/exam-results/{exam_id?}', [ExamResultController::class, 'index'])->name('exam-results.index');
+    Route::resource('/exam-results', ExamResultController::class)->except('index', 'show');
 });
 
 require __DIR__ . '/auth.php';

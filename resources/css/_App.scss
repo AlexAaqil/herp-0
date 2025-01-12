@@ -82,9 +82,9 @@ $aside_width: 15%;
                 }
             }
 
-            .body {
-                overflow: hidden;
-            }
+            // .body {
+            //     overflow-x: scroll;
+            // }
 
             .row_container {
                 display: grid;

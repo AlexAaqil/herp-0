@@ -50,7 +50,7 @@
                         <p>
                             <span>Gender:</span>
                             <span>{{ $student->gender }}</span>
-                        </p>                    
+                        </p>
                         <p>
                             <span>Class:</span>
                             <span>{{ $student->studentClassSection->title }}</span>
@@ -84,6 +84,15 @@
                         </p>
                     @empty
                         <p>N/A</p>
+                    @endforelse
+                </div>
+
+                <div class="column">
+                    <p class="title">Perfomance</p>
+                    @forelse ($student->examResults as $exam)
+                        <p>{{ $exam->title.' : '.$exam->year.' - '.$exam->term }}</p>
+                    @empty
+                        <p>No exam records yet.</p>
                     @endforelse
                 </div>
             </div>

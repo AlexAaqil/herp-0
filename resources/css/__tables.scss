@@ -5,6 +5,7 @@ $thead_background: #fff;
     border-spacing: 0;
     border-collapse: collapse;
     color: #fff;
+    overflow: auto;
 
     thead {
         background: $thead_background;
