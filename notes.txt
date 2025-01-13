@@ -19,10 +19,10 @@ Students sidenav should have icons.
 
 Forms: Add a navigation for going back to index pages.
 
+Dorms CRUD operations.
 
 
 
-- Dorms CRUD operations.
 
 - Tables should clearly show the parts you can click on like on IDs.
 - Home Page: section for showing the staff members(name, description).
@@ -37,10 +37,10 @@ Forms: Add a navigation for going back to index pages.
 - Store keeper can keep records of (what has arrived(items), what has remained(quantity), what has been taken away(used)).
 
 
-- Student information should include performance.
-- Students performance can be viewed according to the selected exam.
 - Student can print a gate pass once they complete their fees.
+- Student information should include performance.
 - Student biometrics to keep track of attendance during opening days and leaveouts.
+- Students performance can be viewed according to the selected exam.
 - Student graduation status should change to status to keep track of those who have transfered.
 
 - Users table should get the user_levels from the user_levels table.

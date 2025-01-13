@@ -57,7 +57,6 @@ $aside_width: 15%;
 
         .body {
             color: #fff;
-            overflow: scroll;
         }
 
         .system_nav {
@@ -81,10 +80,6 @@ $aside_width: 15%;
                     justify-self: right;
                 }
             }
-
-            // .body {
-            //     overflow-x: scroll;
-            // }
 
             .row_container {
                 display: grid;

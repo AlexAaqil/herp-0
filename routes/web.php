@@ -25,6 +25,7 @@ use App\Http\Controllers\SubjectsController;
 use App\Http\Controllers\SectionSubjectTeacherController;
 use App\Http\Controllers\ExamController;
 use App\Http\Controllers\ExamResultController;
+use App\Http\Controllers\DormController;
 
 Route::get('/', [GeneralPagesController::class, 'home'])->name('home');
 Route::get('/about', [GeneralPagesController::class, 'about'])->name('about');
@@ -105,6 +106,8 @@ Route::middleware('admin_auth')
             Route::get('/general', [SettingsController::class, 'general'])->name('settings.general');
 
             Route::patch('/update', [SettingsController::class, 'update'])->name('settings.update');
+
+            Route::resource('/dorms', DormController::class)->except('show');
 
             Route::resource('/payments', PaymentsController::class)->except('create', 'show');
 

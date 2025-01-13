@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('dorms', function (Blueprint $table) {
             $table->id();
-            $table->string('dorm_name')->unique();
+            $table->string('title')->unique();
         });
     }
 

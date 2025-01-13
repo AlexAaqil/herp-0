@@ -7,52 +7,38 @@ use Illuminate\Http\Request;
 
 class DormController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $dorms = Dorm::orderBy('title')->get();
+
+        return view('admin.dorms.index', compact('dorms'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'title' => 'required|unique:dorms,title',
+        ]);
+
+        Dorm::create($validated);
+
+        return redirect()->route('dorms.index')->with('success', ['message' => 'Dorm has been added.']);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Dorm $dorm)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Dorm $dorm)
     {
-        //
+        return view('admin.dorms.edit', compact('dorm'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Dorm $dorm)
     {
-        //
+        $validated = $request->validate([
+            'title' => 'required|unique:dorms,title,'.$dorm->id,
+        ]);
+
+        $dorm->update($validated);
+
+        return redirect()->route('dorms.index')->with('success', ['message' => 'Dorm has been updated.']);
     }
 
     /**
@@ -60,6 +46,8 @@ class DormController extends Controller
      */
     public function destroy(Dorm $dorm)
     {
-        //
+        $dorm->delete();
+
+        return redirect()->route('dorms.index')->with('success', ['message' => 'Dorm has been deleted.']);
     }
 }
