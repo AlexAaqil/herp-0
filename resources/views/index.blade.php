@@ -49,7 +49,6 @@
 
     <section class="Mission_Vision">
         <div class="container">
-            <p class="title">Why Choose Us?</p>
             <div class="content">
                 <div class="image">
                     <img src="{{ asset('assets/images/hero.jpg') }}" alt="Mission / Vission">
@@ -85,6 +84,57 @@
             <div class="stat">
                 <p class="number" data-target="14">0</p>
                 <p class="text">Subjects</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="Team">
+        <div class="container">
+            <h2>Our Team</h2>
+            <div class="members">
+                <div class="member">
+                    <div class="image">
+                        <img src="{{ asset('assets/images/default_profile.jpg') }}" alt="Staff Member">
+                    </div>
+                    <div class="text">
+                        <p class="title">Charles Maina</p>
+                        <p>Principal</p>
+                        <p class="remarks">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum ducimus ab aspernatur.</p>
+                    </div>
+                </div>
+
+                <div class="member">
+                    <div class="image">
+                        <img src="{{ asset('assets/images/default_profile.jpg') }}" alt="Staff Member">
+                    </div>
+                    <div class="text">
+                        <p class="title">Charles Maina</p>
+                        <p>Principal</p>
+                        <p class="remarks">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum ducimus ab aspernatur.</p>
+                    </div>
+                </div>
+
+                <div class="member">
+                    <div class="image">
+                        <img src="{{ asset('assets/images/default_profile.jpg') }}" alt="Staff Member">
+                    </div>
+                    <div class="text">
+                        <p class="title">Charles Maina</p>
+                        <p>Principal</p>
+                        <p class="remarks">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum ducimus ab aspernatur.</p>
+                    </div>
+                </div>
+
+                <div class="member">
+                    <div class="image">
+                        <img src="{{ asset('assets/images/default_profile.jpg') }}" alt="Staff Member">
+                    </div>
+                    <div class="text">
+                        <p class="title">Charles Maina</p>
+                        <p>Principal</p>
+                        <p class="remarks">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum ducimus ab aspernatur.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

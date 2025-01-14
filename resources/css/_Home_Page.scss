@@ -3,6 +3,11 @@
         &:not(:nth-of-type(1)) {
             margin: 5em 0;
         }
+
+        h2 {
+            font-size: 2em;
+            margin: 0 0 0.4em;
+        }
     }
 
     .Hero {
@@ -122,23 +127,55 @@
             }
         }
     }
+
+    .Team {
+        .container {
+            .members {
+                @include grid(4);
+                gap: 2em;
+
+                .member {
+                    .image {
+                        img {
+                            border-radius: 8px;
+                        }
+                    }
+
+                    .text {
+                        padding: 4px 8px;
+                        p {
+                            margin: 0 0 0.4em;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 @media screen and (width >=726px) {
-    .Mission_Vision {
-        .container {
-            .title {
+    .Home_Page {
+        section {
+            h2 {
                 text-align: center;
             }
-
-            .content {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                align-items: center;
-                gap: 2em;
-
-                .sub_title {
-                    font-size: 1.2em;
+        }
+        
+        .Mission_Vision {
+            .container {
+                .title {
+                    text-align: center;
+                }
+    
+                .content {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    align-items: center;
+                    gap: 2em;
+    
+                    .sub_title {
+                        font-size: 1.2em;
+                    }
                 }
             }
         }

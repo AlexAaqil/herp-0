@@ -619,6 +619,10 @@ footer .copyright {
 .Home_Page section:not(:nth-of-type(1)) {
   margin: 5em 0;
 }
+.Home_Page section h2 {
+  font-size: 2em;
+  margin: 0 0 0.4em;
+}
 .Home_Page .Hero {
   display: flex;
   align-items: center;
@@ -719,18 +723,41 @@ footer .copyright {
 .Home_Page .Statistics .container .stat .text {
   font-size: 1.2em;
 }
+.Home_Page .Team .container .members {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5em;
+  gap: 2em;
+}
+@media screen and (width >= 726px) {
+  .Home_Page .Team .container .members {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+.Home_Page .Team .container .members .member .image img {
+  border-radius: 8px;
+}
+.Home_Page .Team .container .members .member .text {
+  padding: 4px 8px;
+}
+.Home_Page .Team .container .members .member .text p {
+  margin: 0 0 0.4em;
+}
 
 @media screen and (width >= 726px) {
-  .Mission_Vision .container .title {
+  .Home_Page section h2 {
     text-align: center;
   }
-  .Mission_Vision .container .content {
+  .Home_Page .Mission_Vision .container .title {
+    text-align: center;
+  }
+  .Home_Page .Mission_Vision .container .content {
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
     gap: 2em;
   }
-  .Mission_Vision .container .content .sub_title {
+  .Home_Page .Mission_Vision .container .content .sub_title {
     font-size: 1.2em;
   }
 }
