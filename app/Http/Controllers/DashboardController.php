@@ -26,6 +26,8 @@ class DashboardController extends Controller
             return redirect()->route('admin.dashboard');
         } else if ($user_level == 3) {
             return redirect()->route('teacher.dashboard');
+        } else if ($user_level == 4) {
+            return redirect()->route('storekeeper.dashboard');
         } else {
             return redirect()->back();
         }
@@ -105,6 +107,18 @@ class DashboardController extends Controller
         $count_classes = ClassSections::count();
         $count_subjects = Subjects::count();
         return view('dashboards.teacher_dashboard', compact(
+            'count_students',
+            'count_classes',
+            'count_subjects',
+        ));
+    }
+
+    public function storekeeper_dashboard()
+    {
+        $count_students = Student::count();
+        $count_classes = ClassSections::count();
+        $count_subjects = Subjects::count();
+        return view('dashboards.storekeeper_dashboard', compact(
             'count_students',
             'count_classes',
             'count_subjects',

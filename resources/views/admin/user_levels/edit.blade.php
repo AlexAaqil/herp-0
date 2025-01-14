@@ -22,7 +22,7 @@
             </div>
 
             <div class="input_group">
-                <label for="user_level">User Level</label>
+                <label for="title">Title</label>
                 <input type="text" name="title" id="title" value="{{ old('title', $user_level->title) }}">
                 <span class="inline_alert">{{ $errors->first('title') }}</span>
             </div>

@@ -24,6 +24,12 @@
                 'level' => [3],
             ],
             [
+                'route' => 'storekeeper.dashboard',
+                'icon' => 'fas fa-home',
+                'text' => 'Dashboard',
+                'level' => [4],
+            ],
+            [
                 'route' => 'users.index',
                 'icon' => 'fas fa-users',
                 'text' => 'Users',
