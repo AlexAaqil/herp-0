@@ -1,5 +1,5 @@
 <x-authenticated-layout class="Leaveouts">
-    <x-admin-header header_title="Leaveouts" :total_count="count($leaveouts)" route="{{ route('leaveouts.create') }}" />
+    <x-admin-header header_title="Student Leaveouts" :total_count="count($leaveouts)" route="{{ route('leaveouts.create') }}" />
 
     <div class="body">
         @if (count($leaveouts) > 0)

@@ -1,5 +1,5 @@
 <x-authenticated-layout class="Users">
-    <x-admin-header header_title="Users" :total_count="count($users)" route="{{ route('users.create') }}" />
+    <x-admin-header header_title="Teachers" :total_count="count($teachers)" route="{{ route('users.create') }}" />
 
     <div class="body">
         <table class="table">
@@ -12,9 +12,9 @@
             </thead>
 
             <tbody>
-                @if (count($users) > 0)
+                @if (count($teachers) > 0)
                     @php $id = 1 @endphp
-                    @foreach ($users as $user)
+                    @foreach ($teachers as $user)
                         <tr class="searchable {{ $user->user_status == '0' ? 'inactive_user' : 'active' }}">
                             <td class="center">
                                 <a href="{{ route('users.edit', ['user' => $user->id]) }}">
@@ -23,8 +23,6 @@
                             </td>
                             <td>
                                 {{ $user->full_name }}
-                                <span
-                                    class="td_span {{ $user->user_level == 0 || $user->user_level == 1 ? 'super_admin' : '' }}">{{ $user->userLevel->title ?? 'unknown' }}</span>
                             </td>
                             <td class="{{ $user->email_verified_at != null ? '' : 'danger' }}">
                                 {{ $user->email }}</td>
@@ -34,7 +32,7 @@
                     @endforeach
                 @else
                     <tr>
-                        <td colspan="5">No users yet</td>
+                        <td colspan="5">No teachers yet</td>
                     </tr>
                 @endif
             </tbody>

@@ -36,6 +36,12 @@
                 'level' => [0, 1],
             ],
             [
+                'route' => 'teachers.index',
+                'icon' => 'fas fa-users',
+                'text' => 'Teachers',
+                'level' => [0, 1],
+            ],
+            [
                 'route' => 'students.index',
                 'icon' => 'fas fa-users',
                 'text' => 'Students',

@@ -96,6 +96,7 @@ Route::middleware('admin_auth')
 
         Route::resource('/user-levels', UserLevelController::class)->except('show');
         Route::resource('/users', UserController::class)->except('show');
+        Route::get('/teachers', [UserController::class, 'teachers_index'])->name('teachers.index');
 
         Route::get('/students/create', [StudentController::class, 'create'])->name('students.create');
         Route::post('/students', [StudentController::class, 'store'])->name('students.store');

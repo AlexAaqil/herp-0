@@ -49,6 +49,11 @@ class User extends Authenticatable implements MustVerifyEmail
         ];
     }
 
+    public function getFullNameAttribute()
+    {
+        return $this->first_name.' '.$this->last_name;
+    }
+
     public function userLevel()
     {
         return $this->belongsTo(UserLevel::class, 'user_level', 'user_level');
