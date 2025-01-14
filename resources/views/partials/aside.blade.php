@@ -48,6 +48,12 @@
                 'level' => [0, 1, 2, 3],
             ],
             [
+                'route' => 'teacher-subjects.show',
+                'icon' => 'fas fa-brain',
+                'text' => 'Subjects',
+                'level' => [3],
+            ],
+            [
                 'route' => 'payment-records.index',
                 'icon' => 'fas fa-money-bill-alt',
                 'text' => 'Payments',

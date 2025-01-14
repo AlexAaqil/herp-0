@@ -82,6 +82,8 @@ Route::middleware(['auth', 'verified', 'active'])->group(function () {
     Route::get('/exam-results/{exam_id?}', [ExamResultController::class, 'index'])->name('exam-results.index');
     Route::resource('/exam-results', ExamResultController::class)->except('index', 'show');
 
+    Route::get('/teacher-subjects', [UserController::class, 'teacher_subjects_classes'])->name('teacher-subjects.show');
+
     Route::resource('/inventory-categories', InventoryCategoryController::class)->except('show');
     Route::resource('/inventory-items', InventoryItemController::class)->except('show');
     Route::resource('/inventory-records', InventoryRecordController::class)->except('show');

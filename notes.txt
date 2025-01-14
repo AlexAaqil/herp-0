@@ -31,7 +31,7 @@ Store keeper can keep records of (what has arrived(items), what has remained(qua
 
 - Tables should clearly show the parts you can click on like on IDs.
 
-- Teacher should view subjects and classes they teach.
+Teacher should view subjects and classes they teach.
 Teachers should have a link on the sidenav.
 - Teachers can apply for leaves.
 - Teachers can issue assignments (deadline, date_issued, description, subject, class, uploaded_assignment(document))

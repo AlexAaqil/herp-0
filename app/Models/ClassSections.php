@@ -15,7 +15,12 @@ class ClassSections extends Model
 
     public function subjects()
     {
-        return $this->belongsToMany(Subjects::class, 'section_subject_teacher')->withPivot('teacher_id')->withTimestamps();
+        return $this->belongsToMany(Subjects::class, 'section_subject_teacher', 'class_section_id', 'subject_id')->withPivot('teacher_id');
+    }
+
+    public function subject()
+    {
+        return $this->belongsTo(Subjects::class, 'subject_id', 'id');
     }
 
     public function sectionSubjectTeachers()

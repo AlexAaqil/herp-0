@@ -24,7 +24,7 @@ class SectionSubjectTeacher extends Model
 
     public function subject()
     {
-        return $this->belongsTo(Subjects::class);
+        return $this->belongsTo(Subjects::class, 'subject_id');
     }
 
     public function teacher()

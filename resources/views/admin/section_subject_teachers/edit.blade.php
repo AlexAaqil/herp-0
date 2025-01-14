@@ -1,13 +1,13 @@
 <x-authenticated-layout class="Users">
     <div class="custom_form">
-        <div class="system_nav">
-            <a href="{{ route('settings.index') }}">Settings</a>
-            <a href="{{ route('subject-teachers.index') }}">/ Teacher Subjects</a>
-            <span>/ Edit</span>
-        </div>
-
         <header>
             <p>Update Teacher Subject</p>
+
+            <div class="system_nav">
+                <a href="{{ route('settings.index') }}">Settings</a>
+                <a href="{{ route('subject-teachers.index') }}">/ Teacher Subjects</a>
+                <span>/ Edit</span>
+            </div>
         </header>
 
         <form action="{{ route('subject-teachers.update', $subject_teacher->id) }}" method="post">

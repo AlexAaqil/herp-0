@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -111,6 +112,20 @@ class UserController extends Controller
     {
         $teachers = User::where('user_level', 3)->get();
 
-        return view('admin.users.teachers', compact('teachers'));
+        return view('teachers.index', compact('teachers'));
+    }
+
+    public function teacher_subjects_classes()
+    {
+        $teacher = User::where('id', auth()->user()->id)->first();
+
+        $subjects = DB::table('section_subject_teacher')
+            ->join('class_sections', 'section_subject_teacher.class_section_id', '=', 'class_sections.id')
+            ->join('subjects', 'section_subject_teacher.subject_id', '=', 'subjects.id')
+            ->where('section_subject_teacher.teacher_id', '=', auth()->user()->id)
+            ->select('class_sections.title as class_name', 'subjects.title as subject_name', 'subjects.id as subject_id')
+            ->get();
+
+        return view('teachers.subjects_classes', compact('teacher', 'subjects'));
     }
 }
