@@ -72,6 +72,18 @@
                 'level' => [0, 1, 3],
             ],
             [
+                'route' => 'inventory-records.index',
+                'icon' => 'fas fa-barcode',
+                'text' => 'Inventory',
+                'level' => [0, 1, 4],
+            ],
+            [
+                'route' => 'inventory-categories.index',
+                'icon' => 'fas fa-luggage-cart',
+                'text' => 'Inv. Categories',
+                'level' => [4],
+            ],
+            [
                 'route' => 'blogs.index',
                 'icon' => 'fas fa-blog',
                 'text' => 'Blogs',

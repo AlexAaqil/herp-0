@@ -57,6 +57,21 @@ $aside_width: 15%;
 
         .body {
             color: #fff;
+
+            .nested_list {
+                list-style-position: inside;
+                a {
+                    color: lightblue;
+                }
+
+                li {
+                    padding: 0.2em 0;
+                }
+
+                ul {
+                    padding: 0 1.5em 0;
+                }
+            }
         }
 
         .system_nav {

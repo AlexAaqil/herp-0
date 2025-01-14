@@ -937,6 +937,18 @@ footer .copyright {
 .app_main .app_content .body {
   color: #fff;
 }
+.app_main .app_content .body .nested_list {
+  list-style-position: inside;
+}
+.app_main .app_content .body .nested_list a {
+  color: lightblue;
+}
+.app_main .app_content .body .nested_list li {
+  padding: 0.2em 0;
+}
+.app_main .app_content .body .nested_list ul {
+  padding: 0 1.5em 0;
+}
 .app_main .app_content .system_nav {
   margin: 0 0 0.5em;
   color: #fff;

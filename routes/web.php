@@ -26,6 +26,9 @@ use App\Http\Controllers\SectionSubjectTeacherController;
 use App\Http\Controllers\ExamController;
 use App\Http\Controllers\ExamResultController;
 use App\Http\Controllers\DormController;
+use App\Http\Controllers\InventoryCategoryController;
+use App\Http\Controllers\InventoryItemController;
+use App\Http\Controllers\InventoryRecordController;
 
 Route::get('/', [GeneralPagesController::class, 'home'])->name('home');
 Route::get('/about', [GeneralPagesController::class, 'about'])->name('about');
@@ -78,6 +81,10 @@ Route::middleware(['auth', 'verified', 'active'])->group(function () {
 
     Route::get('/exam-results/{exam_id?}', [ExamResultController::class, 'index'])->name('exam-results.index');
     Route::resource('/exam-results', ExamResultController::class)->except('index', 'show');
+
+    Route::resource('/inventory-categories', InventoryCategoryController::class)->except('show');
+    Route::resource('/inventory-items', InventoryItemController::class)->except('show');
+    Route::resource('/inventory-records', InventoryRecordController::class)->except('show');
 });
 
 require __DIR__ . '/auth.php';
