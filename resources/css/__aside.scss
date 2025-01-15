@@ -21,9 +21,21 @@ aside {
         text-decoration: none;
     }
 
+    .brand {
+        .profile {
+            img {
+                width: 40px;
+                height: 40px;
+                padding: 2px;
+                border-radius: 50%;
+                border: 1px solid $success;
+            }
+        }
+    }
+
     ul {
         list-style: none;
-        margin: 0.8em 0 0;
+        margin: 0.4em 0 0;
 
         li {
             padding: 4px;
@@ -37,6 +49,7 @@ aside {
     ul li:hover {
         background: $faded_background;
         color: #000;
+
         a {
             color: #000;
             font-weight: bold;
@@ -46,17 +59,7 @@ aside {
 
     .footer {
         position: absolute;
-        bottom: 2em;
-
-        .profile {
-            img {
-                width: 40px;
-                height: 40px;
-                padding: 2px;
-                border-radius: 50%;
-                border: 1px solid $success;
-            }
-        }
+        bottom: 1.2em;
 
         .logout {
             margin: 0.5em 0 0;
@@ -82,26 +85,43 @@ aside {
         }
 
         .brand {
-            a {
-                display: flex;
-                align-items: center;
-                justify-content: center;
+            padding: 0.4em 0;
+
+            .profile {
+                display: grid;
+                grid-template-columns: 40px auto;
                 gap: 0.2em;
-                font-size: 1.2em;
-                font-weight: bold;
+                align-items: center;
+                justify-content: start;
+
+                img {
+                    width: 35px;
+                    height: 35px;
+                }
+
+                a {
+                    font-weight: bold;
+                }
+
+                span {
+                    font-size: 0.85em;
+                    color: $aside_text_color;
+                }
             }
         }
 
         ul {
-            margin: 1.8em 0;
+            margin: 1.2em 0;
 
             li {
-                border-bottom: 1px solid $faded_line;
+                border-bottom: 1px solid darken($faded_line, 55%);
 
                 a {
                     display: flex;
                     align-items: center;
                     gap: 0.2em;
+                    font-size: 0.96em;
+                    letter-spacing: 0.2px;
                 }
             }
         }
@@ -110,23 +130,10 @@ aside {
             left: 0;
             margin: 0 0.4em 0;
 
-            .profile,
             .logout button {
                 display: flex;
                 align-items: center;
                 gap: 0.3em;
-            }
-
-            .profile {
-                img {
-                    width: 35px;
-                    height: 35px;
-                }
-
-                span {
-                    font-size: 0.8em;
-                    color: $aside_text_color;
-                }
             }
 
             .logout {

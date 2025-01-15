@@ -1,6 +1,14 @@
 <aside>
     <div class="brand">
-        <a href="{{ route('home') }}">{{ $appSettings['school_acronym'] ?? config('globals.school_acronym') }}</a>
+        <div class="profile">
+            <a href="{{ route('home') }}">
+                <img src="{{ asset('assets/images/default_profile.jpg') }}" alt="Profile Image">
+            </a>
+            <span class="text">
+                <a href="{{ route('profile.edit') }}">{{ Auth::user()->first_name . ' ' . Auth::user()->last_name }}</a>
+                <span>{{ Auth::user()->email }}</span>
+            </span>
+        </div>
     </div>
 
     @php
@@ -143,18 +151,6 @@
     </ul>
 
     <div class="footer">
-        <div class="profile">
-            <a href="{{ route('profile.edit') }}">
-                <img src="{{ asset('assets/images/default_profile.jpg') }}" alt="Profile Image">
-            </a>
-            <span class="text">
-                <a href="{{ route('profile.edit') }}">
-                    {{ Auth::user()->first_name . ' ' . Auth::user()->last_name }}
-                </a>
-                <span>{{ Auth::user()->email }}</span>
-            </span>
-        </div>
-
         <div class="logout">
             <form action="{{ route('logout') }}" method="post">
                 @csrf
