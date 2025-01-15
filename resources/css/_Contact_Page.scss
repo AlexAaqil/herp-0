@@ -21,45 +21,78 @@
     }
 }
 
-.Admin {
+.app_main {
     .Contact {
         .strikethrough {
             text-decoration: line-through;
         }
     
-        .show_user_message {
-            .form_details {
-                border: 1px solid lighten($faded_line, 20);
-                padding: 15px;
-            }
+        .User_Message {
+            margin: 2em auto;
+            width: 50%;
 
-            .user_message_details {
-                .time {
-                    font-size: 0.75em;
-                    text-align: center;
+            header {
+                background: #000;
+                border-radius: 8px 8px 0 0;
+                color: #fff;
+                padding: 12px 5%;
+                display: grid;
+                grid-template-columns: 30px auto;
+                align-items: center;
+                gap: 0.5em;
+
+                .icon {
+                    a {
+                        color: #fff;
+                    }
+
+                    span {
+                        font-size: 1.2em;
+                    }
                 }
 
-                .user_message {
-                    background: #dcfcfa;
-                    width: 75%;
-                    margin: 0.5em 0 2em;
-                    padding: 8px 15px;
-                    border-radius: 8px 8px 32px 8px;
-                    box-shadow: 2px 2px 6px #cacaca;
+                p {
+                    display: grid;
+                    gap: 0.4em;
+
+                    span {
+                        font-size: 0.85em;
+
+                        &:first-of-type {
+                            font-size: 1em;
+                            font-weight: bold;
+                        }
+                    }
                 }
             }
 
-            form {
-                margin: 3em 0;
-            }
-        }
-    }
+            .body {
+                background: #fff;
+                color: #000;
+                border-radius: 0 0 8px 8px;
+                padding: 12px 5%;
+
+                .form_details {
+                    .user_message_details {
+                        .time {
+                            font-size: 0.75em;
+                            text-align: center;
+                        }
+        
+                        .user_message {
+                            background: #dcfcfa;
+                            width: 70%;
+                            margin: 0.5em 0 2em;
+                            padding: 8px 15px;
+                            border-radius: 8px 8px 32px 8px;
+                            box-shadow: 2px 2px 4px #6e6e6e;
+                        }
+                    }
+                }
     
-    @media screen and (width >= 726px) {
-        .Contact {
-            .show_user_message {
-                width: 60% !important;
-                margin: auto;
+                form {
+                    margin: 2em 0 0;
+                }
             }
         }
     }

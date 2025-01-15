@@ -9,7 +9,7 @@ class UserMessageController extends Controller
 {
     public function index()
     {
-        $user_messages = UserMessage::orderByDesc('is_visible')->orderBy('ordering')->orderByDesc('created_at')->get();
+        $user_messages = UserMessage::orderByDesc('created_at')->get();
 
         return view('admin.user_messages.index', compact('user_messages'));
     }

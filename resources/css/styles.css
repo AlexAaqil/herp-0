@@ -435,6 +435,9 @@ footer .copyright {
 .table thead th:last-of-type {
   border-radius: 0 4px 0 0;
 }
+.table thead .actions {
+  text-align: center;
+}
 .table tbody tr {
   border-bottom: 1px solid rgb(204, 204, 204);
 }
@@ -457,10 +460,8 @@ footer .copyright {
   color: #fff;
 }
 .table tbody tr .actions {
-  display: grid;
-  grid-template-columns: auto auto;
-  justify-content: center;
-  gap: 0 0.5em;
+  display: flex;
+  gap: 0.5em;
 }
 
 .custom_form {
@@ -800,33 +801,60 @@ footer .copyright {
   display: grid;
 }
 
-.Admin .Contact .strikethrough {
+.app_main .Contact .strikethrough {
   text-decoration: line-through;
 }
-.Admin .Contact .show_user_message .form_details {
-  border: 1px solid white;
-  padding: 15px;
+.app_main .Contact .User_Message {
+  margin: 2em auto;
+  width: 50%;
 }
-.Admin .Contact .show_user_message .user_message_details .time {
+.app_main .Contact .User_Message header {
+  background: #000;
+  border-radius: 8px 8px 0 0;
+  color: #fff;
+  padding: 12px 5%;
+  display: grid;
+  grid-template-columns: 30px auto;
+  align-items: center;
+  gap: 0.5em;
+}
+.app_main .Contact .User_Message header .icon a {
+  color: #fff;
+}
+.app_main .Contact .User_Message header .icon span {
+  font-size: 1.2em;
+}
+.app_main .Contact .User_Message header p {
+  display: grid;
+  gap: 0.4em;
+}
+.app_main .Contact .User_Message header p span {
+  font-size: 0.85em;
+}
+.app_main .Contact .User_Message header p span:first-of-type {
+  font-size: 1em;
+  font-weight: bold;
+}
+.app_main .Contact .User_Message .body {
+  background: #fff;
+  color: #000;
+  border-radius: 0 0 8px 8px;
+  padding: 12px 5%;
+}
+.app_main .Contact .User_Message .body .form_details .user_message_details .time {
   font-size: 0.75em;
   text-align: center;
 }
-.Admin .Contact .show_user_message .user_message_details .user_message {
+.app_main .Contact .User_Message .body .form_details .user_message_details .user_message {
   background: #dcfcfa;
-  width: 75%;
+  width: 70%;
   margin: 0.5em 0 2em;
   padding: 8px 15px;
   border-radius: 8px 8px 32px 8px;
-  box-shadow: 2px 2px 6px #cacaca;
+  box-shadow: 2px 2px 4px #6e6e6e;
 }
-.Admin .Contact .show_user_message form {
-  margin: 3em 0;
-}
-@media screen and (width >= 726px) {
-  .Admin .Contact .show_user_message {
-    width: 60% !important;
-    margin: auto;
-  }
+.app_main .Contact .User_Message .body form {
+  margin: 2em 0 0;
 }
 
 .Authentication {

@@ -23,6 +23,10 @@ $thead_background: #fff;
                 border-radius: 0 4px 0 0;
             }
         }
+
+        .actions {
+            text-align: center;
+        }
     }
 
     tbody {
@@ -52,10 +56,8 @@ $thead_background: #fff;
             }
 
             .actions {
-                display: grid;
-                grid-template-columns: auto auto;
-                justify-content: center;
-                gap: 0 0.5em;
+                display: flex;
+                gap: 0.5em;
             }
         }
     }

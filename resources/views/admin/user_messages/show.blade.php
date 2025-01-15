@@ -1,7 +1,11 @@
 <x-authenticated-layout class="Contact">
-    <div class="custom_form show_user_message">
+    <section class="User_Message">
         <header>
-            <p>Update Message</p>
+            <div class="icon">
+                <a href="{{ route('user-messages.index') }}">
+                    <span class="fas fa-arrow-left"></span>
+                </a>
+            </div>
             <p>
                 <span>{{ $user_message->name }}</span>
                 <span>{{ $user_message->email }}</span>
@@ -9,27 +13,29 @@
             </p>
         </header>
 
-        <div class="form_details">
-            <div class="user_message_details">
-                <p class="time">{{ formatted_date($user_message->created_at) }}</p>
-                <p class="user_message">{{ $user_message->message }}</p>
+        <div class="body">
+            <div class="form_details">
+                <div class="user_message_details">
+                    <p class="time">{{ formatted_date($user_message->created_at) }}</p>
+                    <p class="user_message">{{ $user_message->message }}</p>
+                </div>
+
+                <a href="mailto:{{ $user_message->email }}" class="btn">Email this user</a>
             </div>
 
-            <a href="mailto:{{ $user_message->email }}" class="btn">Email this user</a>
+            <form id="deleteForm_{{ $user_message->id }}"
+                action="{{ route('user-messages.destroy', ['user_message' => $user_message->id]) }}" method="post">
+                @csrf
+                @method('DELETE')
+
+                <button type="button" class="btn_danger"
+                    onclick="deleteItem({{ $user_message->id }}, 'user message');">
+                    <i class="fas fa-trash-alt delete"></i>
+                    <span>Delete</span>
+                </button>
+            </form>
         </div>
-
-        <form id="deleteForm_{{ $user_message->id }}"
-            action="{{ route('user-messages.destroy', ['user_message' => $user_message->id]) }}" method="post">
-            @csrf
-            @method('DELETE')
-
-            <p>Delete this User's Message</p>
-            <button type="button" class="btn_danger" onclick="deleteItem({{ $user_message->id }}, 'user message');">
-                <i class="fas fa-trash-alt delete"></i>
-                <span>Delete</span>
-            </button>
-        </form>
-    </div>
+    </section>
 
     <x-slot name="javascript">
         <x-sweetalert />
