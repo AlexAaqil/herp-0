@@ -43,9 +43,10 @@
                         <td>{{ $student->studentClassSection->title }}</td>
                         <td>{{ $student->parent_names }}</td>
                         <td>
-                            <a
-                                href="{{ route('payment-records.create', $student->id) }}">Manage
-                                Payments</a>
+                            <a href="{{ route('payment-records.create', $student->id) }}">Manage Payments</a>
+                            @if ($record->balance == 0 || auth()->user()->user_level < 2)
+                                <a href="#"> Gate Pass</a>
+                            @endif
                         </td>
                     </tr>
                 @empty
@@ -57,39 +58,3 @@
         </table>
     </div>
 </x-authenticated-layout>
-
-
-
-{{-- <x-authenticated-layout class="PaymentRecords">
-    <x-admin-header header_title="Payment Records" :total_count="count($payment_records)" route="{{ route('payment-records.create') }}" />
-
-    <div class="body">
-        @if (count($payment_records) > 0)
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th class="center">ID</th>
-                        <th>Student</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    @php $id = 1 @endphp
-                    @foreach ($payment_records as $payment)
-                        <tr class="searchable">
-                            <td class="center">
-                                <a href="#">
-                                    {{ $id++ }}
-                                </a>
-                            </td>
-                            <td>{{ $payment->student->registration_number . ' - ' . $payment->student->first_name . ' ' . $payment->student->last_name }}
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        @else
-            <p>No payment records have been added yet.</p>
-        @endif
-    </div>
-</x-authenticated-layout> --}}

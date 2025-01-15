@@ -32,6 +32,9 @@
                                 <td class="center">
                                     <a href="{{ route('receipts.print', $record->id) }}" target="_blank"
                                         class="btn_link">Print</a>
+                                    @if ($record->balance == 0)
+                                        <a href="#"> Gate Pass</a>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach
