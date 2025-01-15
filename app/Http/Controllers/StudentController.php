@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Student;
 use App\Models\ClassSections;
 use App\Models\Parents;
+use App\Models\StudentAssignment;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
 use Illuminate\Support\Facades\Hash;
@@ -187,6 +188,17 @@ class StudentController extends Controller
         $results = $student->examResults;
 
         return view('students.results', compact('student', 'results'));
+    }
+
+    public function assignments(Request $request)
+    {
+        $student = $request->student;
+        $assignments = StudentAssignment::with('classSection', 'subject')
+        ->where('class_section_id', $student->class_section_id)
+        ->orderByDesc('date_issued')
+        ->get();
+
+        return view('students.assignments', compact('student', 'assignments'));
     }
 
     public function logout_student()

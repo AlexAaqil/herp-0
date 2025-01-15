@@ -42,6 +42,7 @@ Teachers can apply for leaves.
 - Student graduation status should change to status to keep track of those who have transfered.
 - Student information should include performance.
 - Students performance can be viewed according to the selected exam.
+- Students Dorms should come from the dorms table.
 
 
 
@@ -84,23 +85,6 @@ PARENTS PORTAL
 - Class TimeTables
 
 
-inventory_categories {
-    title
-}
-
-inventory_items {
-    title,
-    unit,
-    category_id
-}
-
-inventory_records {
-    item_id,
-    transaction (in, out)
-    quantity,
-    date,
-    description,
-}
 
 settings:
 general_settings {

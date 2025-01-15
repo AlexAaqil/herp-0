@@ -16,6 +16,11 @@
                 'text' => 'Perfomance',
             ],
             [
+                'route' => 'student-assignments',
+                'icon' => 'fas fa-brain',
+                'text' => 'Assignments',
+            ],
+            [
                 'route' => 'student-payments',
                 'icon' => 'fas fa-money-bill-alt',
                 'text' => 'Payments',

@@ -29,4 +29,9 @@ class Subjects extends Model
     {
         return $this->hasMany(ExamResult::class);
     }
+
+    public function assignments()
+    {
+        return $this->hasMany(StudentAssignment::class);
+    }
 }

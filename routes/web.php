@@ -30,6 +30,7 @@ use App\Http\Controllers\InventoryCategoryController;
 use App\Http\Controllers\InventoryItemController;
 use App\Http\Controllers\InventoryRecordController;
 use App\Http\Controllers\LeaveController;
+use App\Http\Controllers\StudentAssignmentController;
 
 Route::get('/', [GeneralPagesController::class, 'home'])->name('home');
 Route::get('/about', [GeneralPagesController::class, 'about'])->name('about');
@@ -49,6 +50,7 @@ Route::middleware(['student'])
     Route::get('/disciplinaries', [StudentController::class, 'disciplinaries'])->name('student-disciplinaries');
     Route::get('/payments', [StudentController::class, 'payments'])->name('student-payments');
     Route::get('/results', [StudentController::class, 'results'])->name('student-results');
+    Route::get('/assignments', [StudentController::class, 'assignments'])->name('student-assignments');
     Route::post('/logout', [StudentController::class, 'logout_student'])->name('student_logout');
 });
 
@@ -82,6 +84,8 @@ Route::middleware(['auth', 'verified', 'active'])->group(function () {
 
     Route::get('/exam-results/{exam_id?}', [ExamResultController::class, 'index'])->name('exam-results.index');
     Route::resource('/exam-results', ExamResultController::class)->except('index', 'show');
+
+    Route::resource('/assignments', StudentAssignmentController::class);
 
     Route::get('/teacher-subjects', [UserController::class, 'teacher_subjects_classes'])->name('teacher-subjects.show');
 

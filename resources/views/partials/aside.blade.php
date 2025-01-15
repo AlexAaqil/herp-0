@@ -66,6 +66,12 @@
                 'level' => [0, 1, 3],
             ],
             [
+                'route' => 'assignments.index',
+                'icon' => 'fas fa-brain',
+                'text' => 'Assignments',
+                'level' => [0, 1, 3],
+            ],
+            [
                 'route' => 'leaveouts.index',
                 'icon' => 'fas fa-calendar-minus',
                 'text' => 'Leaveouts',

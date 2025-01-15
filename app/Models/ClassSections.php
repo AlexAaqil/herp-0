@@ -27,4 +27,9 @@ class ClassSections extends Model
     {
         return $this->hasMany(SectionSubjectTeacher::class);
     }
+
+    public function assignments()
+    {
+        return $this->hasMany(StudentAssignment::class);
+    }
 }
