@@ -44,9 +44,6 @@
                         <td>{{ $student->parent_names }}</td>
                         <td>
                             <a href="{{ route('payment-records.create', $student->id) }}">Manage Payments</a>
-                            @if ($record->balance == 0 || auth()->user()->user_level < 2)
-                                <a href="#"> Gate Pass</a>
-                            @endif
                         </td>
                     </tr>
                 @empty
