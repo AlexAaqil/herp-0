@@ -72,6 +72,12 @@
                 'level' => [0, 1, 3],
             ],
             [
+                'route' => 'leaves.index',
+                'icon' => 'fas fa-calendar-minus',
+                'text' => 'Leaves',
+                'level' => [0, 1, 2, 3, 4],
+            ],
+            [
                 'route' => 'disciplinaries.index',
                 'icon' => 'fas fa-balance-scale-right',
                 'text' => 'Disciplinaries',

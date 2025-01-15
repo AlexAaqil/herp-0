@@ -29,11 +29,10 @@ Store keeper can keep records of (what has arrived(items), what has remained(qua
 
 
 
-- Tables should clearly show the parts you can click on like on IDs.
 
 Teacher should view subjects and classes they teach.
 Teachers should have a link on the sidenav.
-- Teachers can apply for leaves.
+Teachers can apply for leaves.
 - Teachers can issue assignments (deadline, date_issued, description, subject, class, uploaded_assignment(document))
 
 
@@ -43,6 +42,11 @@ Teachers should have a link on the sidenav.
 - Student graduation status should change to status to keep track of those who have transfered.
 - Student information should include performance.
 - Students performance can be viewed according to the selected exam.
+
+
+
+- Tables should clearly show the parts you can click on like on IDs.
+
 
 
 

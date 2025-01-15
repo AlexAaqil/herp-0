@@ -51,7 +51,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function getFullNameAttribute()
     {
-        return $this->first_name.' '.$this->last_name;
+        return $this->first_name . ' ' . $this->last_name;
     }
 
     public function userLevel()
@@ -62,11 +62,16 @@ class User extends Authenticatable implements MustVerifyEmail
     public function sectionsAndSubjects()
     {
         return $this->belongsToMany(ClassSections::class, 'section_subject_teacher', 'teacher_id', 'class_section_id')
-        ->withPivot('subject_id');
+            ->withPivot('subject_id');
     }
 
     public function sectionSubjectTeachers()
     {
         return $this->hasMany(SectionSubjectTeacher::class);
+    }
+
+    public function leaves()
+    {
+        return $this->hasMany(Leave::class, 'user_id');
     }
 }
