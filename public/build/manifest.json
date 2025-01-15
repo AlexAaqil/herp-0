@@ -1,19 +1,19 @@
 {
-  "public/assets/images/auth.png": {
-    "file": "assets/auth-CAQWwXhz.png",
-    "src": "public/assets/images/auth.png"
+  "public/assets/images/auth.jpg": {
+    "file": "assets/auth-CrQ1Ag-o.jpg",
+    "src": "public/assets/images/auth.jpg"
   },
   "public/assets/images/hero.jpg": {
-    "file": "assets/hero-iaugWDl3.jpg",
+    "file": "assets/hero-BCo9Hncs.jpg",
     "src": "public/assets/images/hero.jpg"
   },
   "resources/css/styles.css": {
-    "file": "assets/styles-rwOcLjFD.css",
+    "file": "assets/styles-BumCgL4t.css",
     "src": "resources/css/styles.css",
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-CBaU6rXD.js",
+    "file": "assets/app-CvSG40sc.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true
