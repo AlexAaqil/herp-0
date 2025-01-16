@@ -512,6 +512,15 @@ footer .copyright {
 .custom_form .show_details .column:last-of-type p span {
   margin: 0 0 0.2em;
 }
+.custom_form .show_details .table thead {
+  background: #000;
+}
+.custom_form .show_details .table thead th {
+  color: #fff;
+}
+.custom_form .show_details .table tbody {
+  color: #000;
+}
 .custom_form form {
   padding: 0 24px 12px;
 }

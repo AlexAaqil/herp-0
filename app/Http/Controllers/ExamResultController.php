@@ -57,6 +57,7 @@ class ExamResultController extends Controller
                 ]);
     
                 $examResult->marks = $marks;
+                $examResult->grade = ExamResult::determineGrade($marks);
                 $examResult->save();
             }
         }

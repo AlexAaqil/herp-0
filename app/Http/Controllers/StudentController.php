@@ -82,6 +82,7 @@ class StudentController extends Controller
 
     public function edit(Student $student)
     {
+        $student->load('examResults');
         $parents = Parents::orderBy('first_name')->get();
         $class_sections = $this->getClassSections();
         return view('admin.students.edit', compact('student', 'class_sections', 'parents'));

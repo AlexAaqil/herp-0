@@ -60,6 +60,20 @@ $custom_form_padding: 24px;
                } 
             }
         }
+
+        .table {
+            thead {
+                background: #000;
+                
+                th {
+                    color: #fff;
+                }
+            }
+
+            tbody{
+                color: #000;
+            }
+        }
     }
 
     form {
