@@ -3,7 +3,10 @@
         @include('partials.student_aside')
 
         <div class="app_content">
-            <h2>Payments</h2>
+            <div class="system_nav">
+                <a href="{{ route('student-receipt.select') }}">Receipt</a>
+                <a href="{{ route('student-gatepass.select') }}">/ Gate Pass</a>
+            </div>
 
             @if ($payments->isEmpty())
                 <p>No payments have been added yet.</p>
@@ -16,7 +19,6 @@
                             <th>Amount</th>
                             <th>Paid</th>
                             <th>Balance</th>
-                            <th class="center">Action</th>
                         </tr>
                     </thead>
 
@@ -28,13 +30,6 @@
                                 <td>{{ $record->payment->amount }}</td>
                                 <td class="info">{{ $record->amount_paid }}</td>
                                 <td class="{{ $record->balance == 0 ? 'success' : 'danger' }}">{{ $record->balance }}
-                                </td>
-                                <td class="center">
-                                    <a href="{{ route('receipts.print', $record->id) }}" target="_blank"
-                                        class="btn_link">Print</a>
-                                    @if ($record->balance == 0)
-                                        <a href="#"> Gate Pass</a>
-                                    @endif
                                 </td>
                             </tr>
                         @endforeach

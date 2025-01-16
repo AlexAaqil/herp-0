@@ -52,6 +52,12 @@ Route::middleware(['student'])
     Route::get('/disciplinaries', [StudentController::class, 'disciplinaries'])->name('student-disciplinaries');
 
     Route::get('/payments', [StudentController::class, 'payments'])->name('student-payments');
+    Route::get('/student-receipt/select', [StudentController::class, 'selectTermYear'])->name('student-receipt.select');
+    Route::post('/payment-receipt/{student_id}/generate', [StudentController::class, 'generate'])->name('student-receipt.generate');
+    Route::get('/student-receipt/print', [StudentController::class, 'print'])->name('student-receipt.print');
+    Route::get('/student-gatepass/select', [StudentController::class, 'selectTermYearGatePass'])->name('student-gatepass.select');
+    Route::post('/payment-gatepass/{student_id}/generate', [StudentController::class, 'generateGatePass'])->name('student-gatepass.generate');
+    Route::post('/payment-gatepass/print', [StudentController::class, 'printGatePass'])->name('student-gatepass.print');
 
     Route::get('/results', [StudentController::class, 'results'])->name('student-results');
 

@@ -6,6 +6,8 @@ use App\Models\Student;
 use App\Models\ClassSections;
 use App\Models\Parents;
 use App\Models\StudentAssignment;
+use App\Models\PaymentRecords;
+use App\Models\Payments;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
 use Illuminate\Support\Facades\Hash;
@@ -199,6 +201,111 @@ class StudentController extends Controller
         ->get();
 
         return view('students.assignments', compact('student', 'assignments'));
+    }
+
+    public function selectTermYear(Request $request)
+    {
+        $student = $request->student;
+
+        return view('students.selectTermYear', compact('student'));
+    }
+
+    public function generate(Request $request, $student_id)
+    {
+        $validated = $request->validate([
+            'year' => 'required|integer|min:2000|max:' . now()->year,
+            'term' => 'required|integer|min:1|max:3',
+        ]);
+
+        $student = $request->student;
+
+        $payment = Payments::where('year', $validated['year'])
+        ->where('term', $validated['term'])
+        ->first();
+
+        $paymentRecords = PaymentRecords::with('payment')
+            ->where('student_id', $student_id)
+            ->whereHas('payment', function ($query) use ($validated) {
+                $query->where('year', $validated['year'])->where('term', $validated['term']);
+            })
+            ->get();
+        
+        session([
+            'student' => $student,
+            'paymentRecords' => $paymentRecords,
+            'validated' => $validated,
+            'payment' => $payment,
+        ]);
+        
+        return view('students.receipt', compact('paymentRecords', 'validated', 'student', 'payment'));
+    }
+
+    public function print(Request $request)
+    {
+        $student = session('student');
+        $paymentRecords = session('paymentRecords');
+        $payment = session('payment');
+
+        if (!$student || !$paymentRecords) {
+            return redirect()->route('payment-records.index')->with('error', ['message' => 'Payment record data not found.']);
+        }
+        
+        return view('students.print', compact('student', 'paymentRecords', 'payment'));
+    }
+
+    public function selectTermYearGatePass(Request $request)
+    {
+        $student = $request->student;
+
+        return view('students.selectGatePass', compact('student'));
+    }
+
+    public function generateGatePass(Request $request, $student_id)
+    {
+        $validated = $request->validate([
+            'year' => 'required|integer|min:2000|max:' . now()->year,
+            'term' => 'required|integer|min:1|max:3',
+        ]);
+
+        $student = $request->student;
+
+        $payment = Payments::where('year', $validated['year'])
+            ->where('term', $validated['term'])
+            ->first();
+
+        $paymentRecords = PaymentRecords::with('payment')
+            ->where('student_id', $student_id)
+            ->whereHas('payment', function ($query) use ($validated) {
+                $query->where('year', $validated['year'])->where('term', $validated['term']);
+            })
+            ->get();
+
+        // Check if student has completed payment
+        $completedPayment = $paymentRecords->sum('balance') == 0;
+
+        session([
+            'student' => $student,
+            'paymentRecords' => $paymentRecords,
+            'validated' => $validated,
+            'payment' => $payment,
+            'completedPayment' => $completedPayment,
+        ]);
+
+        return view('students.gatepass', compact('paymentRecords', 'validated', 'student', 'payment', 'completedPayment'));
+    }
+
+    public function printGatePass(Request $request)
+    {
+        $student = session('student');
+        $paymentRecords = session('paymentRecords');
+        $payment = session('payment');
+        $comment = $request->input('comment');
+
+        if (!$student || !$paymentRecords) {
+            return redirect()->route('payment-records.index')->with('error', ['message' => 'Payment record data not found.']);
+        }
+        
+        return view('students.printGatePass', compact('student', 'paymentRecords', 'payment', 'comment'));
     }
 
     public function logout_student()
