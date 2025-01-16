@@ -39,18 +39,24 @@ Route::get('/contact', [GeneralPagesController::class, 'contact'])->name('contac
 Route::post('/contact', [UserMessageController::class, 'store'])->name('user-messages.store');
 Route::get('/blogs', [BlogController::class, 'users_blogs'])->name('users.blogs');
 Route::get('/blogs/{slug}', [BlogController::class, 'show'])->name('blogs.show');
-Route::get('/receipts/{payment_record_id}', [ReceiptsController::class, 'print'])->name('receipts.print');
 
 Route::middleware(['student'])
 ->prefix('student')
 ->group(function () {
     Route::get('/student-details', [StudentController::class, 'details'])->name('student-details');
+
     Route::get('/textbooks', [StudentController::class, 'textbooks'])->name('student-textbooks');
+
     Route::get('/leaveouts', [StudentController::class, 'leavouts'])->name('student-leaveouts');
+
     Route::get('/disciplinaries', [StudentController::class, 'disciplinaries'])->name('student-disciplinaries');
+
     Route::get('/payments', [StudentController::class, 'payments'])->name('student-payments');
+
     Route::get('/results', [StudentController::class, 'results'])->name('student-results');
+
     Route::get('/assignments', [StudentController::class, 'assignments'])->name('student-assignments');
+    
     Route::post('/logout', [StudentController::class, 'logout_student'])->name('student_logout');
 });
 
@@ -81,6 +87,9 @@ Route::middleware(['auth', 'verified', 'active'])->group(function () {
     Route::get('/payment-records/create/{student_id}', [PaymentRecordsController::class, 'create'])->name('payment-records.create');
     Route::post('/payment-records', [PaymentRecordsController::class, 'store'])->name('payment-records.store');
     Route::post('/payment-records/update', [PaymentRecordsController::class, 'update'])->name('payment-records.update');
+    Route::get('/payment-receipt/print', [ReceiptsController::class, 'print'])->name('payment-receipt.print');
+    Route::get('/payment-receipt/{student_id}/select', [ReceiptsController::class, 'selectTermYear'])->name('payment-receipt.select');
+    Route::post('/payment-receipt/{student_id}/generate', [ReceiptsController::class, 'generate'])->name('payment-receipt.generate');
 
     Route::get('/exam-results/{exam_id?}', [ExamResultController::class, 'index'])->name('exam-results.index');
     Route::resource('/exam-results', ExamResultController::class)->except('index', 'show');

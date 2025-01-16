@@ -1,21 +1,15 @@
 <x-authenticated-layout class="PaymentRecords">
-
-    <div class="custom_form">
+    <div class="filter_form">
         <form action="{{ route('payment-records.index') }}" method="get">
-            <div class="row_input_group">
-                <div class="input_group">
-                    <label for="class_section_id">Class Section</label>
-                    <select name="class_section_id" id="class_section_id" onchange="this.form.submit()">
-                        <option value="">Select Class Section</option>
-                        @foreach ($class_sections as $class_section)
-                            <option value="{{ $class_section->id }}"
-                                {{ request('class_section_id') == $class_section->id ? 'selected' : '' }}>
-                                {{ $class_section->title }}
-                            </option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
+            <select name="class_section_id" id="class_section_id" onchange="this.form.submit()">
+                <option value="">Select Class Section</option>
+                @foreach ($class_sections as $class_section)
+                    <option value="{{ $class_section->id }}"
+                        {{ request('class_section_id') == $class_section->id ? 'selected' : '' }}>
+                        {{ $class_section->title }}
+                    </option>
+                @endforeach
+            </select>
         </form>
     </div>
 

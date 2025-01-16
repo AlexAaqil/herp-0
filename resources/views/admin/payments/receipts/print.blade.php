@@ -1,77 +1,94 @@
 <x-app-layout>
-    <section class="Printable">
-        <div class="header">
-            <div class="row">
+    <section class="Payment_Receipt">
+        <div class="body printable_area" id="printable_area">
+            <div class="header">
                 <p class="title">Fees Receipt</p>
-
+    
                 <div class="details">
-                    <p>{{ config('globals.app_full_name') }}</p>
-                    <p>{{ config('globals.phone_number') }}</p>
-                    <p>{{ config('globals.email') }}</p>
-                    <p>{{ config('globals.address') }}</p>
+                    <p>{{ config('globals.school_name') }}</p>
+                    <p>{{ config('globals.school_phone_main') }}</p>
+                    <p>{{ config('globals.school_email') }}</p>
+                    <p>{{ config('globals.school_address') }}</p>
                 </div>
             </div>
-        </div>
-
-        <div class="body">
-            <div class="student">
-                <p>ADM No. {{ $student->registration_number }}</p>
-                <p>{{ $student->first_name . ' ' . $student->last_name }}</p>
+    
+            <div class="receipt_body">
+                <div class="payment_details">
+                    <p>
+                        <span>ADM No.</span>
+                        <span>{{ $student->registration_number }}</span>
+                    </p>
+                    <p>
+                        <span>Student:</span>
+                        <span>{{ $student->first_name . ' ' . $student->last_name }}</span>
+                    </p>
+                    <p>
+                        <span>Payment Method:</span>
+                        <span>{{ ucfirst($payment->payment_method) }}</span>
+                    </p>
+                    <p>
+                        <span>Period:</span>
+                        <span>{{ $payment->year . ' Term - ' . $payment->term }}</span>
+                    </p>
+                </div>
             </div>
-
+    
             <div class="payment_details">
-                <p>
-                    <span>Reference Number:</span>
-                    <span>{{ $payment->reference_number }}</span>
-                </p>
-                <p>
-                    <span>Payment Method:</span>
-                    <span>{{ ucfirst($payment->payment_method) }}</span>
-                </p>
-                <p>
-                    <span>Period:</span>
-                    <span>{{ $payment->year . ' Term - ' . $payment->term }}</span>
-                </p>
-            </div>
-
-            <div class="payment_receipts">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Date</th>
-                            <th class="center">Amount Paid (Kshs)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($receipts as $receipt)
+                @if ($paymentRecords->isEmpty())
+                    <p>No payment records found for the selected term and year.</p>
+                @else
+                    <table class="table">
+                        <thead>
                             <tr>
-                                <td>{{ $receipt->date_paid }}</td>
-                                <td class="center">{{ number_format($receipt->amount_paid, 2) }}</td>
+                                <th>Title</th>
+                                <th>Amount</th>
+                                <th>Paid</th>
+                                <th>Balance</th>
                             </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            @php
+                                $totalAmount = 0;
+                                $totalPaid = 0;
+                                $totalBalance = 0;
+                            @endphp
+                            @foreach ($paymentRecords as $record)
+                                <tr>
+                                    <td>{{ $record->payment->title }}</td>
+                                    <td>{{ number_format($record->payment->amount, 2) }}</td>
+                                    <td>{{ number_format($record->amount_paid, 2) }}</td>
+                                    <td>{{ number_format($record->balance, 2) }}</td>
+    
+                                    @php
+                                        $totalAmount += $record->payment->amount;
+                                        $totalPaid += $record->amount_paid;
+                                        $totalBalance += $record->balance;
+                                    @endphp
+                                </tr>
+                            @endforeach
+                            <tr>
+                                <td><strong>Total</strong></td>
+                                <td><strong>{{ number_format($totalAmount, 2) }}</strong></td>
+                                <td><strong>{{ number_format($totalPaid, 2) }}</strong></td>
+                                <td>
+                                    <strong>
+                                        @if ($totalBalance == 0)
+                                            Fully Paid
+                                        @else
+                                            {{ number_format($totalBalance, 2) }}
+                                        @endif
+                                    </strong>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                @endif
             </div>
-
-            <div class="payment">
-                <p>
-                    <span>Total Amount Due:</span>
-                    <span>{{ number_format($payment->amount, 2) }}</span>
-                </p>
-                <p>
-                    <span>Amount Paid:</span>
-                    <span>{{ number_format($paymentRecord->amount_paid, 2) }}</span>
-                </p>
-                <p>
-                    <span>Balance:</span>
-                    <span class="danger">{{ number_format($paymentRecord->balance, 2) }}</span>
-                </p>
+            
+            <div class="footer">
+                <p>Thank you for your payment!</p>
+                <p>For any queries, feel free to contact us at {{ config('globals.school_email') }}</p>
             </div>
-        </div>
-
-        <div class="footer">
-            <p>Thank you for your payment!</p>
-            <p>For any queries, feel free to contact us at {{ config('globals.email') }}</p>
         </div>
     </section>
 

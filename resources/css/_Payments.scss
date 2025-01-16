@@ -1,0 +1,95 @@
+.PaymentRecords {
+    .body {
+        .title {
+            margin: 0.4em 0;
+        }
+    }
+}
+
+.Payment_Receipt {
+    .printable_area,
+    .preview {
+        div {
+            margin: 0 0 1em;
+        }
+
+        .header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1em;
+            align-items: start;
+            border-bottom: 4px solid rgb(207, 207, 207);
+
+            .title {
+                font-size: 2em;
+            }
+
+            .details {
+                justify-self: flex-end;
+                p {
+                    font-size: 0.95em;
+                    margin: 0 0 0.1em;
+
+                    &:first-of-type {
+                        font-weight: bold;
+                        font-size: 1.12em;
+                    }
+                }
+            }
+        }
+
+        .receipt_body {
+            p {
+                display: grid;
+                grid-template-columns: 18% auto;
+                gap: 0.5em;
+                margin: 0 0 0.1em;
+
+                span {
+                    &:first-of-type {
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+
+        .payment_details {
+            .table {
+                thead {
+                    background: #000;
+                    
+                    th {
+                        color: #fff;
+                    }
+                }
+
+                tbody{
+                    color: #000;
+                }
+            }
+        }
+    }
+    
+    .btn {
+        background: #fff;
+        color: #000;
+    }
+
+    .preview {
+        .payment_details {
+            .table {
+                thead {
+                    background: #fff;
+                    
+                    th {
+                        color: #000;
+                    }
+                }
+
+                tbody{
+                    color: #fff;
+                }
+            }
+        }
+    }
+}

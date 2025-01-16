@@ -2,89 +2,60 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Receipts;
 use App\Models\PaymentRecords;
+use App\Models\Payments;
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class ReceiptsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function selectTermYear($student_id)
     {
-        //
+        $student = Student::findOrFail($student_id);
+
+        return view('admin.payments.receipts.select', compact('student'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function generate(Request $request, $student_id)
     {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Receipts $receipts)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Receipts $receipts)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Receipts $receipts)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Receipts $receipts)
-    {
-        //
-    }
-
-    public function print($payment_record_id)
-    {
-        // Fetch the payment record along with its related receipts, payment, and student
-        $paymentRecord = PaymentRecords::with([
-            'receipts',
-            'student',
-            'payment'
-        ])
-        ->findOrFail($payment_record_id);
-
-        // Extract the necessary related data
-        $student = $paymentRecord->student;
-        $payment = $paymentRecord->payment;
-        $receipts = $paymentRecord->receipts;
-
-        // Pass the data to the view for rendering
-        return view('admin.payments.receipts.print', [
-            'paymentRecord' => $paymentRecord,
-            'student' => $student,
-            'payment' => $payment,
-            'receipts' => $receipts
+        $validated = $request->validate([
+            'year' => 'required|integer|min:2000|max:' . now()->year,
+            'term' => 'required|integer|min:1|max:3',
         ]);
+
+        $student = Student::findOrFail($student_id);
+
+        $payment = Payments::where('year', $validated['year'])
+        ->where('term', $validated['term'])
+        ->first();
+
+        $paymentRecords = PaymentRecords::with('payment')
+            ->where('student_id', $student_id)
+            ->whereHas('payment', function ($query) use ($validated) {
+                $query->where('year', $validated['year'])->where('term', $validated['term']);
+            })
+            ->get();
+        
+        session([
+            'student' => $student,
+            'paymentRecords' => $paymentRecords,
+            'validated' => $validated,
+            'payment' => $payment,
+        ]);
+        
+        return view('admin.payments.receipts.receipt', compact('paymentRecords', 'validated', 'student', 'payment'));
+    }
+
+    public function print(Request $request)
+    {
+        $student = session('student');
+        $paymentRecords = session('paymentRecords');
+        $payment = session('payment');
+
+        if (!$student || !$paymentRecords) {
+            return redirect()->route('payment-records.index')->with('error', ['message' => 'Payment record data not found.']);
+        }
+        
+        return view('admin.payments.receipts.print', compact('student', 'paymentRecords', 'payment'));
     }
 }

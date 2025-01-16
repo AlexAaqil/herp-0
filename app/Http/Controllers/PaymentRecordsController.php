@@ -59,8 +59,12 @@ class PaymentRecordsController extends Controller
 
         // Fetch all payment records for the student for display
         $paymentRecords = PaymentRecords::with('payment')
-            ->where('student_id', $student_id)
-            ->get();
+        ->where('student_id', $student_id)
+        ->join('payments', 'payment_records.payment_id', '=', 'payments.id')
+        ->orderByDesc('payments.year')
+        ->orderBy('payments.term')
+        ->select('payment_records.*')
+        ->get();
 
         return view('admin.payments.payment-records.create', compact('paymentRecords', 'student', 'student_id'));
     }

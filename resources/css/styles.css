@@ -39,8 +39,8 @@ a {
   gap: 1em;
 }
 
-form button {
-  margin: 0.5em 0;
+form button,
+.btn {
   border: none;
   border-radius: 4px;
   background: #000;
@@ -49,8 +49,13 @@ form button {
   font-weight: bold;
   font-size: 1em;
 }
-form button:hover {
+form button:hover,
+.btn:hover {
   opacity: 0.85;
+}
+
+form button {
+  margin: 0.5em 0;
 }
 
 .btn_hero {
@@ -610,6 +615,15 @@ footer .copyright {
   color: #000;
 }
 
+.filter_form {
+  margin: 0.5em 0;
+}
+.filter_form input,
+.filter_form select {
+  font-size: 1em;
+  padding: 4px 8px;
+}
+
 @media screen and (width >= 726px) {
   .custom_form .row_input_group,
   .custom_form .row_input_group_3 {
@@ -1164,4 +1178,75 @@ footer .copyright {
 }
 .Printable .body .payment p {
   font-weight: bold;
+}
+
+.PaymentRecords .body .title {
+  margin: 0.4em 0;
+}
+
+.Payment_Receipt .printable_area div,
+.Payment_Receipt .preview div {
+  margin: 0 0 1em;
+}
+.Payment_Receipt .printable_area .header,
+.Payment_Receipt .preview .header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1em;
+  align-items: start;
+  border-bottom: 4px solid rgb(207, 207, 207);
+}
+.Payment_Receipt .printable_area .header .title,
+.Payment_Receipt .preview .header .title {
+  font-size: 2em;
+}
+.Payment_Receipt .printable_area .header .details,
+.Payment_Receipt .preview .header .details {
+  justify-self: flex-end;
+}
+.Payment_Receipt .printable_area .header .details p,
+.Payment_Receipt .preview .header .details p {
+  font-size: 0.95em;
+  margin: 0 0 0.1em;
+}
+.Payment_Receipt .printable_area .header .details p:first-of-type,
+.Payment_Receipt .preview .header .details p:first-of-type {
+  font-weight: bold;
+  font-size: 1.12em;
+}
+.Payment_Receipt .printable_area .receipt_body p,
+.Payment_Receipt .preview .receipt_body p {
+  display: grid;
+  grid-template-columns: 18% auto;
+  gap: 0.5em;
+  margin: 0 0 0.1em;
+}
+.Payment_Receipt .printable_area .receipt_body p span:first-of-type,
+.Payment_Receipt .preview .receipt_body p span:first-of-type {
+  font-weight: bold;
+}
+.Payment_Receipt .printable_area .payment_details .table thead,
+.Payment_Receipt .preview .payment_details .table thead {
+  background: #000;
+}
+.Payment_Receipt .printable_area .payment_details .table thead th,
+.Payment_Receipt .preview .payment_details .table thead th {
+  color: #fff;
+}
+.Payment_Receipt .printable_area .payment_details .table tbody,
+.Payment_Receipt .preview .payment_details .table tbody {
+  color: #000;
+}
+.Payment_Receipt .btn {
+  background: #fff;
+  color: #000;
+}
+.Payment_Receipt .preview .payment_details .table thead {
+  background: #fff;
+}
+.Payment_Receipt .preview .payment_details .table thead th {
+  color: #000;
+}
+.Payment_Receipt .preview .payment_details .table tbody {
+  color: #fff;
 }/*# sourceMappingURL=styles.css.map */

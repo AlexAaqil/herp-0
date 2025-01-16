@@ -193,6 +193,16 @@ $custom_form_padding: 24px;
     }
 }
 
+.filter_form {
+    margin: 0.5em 0;
+
+    input,
+    select {
+        font-size: 1em;
+        padding: 4px 8px;
+    }
+}
+
 @media screen and (width >= 726px) {
     .custom_form {
         .row_input_group,
