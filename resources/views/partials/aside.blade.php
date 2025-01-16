@@ -45,7 +45,7 @@
             ],
             [
                 'route' => 'teachers.index',
-                'icon' => 'fas fa-users',
+                'icon' => 'fas fa-chalkboard-teacher',
                 'text' => 'Teachers',
                 'level' => [0, 1],
             ],
