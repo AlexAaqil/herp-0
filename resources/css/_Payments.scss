@@ -39,15 +39,17 @@
         }
 
         .receipt_body {
-            p {
-                display: grid;
-                grid-template-columns: 18% auto;
-                gap: 0.5em;
-                margin: 0 0 0.1em;
-
-                span {
-                    &:first-of-type {
-                        font-weight: bold;
+            .payment_details {
+                p {
+                    display: grid;
+                    grid-template-columns: 18% auto;
+                    gap: 0.5em;
+                    margin: 0 0 0.1em;
+    
+                    span {
+                        &:first-of-type {
+                            font-weight: bold;
+                        }
                     }
                 }
             }

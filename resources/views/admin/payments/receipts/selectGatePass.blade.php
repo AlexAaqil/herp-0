@@ -9,7 +9,7 @@
             {{ $student->registration_number . ' - ' . $student->first_name . ' ' . $student->last_name }}
         </p>
 
-        <form action="{{ route('payment-receipt.generate', $student->id) }}" method="POST" class="form">
+        <form action="{{ route('payment-gatepass.generate', $student->id) }}" method="POST" class="form">
             @csrf
             <div class="input_group">
                 <label for="year">Year</label>
@@ -31,7 +31,7 @@
                 @enderror
             </div>
 
-            <button type="submit" class="btn_info">Generate Receipt</button>
+            <button type="submit" class="btn_info">Generate Gate Pass</button>
         </form>
     </div>
 </x-authenticated-layout>

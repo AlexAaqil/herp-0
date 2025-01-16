@@ -38,12 +38,14 @@ Teachers can issue assignments (deadline, date_issued, description, subject, cla
 
 
 - Student can print a gate pass once they complete their fees.
-- Student biometrics to keep track of attendance during opening days and leaveouts.
-- Student graduation status should change to status to keep track of those who have transfered.
 - Student information should include performance.
 - Students performance can be viewed according to the selected exam.
+- Student biometrics to keep track of attendance during opening days and leaveouts.
+- Student graduation status should change to status to keep track of those who have transfered.
 - Students Dorms should come from the dorms table.
 
+
+Admins should also view inventory records and remarks by the store keeper.
 
 
 - Tables should clearly show the parts you can click on like on IDs.

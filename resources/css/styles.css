@@ -1214,15 +1214,15 @@ footer .copyright {
   font-weight: bold;
   font-size: 1.12em;
 }
-.Payment_Receipt .printable_area .receipt_body p,
-.Payment_Receipt .preview .receipt_body p {
+.Payment_Receipt .printable_area .receipt_body .payment_details p,
+.Payment_Receipt .preview .receipt_body .payment_details p {
   display: grid;
   grid-template-columns: 18% auto;
   gap: 0.5em;
   margin: 0 0 0.1em;
 }
-.Payment_Receipt .printable_area .receipt_body p span:first-of-type,
-.Payment_Receipt .preview .receipt_body p span:first-of-type {
+.Payment_Receipt .printable_area .receipt_body .payment_details p span:first-of-type,
+.Payment_Receipt .preview .receipt_body .payment_details p span:first-of-type {
   font-weight: bold;
 }
 .Payment_Receipt .printable_area .payment_details .table thead,

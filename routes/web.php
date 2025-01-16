@@ -87,10 +87,13 @@ Route::middleware(['auth', 'verified', 'active'])->group(function () {
     Route::get('/payment-records/create/{student_id}', [PaymentRecordsController::class, 'create'])->name('payment-records.create');
     Route::post('/payment-records', [PaymentRecordsController::class, 'store'])->name('payment-records.store');
     Route::post('/payment-records/update', [PaymentRecordsController::class, 'update'])->name('payment-records.update');
-    Route::get('/payment-receipt/print', [ReceiptsController::class, 'print'])->name('payment-receipt.print');
     Route::get('/payment-receipt/{student_id}/select', [ReceiptsController::class, 'selectTermYear'])->name('payment-receipt.select');
     Route::post('/payment-receipt/{student_id}/generate', [ReceiptsController::class, 'generate'])->name('payment-receipt.generate');
-
+    Route::get('/payment-receipt/print', [ReceiptsController::class, 'print'])->name('payment-receipt.print');
+    Route::get('/payment-gatepass/{student_id}/select', [ReceiptsController::class, 'selectTermYearGatePass'])->name('payment-gatepass.select');
+    Route::post('/payment-gatepass/{student_id}/generate', [ReceiptsController::class, 'generateGatePass'])->name('payment-gatepass.generate');
+    Route::post('/payment-gatepass/print', [ReceiptsController::class, 'printGatePass'])->name('payment-gatepass.print');
+    
     Route::get('/exam-results/{exam_id?}', [ExamResultController::class, 'index'])->name('exam-results.index');
     Route::resource('/exam-results', ExamResultController::class)->except('index', 'show');
 
