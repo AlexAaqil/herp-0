@@ -39,7 +39,7 @@
             @if ($completedPayment)
                 <p class="success-message">Has completed Payment and the gatepass is valid</p>
                 <div class="print_form">
-                    <form action="{{ route('payment-gatepass.print') }}" method="GET" target="_blank">
+                    <form action="{{ route('payment-gatepass.print') }}" method="POST" target="_blank">
                         @csrf
 
                         <div class="print-btn">
