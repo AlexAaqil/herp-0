@@ -5,7 +5,6 @@ $thead_background: #fff;
     border-spacing: 0;
     border-collapse: collapse;
     color: #fff;
-    // overflow: auto;
 
     thead {
         background: $thead_background;
@@ -57,7 +56,9 @@ $thead_background: #fff;
 
             .actions {
                 display: flex;
-                gap: 0.5em;
+                justify-content: center;
+                align-items: center;
+                gap: 0.8em;
             }
         }
     }

@@ -12,6 +12,7 @@
                 <thead>
                     <tr>
                         <th>Dorm</th>
+                        <th class="actions"></th>
                     </tr>
                 </thead>
 
@@ -19,8 +20,13 @@
                     @if (count($dorms) > 0)
                         @foreach ($dorms as $dorm)
                             <tr class="searchable">
-                                <td>
-                                    <a href="{{ route('dorms.edit', $dorm->id) }}">{{ $dorm->title }}</a>
+                                <td>{{ $dorm->title }}</td>
+                                <td class="actions">
+                                    <div class="action">
+                                        <a href="{{ route('dorms.edit', $dorm->id) }}">
+                                            <span class="fas fa-eye"></span>
+                                        </a>
+                                    </div>
                                 </td>
                             </tr>
                         @endforeach

@@ -21,8 +21,7 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Name</th>
+                    <th>Student</th>
                     <th>Class</th>
                     <th>Parent</th>
                     <th>Action</th>
@@ -32,10 +31,16 @@
             <tbody>
                 @forelse ($students as $student)
                     <tr>
-                        <td>{{ $student->registration_number }}</td>
-                        <td>{{ $student->first_name . ' ' . $student->last_name }}</td>
+                        <td>{{ $student->registration_number . ' - ' .$student->first_name . ' ' . $student->last_name }}</td>
                         <td>{{ $student->studentClassSection->title }}</td>
-                        <td>{{ $student->parent_names }}</td>
+                        <td>
+                            @forelse ($student->parents as $parent)
+                                <span>{{ $parent->first_name.' '.$parent->last_name.' - '.$parent->phone_main }}</span>
+                                <br>
+                            @empty
+                                <span>Unknown</span>
+                            @endforelse
+                        </td>
                         <td>
                             <a href="{{ route('payment-records.create', $student->id) }}">Manage Payments</a>
                         </td>

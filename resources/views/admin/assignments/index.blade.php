@@ -6,24 +6,31 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Class</th>
                         <th>Subject</th>
+                        <th>Class</th>
                         <th>Duration</th>
                         <th>Description</th>
-                        <th>File</th>
+                        <th class="actions">#</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($assignments as $assignment)
                     <tr>
-                        <td>{{ $loop->iteration }}</td>
-                        <td>{{ $assignment->classSection->title }}</td>
                         <td>{{ $assignment->subject->title }}</td>
-                        <td>{{ $assignment->date_issued.' - '. $assignment->deadline }}</td>
+                        <td>{{ $assignment->classSection->title }}</td>
+                        <td>{{ $assignment->date_issued.' to '. $assignment->deadline }}</td>
                         <td>{!! Illuminate\Support\Str::limit($assignment->description, 35, ' ...') !!}</td>
-                        <td>
-                            <a href="{{ Storage::url($assignment->uploaded_assignment) }}" target="_blank" download>Download</a>
+                        <td class="actions">
+                            <div class="action">
+                                <a href="{{ Storage::url($assignment->uploaded_assignment) }}" target="_blank" title="Download" download>
+                                    <span class="fas fa-download"></span>
+                                </a>
+                            </div>
+                            <div class="action">
+                                <a href="#" title="View details">
+                                    <span class="fas fa-eye"></span>
+                                </a>
+                            </div>
                         </td>
                     </tr>
                     @endforeach

@@ -11,7 +11,7 @@
                     <th>Phone Number</th>
                     <th>Message</th>
                     <th>Time</th>
-                    <th class="actions">#</th>
+                    <th class="actions"></th>
                 </tr>
             </thead>
 

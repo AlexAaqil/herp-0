@@ -11,9 +11,10 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Grade</th>
                         <th>Marks</th>
+                        <th>Grade</th>
                         <th>Remarks</th>
+                        <th class="actions"></th>
                     </tr>
                 </thead>
     
@@ -21,11 +22,16 @@
                     @if (count($grades) > 0)
                         @foreach ($grades as $grade)
                             <tr class="searchable">
-                                <td>
-                                    <a href="{{ route('grades.edit', $grade->id) }}">{{ $grade->grade }}</a>
-                                </td>
                                 <td>{{ $grade->min_marks.' - '.$grade->max_marks }}</td>
+                                <td>{{ $grade->grade }}</td>
                                 <td>{{ $grade->remarks }}</td>
+                                <td class="actions">
+                                    <div class="action">
+                                        <a href="{{ route('grades.edit', $grade->id) }}">
+                                            <span class="fas fa-eye"></span>
+                                        </a>
+                                    </div>
+                                </td>
                             </tr>
                         @endforeach
                     @else

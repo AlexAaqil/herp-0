@@ -466,7 +466,9 @@ footer .copyright {
 }
 .table tbody tr .actions {
   display: flex;
-  gap: 0.5em;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8em;
 }
 
 .custom_form {

@@ -4,6 +4,11 @@
     <div class="custom_form">
         <header>
             <p>Update Leaveout</p>
+
+            <div class="system_nav">
+                <a href="{{ route('leaveouts.index') }}">Leaveouts</a>
+                <span>Update</span>
+            </div>
         </header>
 
         <form action="{{ route('leaveouts.update', $leaveout->id) }}" method="post">

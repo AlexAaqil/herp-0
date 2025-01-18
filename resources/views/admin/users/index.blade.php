@@ -4,23 +4,17 @@
     <div class="body">
         <table class="table">
             <thead>
-                <th class="center">ID</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Phone Number</th>
                 <th>Emp Code</th>
+                <th class="center"></th>
             </thead>
 
             <tbody>
                 @if (count($users) > 0)
-                    @php $id = 1 @endphp
                     @foreach ($users as $user)
                         <tr class="searchable {{ $user->user_status == '0' ? 'inactive_user' : 'active' }}">
-                            <td class="center">
-                                <a href="{{ route('users.edit', ['user' => $user->id]) }}">
-                                    {{ $id++ }}
-                                </a>
-                            </td>
                             <td>
                                 {{ $user->full_name }}
                                 <span
@@ -29,7 +23,14 @@
                             <td class="{{ $user->email_verified_at != null ? '' : 'danger' }}">
                                 {{ $user->email }}</td>
                             <td>{{ $user->phone_main }}</td>
-                            <td>{{ $user->emp_code }}</td>
+                            <td class="{{ $user->emp_code ? '' : 'danger' }}">{{ $user->emp_code ?? 'Undefined' }}</td>
+                            <td class="actions">
+                                <div class="action">
+                                    <a href="{{ route('users.edit', ['user' => $user->id]) }}">
+                                        <span class="fas fa-eye"></span>
+                                    </a>
+                                </div>
+                            </td>
                         </tr>
                     @endforeach
                 @else

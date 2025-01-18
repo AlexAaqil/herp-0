@@ -5,25 +5,19 @@
         @if (count($disciplinaries) > 0)
             <table class="table">
                 <thead>
-                    <th class="center">ID</th>
                     <th>Reg. No.</th>
                     <th>Student</th>
                     @can('view-as-admin')
-                        <th>Author</th>
+                    <th>Author</th>
                     @endcan
                     <th>Category</th>
                     <th>Comment</th>
+                    <th class="actions"></th>
                 </thead>
 
                 <tbody>
-                    @php $id = 1 @endphp
                     @foreach ($disciplinaries as $disciplinary)
                         <tr class="searchable">
-                            <td class="center">
-                                <a href="{{ route('disciplinaries.edit', ['disciplinary' => $disciplinary->id]) }}">
-                                    {{ $id++ }}
-                                </a>
-                            </td>
                             <td>{{ $disciplinary->student->registration_number }}</td>
                             <td>{{ $disciplinary->student->first_name . ' ' . $disciplinary->student->last_name }}</td>
                             @can('view-as-admin')
@@ -32,6 +26,13 @@
                             @endcan
                             <td>{{ $disciplinary->category }}</td>
                             <td>{!! Illuminate\Support\Str::limit($disciplinary->comment, 35, ' ...') !!}</td>
+                            <td class="actions">
+                                <div class="action">
+                                    <a href="{{ route('disciplinaries.edit', ['disciplinary' => $disciplinary->id]) }}">
+                                        <span class="fas fa-eye"></span>
+                                    </a>
+                                </div>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

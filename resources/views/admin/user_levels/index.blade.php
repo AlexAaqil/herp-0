@@ -12,17 +12,21 @@
                 <thead>
                     <th>User Level</th>
                     <th>Title</th>
+                    <th class="actions"></th>
                 </thead>
 
                 <tbody>
                     @foreach ($user_levels as $user_level)
                         <tr class="searchable">
-                            <td>
-                                <a href="{{ route('user-levels.edit', ['user_level' => $user_level->id]) }}">
-                                    {{ $user_level->user_level }}
-                                </a>
-                            </td>
+                            <td>{{ $user_level->user_level }}</td>
                             <td>{{ $user_level->title }}</td>
+                            <td class="actions">
+                                <div class="action">
+                                    <a href="{{ route('user-levels.edit', ['user_level' => $user_level->id]) }}">
+                                        <span class="fas fa-eye"></span>
+                                    </a>
+                                </div>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

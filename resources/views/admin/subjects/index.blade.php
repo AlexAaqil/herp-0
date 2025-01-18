@@ -14,6 +14,7 @@
                         <th>Subject</th>
                         <th>Short Name</th>
                         <th>Code</th>
+                        <th class="actions"></th>
                     </tr>
                 </thead>
     
@@ -21,11 +22,18 @@
                     @if (count($subjects) > 0)
                         @foreach ($subjects as $subject)
                             <tr class="searchable">
-                                <td>
-                                    <a href="{{ route('subjects.edit', $subject->id) }}">{{ $subject->title }}</a>
-                                </td>
+                                <td>{{ $subject->title }}</td>
                                 <td>{{ $subject->short_name ?? 'Undefined' }}</td>
                                 <td>{{ $subject->code ?? 'Undefined' }}</td>
+                                <td>
+                                    <div class="actions">
+                                        <div class="action">
+                                            <a href="{{ route('subjects.edit', $subject->id) }}">
+                                                <span class="fas fa-eye"></span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </td>
                             </tr>
                         @endforeach
                     @else

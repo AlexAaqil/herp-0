@@ -12,10 +12,10 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th class="center">ID</th>
                             <th>Teacher</th>
                             <th>Subject</th>
                             <th>Class</th>
+                            <th class="actions"></th>
                         </tr>
                     </thead>
 
@@ -23,14 +23,16 @@
                         @php $id = 1 @endphp
                         @foreach ($assignments as $assignment)
                             <tr class="searchable">
-                                <td class="center">
-                                    <a href="{{ route('subject-teachers.edit', $assignment->id) }}">
-                                        {{ $id++ }}
-                                    </a>
-                                </td>
                                 <td>{{ $assignment->teacher->first_name . ' ' . $assignment->teacher->last_name }}</td>
                                 <td>{{ $assignment->subject->title }}</td>
                                 <td>{{ $assignment->classSection->title }}</td>
+                                <td class="actions">
+                                    <div class="action">
+                                        <a href="{{ route('subject-teachers.edit', $assignment->id) }}">
+                                            <span class="fas fa-eye"></span>
+                                        </a>
+                                    </div>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

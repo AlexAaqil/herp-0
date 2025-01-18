@@ -12,12 +12,12 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th class="center">ID</th>
                         <th>Class</th>
                         <th>Period</th>
                         <th>Title</th>
                         <th>Payment</th>
                         <th>Amount</th>
+                        <th class="actions"></th>
                     </tr>
                 </thead>
     
@@ -25,16 +25,18 @@
                     @php $id = 1 @endphp
                     @foreach ($payments as $payment)
                         <tr class="searchable">
-                            <td class="center">
-                                <a href="{{ route('payments.edit', $payment->id) }}">
-                                    {{ $id++ }}
-                                </a>
-                            </td>
                             <td>{{ $payment->myClass->class_name }}</td>
                             <td>{{ $payment->year.' - Term '.$payment->term }}</td>
                             <td>{{ $payment->title }}</td>
                             <td>{{ $payment->payment_method }}</td>
                             <td>{{ $payment->amount }}</td>
+                            <td class="actions">
+                                <div class="action">
+                                    <a href="{{ route('payments.edit', $payment->id) }}">
+                                        <span class="fas fa-eye"></span>
+                                    </a>
+                                </div>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

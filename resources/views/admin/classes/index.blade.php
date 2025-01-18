@@ -10,8 +10,8 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th class="center">ID</th>
                     <th>Class Name</th>
+                    <th class="actions"></th>
                 </tr>
             </thead>
 
@@ -20,12 +20,14 @@
                     @php $id = 1 @endphp
                     @foreach ($classes as $class)
                         <tr class="searchable">
-                            <td class="center">
-                                <a href="{{ route('classes.edit', $class->id) }}">
-                                    {{ $id++ }}
-                                </a>
-                            </td>
                             <td>{{ $class->class_name }}</td>
+                            <td class="actions">
+                                <div class="action">
+                                    <a href="{{ route('classes.edit', $class->id) }}">
+                                        <span class="fas fa-eye"></span>
+                                    </a>
+                                </div>
+                            </td>
                         </tr>
                     @endforeach
                 @else

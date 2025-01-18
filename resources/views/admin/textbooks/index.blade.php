@@ -5,7 +5,6 @@
         @if (count($textbooks) > 0)
             <table class="table">
                 <thead>
-                    <th class="center">ID</th>
                     <th>Book Number</th>
                     <th>Book Name</th>
                     <th>Reg. No.</th>
@@ -16,17 +15,12 @@
                     <th>Status</th>
                     <th>Date Issued</th>
                     <th>Date Returned</th>
+                    <th class="actions">ID</th>
                 </thead>
 
                 <tbody>
-                    @php $id = 1 @endphp
                     @foreach ($textbooks as $textbook)
                         <tr class="searchable">
-                            <td class="center">
-                                <a href="{{ route('textbooks.edit', ['textbook' => $textbook->id]) }}">
-                                    {{ $id++ }}
-                                </a>
-                            </td>
                             <td>{{ $textbook->book_number }}</td>
                             <td>{{ $textbook->book_name }}</td>
                             <td>{{ $textbook->student->registration_number }}</td>
@@ -37,6 +31,13 @@
                             <td>{{ ucfirst($textbook->status) }}</td>
                             <td>{{ $textbook->date_issued }}</td>
                             <td>{{ $textbook->date_returned == null ? 'Not returned' : $textbook->date_returned }}</td>
+                            <td class="actions">
+                                <div class="action">
+                                    <a href="{{ route('textbooks.edit', ['textbook' => $textbook->id]) }}">
+                                        <span class="fas fa-eye"></span>
+                                    </a>
+                                </div>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

@@ -13,6 +13,7 @@
                     <tr>
                         <th>Exam</th>
                         <th>Period</th>
+                        <th class="actions"></th>
                     </tr>
                 </thead>
 
@@ -20,10 +21,15 @@
                     @if (count($exams) > 0)
                         @foreach ($exams as $exam)
                             <tr class="searchable">
-                                <td>
-                                    <a href="{{ route('exams.edit', $exam->id) }}">{{ $exam->title }}</a>
-                                </td>
+                                <td>{{ $exam->title }}</td>
                                 <td>{{ $exam->year . ' Term - ' . $exam->term }}</td>
+                                <td class="actions">
+                                    <div class="action">
+                                        <a href="{{ route('exams.edit', $exam->id) }}">
+                                            <span class="fas fa-eye"></span>
+                                        </a>
+                                    </div>
+                                </td>
                             </tr>
                         @endforeach
                     @else
