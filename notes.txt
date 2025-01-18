@@ -37,8 +37,8 @@ Teachers can issue assignments (deadline, date_issued, description, subject, cla
 
 
 
-- Student can print a gate pass once they complete their fees.
-- Student information should include performance.
+Student can print a gate pass once they complete their fees.
+Student information should include performance.
 - Students performance can be viewed according to the selected exam.
 - Student biometrics to keep track of attendance during opening days and leaveouts.
 - Student graduation status should change to status to keep track of those who have transfered.
@@ -48,8 +48,8 @@ Teachers can issue assignments (deadline, date_issued, description, subject, cla
 Admins should also view inventory records and remarks by the store keeper.
 
 
-- Tables should clearly show the parts you can click on like on IDs.
-Responsiveness.
+Tables should clearly show the parts you can click on like on IDs.
+- Responsiveness.
 - Make action buttons for forms more descriptive, like apply (when applying for leaves)
 
 Blogs:
