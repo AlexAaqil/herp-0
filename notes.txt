@@ -49,6 +49,28 @@ Admins should also view inventory records and remarks by the store keeper.
 
 
 - Tables should clearly show the parts you can click on like on IDs.
+Responsiveness.
+- Make action buttons for forms more descriptive, like apply (when applying for leaves)
+
+Blogs:
+- Fix the UI.
+
+Assignments:
+- Create a page for viewing details about an assignment.
+- Use a slug for the class in the filename of the assignment.
+
+Inventory:
+- Fix the logic for updating inventory.
+
+Accountant:
+- Expenses then prints receipts after paid. (like salaries to labourers: amount, date, category, description)
+- Should see inventory so that he can confirm and pay what has been brought in.
+
+Store keeper:
+- (update unit of measurement label with (kgs, bags, liters)) to make it more descriptive.
+
+Students:
+- (summarize the results according to exams).
 
 
 
