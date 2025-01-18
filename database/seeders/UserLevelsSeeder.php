@@ -30,6 +30,10 @@ class UserLevelsSeeder extends Seeder
                 "user_level" => 3,
                 "title" => "Teacher",
             ],
+            [
+                "user_level" => 4,
+                "title" => "Store Keeper",
+            ],
         ];
 
         foreach($user_levels as $user_level) {
