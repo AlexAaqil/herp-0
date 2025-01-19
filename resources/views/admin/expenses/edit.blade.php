@@ -38,7 +38,7 @@
 
             <div class="input_Group">
                 <label for="date" class="required">Date</label>
-                <input type="date" name="date" id="date" value="{{ old('date', $expense->date) }}">
+                <input type="date" name="date" id="date" value="{{ old('date', $expense->date->format('Y-m-d')) }}">
                 <span class="inline_alert">{{ $errors->first('date') }}</span>
             </div>
 
