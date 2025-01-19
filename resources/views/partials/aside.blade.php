@@ -80,6 +80,18 @@
                 'level' => [0, 1, 3],
             ],
             [
+                'route' => 'inventory-records.index',
+                'icon' => 'fas fa-barcode',
+                'text' => 'Inventory',
+                'level' => [0, 1, 2, 4],
+            ],
+            [
+                'route' => 'inventory-categories.index',
+                'icon' => 'fas fa-luggage-cart',
+                'text' => 'Inv. Categories',
+                'level' => [4],
+            ],
+            [
                 'route' => 'leaveouts.index',
                 'icon' => 'fas fa-calendar-minus',
                 'text' => 'Leaveouts',
@@ -102,18 +114,6 @@
                 'icon' => 'fas fa-book',
                 'text' => 'Textbooks',
                 'level' => [0, 1, 3],
-            ],
-            [
-                'route' => 'inventory-records.index',
-                'icon' => 'fas fa-barcode',
-                'text' => 'Inventory',
-                'level' => [0, 1, 4],
-            ],
-            [
-                'route' => 'inventory-categories.index',
-                'icon' => 'fas fa-luggage-cart',
-                'text' => 'Inv. Categories',
-                'level' => [4],
             ],
             [
                 'route' => 'blogs.index',
