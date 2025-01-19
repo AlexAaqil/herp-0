@@ -1,5 +1,5 @@
 <x-authenticated-layout class="Inventory">
-    <x-admin-header header_title="Inventory" :total_count="count($inventories)" route="{{ route('inventory-records.create') }}" />
+    <x-admin-header header_title="Inventory" :total_count="count($inventories)" :route="auth()->user()->can('view-as-storekeeper') ? route('inventory-records.create') : null" />
 
     <div class="body">
         @if (count($inventories) > 0)

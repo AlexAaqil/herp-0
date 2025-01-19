@@ -13,7 +13,6 @@
                 </thead>
 
                 <tbody>
-                    @php $id = 1 @endphp
                     @foreach ($students as $student)
                         <tr class="searchable">
                             <td>
