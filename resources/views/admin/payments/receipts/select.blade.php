@@ -1,7 +1,7 @@
 <x-authenticated-layout class="Payments">
     <div class="system_nav">
         <a href="{{ route('payment-records.create', $student->id) }}">Payment Records</a>
-        <span>/ Select Term and Year</span>
+        <span>Select Term and Year</span>
     </div>
 
     <div class="body">

@@ -8,10 +8,6 @@
     }
 
     .Stats {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-        align-items: strecth;
-        gap: 1em;
         margin: 1em 0;
 
         .stat {
@@ -22,6 +18,7 @@
             background: $dashboard_background;
             border-radius: 4px;
             padding: 16px 12px;
+            margin: 0 0 1em;
 
             .icon {
                 display: flex;
@@ -101,6 +98,17 @@
             display: flex;
             align-items: center;
             gap: 1em;
+        }
+    }
+}
+
+@media screen and (width >= 726px) {
+    .Dashboard {
+        .Stats {
+            display: grid;
+            align-items: strecth;
+            gap: 1em;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
         }
     }
 }

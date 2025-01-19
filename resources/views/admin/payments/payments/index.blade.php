@@ -1,7 +1,7 @@
 <x-authenticated-layout class="Payments">
     <div class="system_nav">
         <a href="{{ route('settings.index') }}">Settings</a>
-        <span>/ Payments</span>
+        <span>Payments</span>
     </div>
 
     <x-admin-header header_title="Payments" :total_count="count($payments)" />
@@ -9,38 +9,40 @@
     <div class="row_container">
         <div class="body">
             @if (count($payments) > 0)
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Class</th>
-                        <th>Period</th>
-                        <th>Title</th>
-                        <th>Payment</th>
-                        <th>Amount</th>
-                        <th class="actions"></th>
-                    </tr>
-                </thead>
-    
-                <tbody>
-                    @php $id = 1 @endphp
-                    @foreach ($payments as $payment)
-                        <tr class="searchable">
-                            <td>{{ $payment->myClass->class_name }}</td>
-                            <td>{{ $payment->year.' - Term '.$payment->term }}</td>
-                            <td>{{ $payment->title }}</td>
-                            <td>{{ $payment->payment_method }}</td>
-                            <td>{{ $payment->amount }}</td>
-                            <td class="actions">
-                                <div class="action">
-                                    <a href="{{ route('payments.edit', $payment->id) }}">
-                                        <span class="fas fa-eye"></span>
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                <div class="table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Class</th>
+                                <th>Period</th>
+                                <th>Title</th>
+                                <th>Payment</th>
+                                <th>Amount</th>
+                                <th class="actions"></th>
+                            </tr>
+                        </thead>
+            
+                        <tbody>
+                            @php $id = 1 @endphp
+                            @foreach ($payments as $payment)
+                                <tr class="searchable">
+                                    <td>{{ $payment->myClass->class_name }}</td>
+                                    <td>{{ $payment->year.' - Term '.$payment->term }}</td>
+                                    <td>{{ $payment->title }}</td>
+                                    <td>{{ $payment->payment_method }}</td>
+                                    <td>{{ $payment->amount }}</td>
+                                    <td class="actions">
+                                        <div class="action">
+                                            <a href="{{ route('payments.edit', $payment->id) }}">
+                                                <span class="fas fa-eye"></span>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             @else
                 <p>No payments have been added yet</p>
             @endif

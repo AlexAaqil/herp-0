@@ -198,14 +198,14 @@ aside {
   position: fixed;
   padding: 4px 8px;
   text-align: center;
-  border-right: 1px solid rgb(204, 204, 204);
+  border-right: 1px solid #999999;
 }
-aside .brand,
+aside .brand .text,
 aside .text {
   display: none;
 }
 @media screen and (width >= 726px) {
-  aside .brand,
+  aside .brand .text,
   aside .text {
     display: block;
   }
@@ -248,6 +248,8 @@ aside ul li:hover a {
 aside .footer {
   position: absolute;
   bottom: 1.2em;
+  width: 90%;
+  margin: 0 auto;
 }
 aside .footer .logout {
   margin: 0.5em 0 0;
@@ -268,7 +270,7 @@ aside .footer .logout form button i {
     font-size: 0.95em;
   }
   aside .brand {
-    padding: 0.4em 0;
+    padding: 0.2em 0;
   }
   aside .brand .profile {
     display: grid;
@@ -288,8 +290,11 @@ aside .footer .logout form button i {
     font-size: 0.85em;
     color: #fff;
   }
+  aside .brand .profile .text {
+    display: grid;
+  }
   aside ul {
-    margin: 1.2em 0;
+    margin: 0.5em 0;
   }
   aside ul li {
     border-bottom: 1px solid #404040;
@@ -420,39 +425,44 @@ footer .copyright {
 }
 
 .table {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 1em;
+}
+.table table {
   width: 100%;
   border-spacing: 0;
   border-collapse: collapse;
   color: #fff;
 }
-.table thead {
-  background: #fff;
+.table table thead {
+  background: #555555;
+  color: #fff;
 }
-.table thead th {
+.table table thead th {
   padding: 6px;
   font-size: 0.9em;
   text-align: left;
-  color: #000;
 }
-.table thead th:first-of-type {
+.table table thead th:first-of-type {
   border-radius: 4px 0 0 0;
 }
-.table thead th:last-of-type {
+.table table thead th:last-of-type {
   border-radius: 0 4px 0 0;
 }
-.table thead .actions {
+.table table thead .actions {
   text-align: center;
 }
-.table tbody tr {
-  border-bottom: 1px solid rgb(204, 204, 204);
+.table table tbody tr {
+  border-bottom: 1px solid #666666;
 }
-.table tbody tr td {
+.table table tbody tr td {
   padding: 4px 8px;
 }
-.table tbody tr td a {
+.table table tbody tr td a {
   color: lightblue;
 }
-.table tbody tr td .td_span {
+.table table tbody tr td .td_span {
   padding: 2px 6px;
   font-size: 0.6em;
   font-weight: bold;
@@ -460,11 +470,11 @@ footer .copyright {
   background: #ffffff;
   color: #000;
 }
-.table tbody tr td .super_admin {
+.table table tbody tr td .super_admin {
   background: green;
   color: #fff;
 }
-.table tbody tr .actions {
+.table table tbody tr .actions {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -478,7 +488,7 @@ footer .copyright {
 }
 .custom_form header {
   border-radius: 6px 6px 0 0;
-  background: #3f3e3e;
+  background: #555555;
   color: #fff;
   padding: 0.5em 24px;
   margin: 0 0 0.8em;
@@ -497,7 +507,7 @@ footer .copyright {
 }
 .custom_form .show_details .details p {
   display: grid;
-  grid-template-columns: 25% 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 1em;
   margin: 0 0 0.5em;
 }
@@ -513,6 +523,12 @@ footer .copyright {
 }
 .custom_form .show_details .column:last-of-type p span {
   margin: 0 0 0.2em;
+}
+.custom_form .show_details .parent_details {
+  margin: 1.5em 0 2em;
+}
+.custom_form .show_details .parent_details p {
+  display: grid;
 }
 .custom_form .show_details .table thead {
   background: #000;
@@ -646,6 +662,15 @@ footer .copyright {
   }
   .custom_form .row_input_group_3 {
     grid-template-columns: 1fr 1fr 1fr;
+  }
+  .custom_form .show_details .details {
+    margin: 0 0 2em;
+  }
+  .custom_form .show_details .details p {
+    grid-template-columns: 25% 1fr;
+  }
+  .custom_form .show_details .parent_details {
+    margin: unset;
   }
 }
 .card .image img {
@@ -969,9 +994,6 @@ footer .copyright {
   min-height: 100dvh;
   height: auto;
 }
-.app_main aside {
-  width: 15%;
-}
 .app_main .app_content {
   margin-left: 15%;
   padding: 4px 15px;
@@ -998,8 +1020,18 @@ footer .copyright {
 .app_main .app_content .header input {
   padding: 8px 16px;
   border-radius: 32px;
-  border: 1px solid rgb(204, 204, 204);
+  border: 1px solid #666666;
+  color: #fff;
   font-size: 1em;
+  background: transparent;
+}
+.app_main .app_content .header input::-moz-placeholder {
+  color: #fff;
+  font-style: italic;
+}
+.app_main .app_content .header input::placeholder {
+  color: #fff;
+  font-style: italic;
 }
 .app_main .app_content .header .header_btn a {
   text-decoration: none;
@@ -1031,7 +1063,7 @@ footer .copyright {
   padding: 0 1.5em 0;
 }
 .app_main .app_content .system_nav {
-  margin: 0 0 0.5em;
+  margin: 0.5em 0 0.8em;
   color: #fff;
 }
 .app_main .app_content .system_nav a {
@@ -1039,50 +1071,85 @@ footer .copyright {
   font-weight: bold;
   text-decoration: none;
 }
+.app_main .app_content .system_nav span {
+  font-size: 0.95em;
+}
+.app_main .app_content .system_nav a:not(:last-child),
+.app_main .app_content .system_nav span:not(:last-child) {
+  font-weight: bold;
+}
+.app_main .app_content .system_nav a:not(:last-child)::after,
+.app_main .app_content .system_nav span:not(:last-child)::after {
+  content: " / ";
+  color: #fff;
+  margin: 0 0.2em;
+}
 
 @media screen and (width >= 726px) {
+  .app_main aside {
+    width: 15%;
+  }
   .app_main .app_content .header .header_btn {
     justify-self: right;
   }
   .app_main .app_content .row_container {
     display: grid;
-    grid-template-columns: 2fr 1fr;
     gap: 0 1em;
+    grid-template-columns: 2fr 1fr;
   }
 }
 .StudentPortal {
   color: #fff;
 }
 .StudentPortal .separator {
-  border: 1px solid rgb(230, 230, 230);
+  border: 1px solid #666666;
   margin: 0 0 0.5em;
 }
 .StudentPortal .details {
-  margin: 0.8em 0 2em;
-  width: 40%;
+  margin: 0 0 1em;
 }
 .StudentPortal .details .title {
   font-weight: bold;
 }
-.StudentPortal .details p {
-  margin: 0 0 0.5em;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+.StudentPortal .student_details p span:last-of-type {
+  font-weight: bold;
 }
-.StudentPortal .details p span:first-of-type {
-  font-style: italic;
+.StudentPortal .parents {
+  margin: 2em 0;
+}
+.StudentPortal .parents .title {
+  margin: 0 0 0.4em;
+}
+.StudentPortal .parents p {
+  display: grid;
+  gap: 0.2em;
+  padding: 0 4px 0.5em;
 }
 
+@media screen and (width >= 726px) {
+  .student_details {
+    display: grid;
+    grid-template-columns: 120px 2fr;
+    align-items: center;
+  }
+  .student_details p {
+    display: grid;
+    grid-template-columns: 10% auto;
+    gap: 0.4em;
+  }
+  .student_details p span {
+    margin: 0 0 0.2em;
+  }
+  .student_details p span:first-of-type {
+    font-style: italic;
+  }
+}
 .Dashboard .Hero p {
   font-size: 1.2em;
   font-weight: bold;
   color: #fff;
 }
 .Dashboard .Stats {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  align-items: strecth;
-  gap: 1em;
   margin: 1em 0;
 }
 .Dashboard .Stats .stat {
@@ -1093,6 +1160,7 @@ footer .copyright {
   background: #ffffff;
   border-radius: 4px;
   padding: 16px 12px;
+  margin: 0 0 1em;
 }
 .Dashboard .Stats .stat .icon {
   display: flex;
@@ -1155,6 +1223,14 @@ footer .copyright {
   gap: 1em;
 }
 
+@media screen and (width >= 726px) {
+  .Dashboard .Stats {
+    display: grid;
+    align-items: strecth;
+    gap: 1em;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+}
 .Settings {
   color: #fff;
 }
@@ -1163,9 +1239,8 @@ footer .copyright {
   margin: 0.8em 0;
 }
 .Settings ul li {
-  width: 15%;
-  border-bottom: 2px solid rgb(204, 204, 204);
-  padding: 4px 2px;
+  border-bottom: 1px solid gray;
+  padding: 8px 2px;
 }
 .Settings ul li a {
   text-decoration: none;
@@ -1173,6 +1248,11 @@ footer .copyright {
   font-weight: bold;
 }
 
+@media screen and (width >= 726px) {
+  .Settings ul li {
+    width: 15%;
+  }
+}
 .Printable {
   padding: 4px 8px;
 }

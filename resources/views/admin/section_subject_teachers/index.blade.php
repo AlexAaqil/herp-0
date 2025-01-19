@@ -1,7 +1,7 @@
 <x-authenticated-layout class="Users">
     <div class="system_nav">
         <a href="{{ route('settings.index') }}">Settings</a>
-        <span>/ Teacher's Subjects</span>
+        <span>Teacher's Subjects</span>
     </div>
 
     <x-admin-header header_title="Teacher's Subjects" :total_count="count($assignments)" />
@@ -9,34 +9,36 @@
     <div class="row_container">
         <div class="body">
             @if (count($assignments) > 0)
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Teacher</th>
-                            <th>Subject</th>
-                            <th>Class</th>
-                            <th class="actions"></th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        @php $id = 1 @endphp
-                        @foreach ($assignments as $assignment)
-                            <tr class="searchable">
-                                <td>{{ $assignment->teacher->first_name . ' ' . $assignment->teacher->last_name }}</td>
-                                <td>{{ $assignment->subject->title }}</td>
-                                <td>{{ $assignment->classSection->title }}</td>
-                                <td class="actions">
-                                    <div class="action">
-                                        <a href="{{ route('subject-teachers.edit', $assignment->id) }}">
-                                            <span class="fas fa-eye"></span>
-                                        </a>
-                                    </div>
-                                </td>
+                <div class="table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Teacher</th>
+                                <th>Subject</th>
+                                <th>Class</th>
+                                <th class="actions"></th>
                             </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                        </thead>
+    
+                        <tbody>
+                            @php $id = 1 @endphp
+                            @foreach ($assignments as $assignment)
+                                <tr class="searchable">
+                                    <td>{{ $assignment->teacher->first_name . ' ' . $assignment->teacher->last_name }}</td>
+                                    <td>{{ $assignment->subject->title }}</td>
+                                    <td>{{ $assignment->classSection->title }}</td>
+                                    <td class="actions">
+                                        <div class="action">
+                                            <a href="{{ route('subject-teachers.edit', $assignment->id) }}">
+                                                <span class="fas fa-eye"></span>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             @else
                 <p>Teachers have not been assigned to subjects.</p>
             @endif

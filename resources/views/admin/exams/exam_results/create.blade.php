@@ -3,7 +3,7 @@
 
     <div class="system_nav">
         <a href="{{ route('exam-results.index') }}">Exam Results</a>
-        <span>/ New</span>
+        <span>New</span>
     </div>
 
     <div class="custom_form">

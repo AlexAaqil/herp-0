@@ -22,20 +22,22 @@
             </div>
     
             <div class="payment_details">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Description</th>
-                            <th>Amount</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>{{ $expense->description }}</td>
-                            <td>{{ number_format($expense->amount_paid, 2) }}</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Description</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{ $expense->description }}</td>
+                                <td>{{ number_format($expense->amount_paid, 2) }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
             
             <div class="footer">

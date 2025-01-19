@@ -1,6 +1,14 @@
 <aside>
     <div class="brand">
-        <a href="{{ route('home') }}">{{ $student->registration_number.' - '.$student->first_name.' '.$student->last_name }}</a>
+        <div class="profile">
+            <a href="{{ route('home') }}">
+                <img src="{{ $student->image ? asset('storage/' . $student->image) : asset('assets/images/default_profile.jpg') }}" alt="Student Image" style="max-width: 100px;">
+            </a>
+            <span class="text">
+                <a href="{{ route('profile.edit') }}">{{ $student->first_name . ' ' . $student->last_name }}</a>
+                <span>{{ $student->registration_number }}</span>
+            </span>
+        </div>
     </div>
 
     @php

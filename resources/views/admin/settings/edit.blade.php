@@ -1,7 +1,7 @@
 <x-authenticated-layout class="Settings">
     <div class="system_nav">
         <a href="{{ route('settings.index') }}">Settings</a>
-        <span>/ General</span>
+        <span>General</span>
     </div>
 
     <x-admin-header header_title="Settings" :total_count="count($settings)" />

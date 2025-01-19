@@ -3,7 +3,8 @@
 
     <div class="body">
         @if (count($disciplinaries) > 0)
-            <table class="table">
+        <div class="table">
+            <table>
                 <thead>
                     <th>Reg. No.</th>
                     <th>Student</th>
@@ -37,6 +38,7 @@
                     @endforeach
                 </tbody>
             </table>
+        </div>
         @else
             <p>No disciplinaries have been added.</p>
         @endif

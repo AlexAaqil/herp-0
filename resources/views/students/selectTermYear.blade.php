@@ -5,7 +5,6 @@
         <div class="app_content">
             <h2>Fees Receipt</h2>
             <div class="system_nav">
-                {{-- <a href="{{ route('payment-records.create', $student->id) }}">Payment Records</a> --}}
                 <span>Select Term and Year</span>
             </div>
 

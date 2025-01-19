@@ -3,7 +3,8 @@
 
     <div class="body">
         @if (count($assignments) > 0)
-            <table class="table">
+        <div class="table">
+            <table>
                 <thead>
                     <tr>
                         <th>Subject</th>
@@ -36,6 +37,7 @@
                     @endforeach
                 </tbody>
             </table>
+        </div>
         @else
             <p>No assignments have been added.</p>
         @endif

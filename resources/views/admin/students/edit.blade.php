@@ -21,7 +21,7 @@
         </header>
 
         <div class="show_details">
-            <div class="columns">
+            <div class="row_container">
                 <div class="column">
                     <p class="title">Student</p>
                     <div class="details">
@@ -74,7 +74,7 @@
                     </div>
                 </div>
 
-                <div class="column">
+                <div class="column parent_details">
                     <p class="title">Parents / Guardians</p>
                     @forelse ($student->parents as $parent)
                         <p>
@@ -89,32 +89,34 @@
 
                 <div class="column">
                     <p class="title">Perfomance</p>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Period</th>
-                                <th>Title</th>
-                                <th>Subject</th>
-                                <th>Marks</th>
-                                <th>Grade</th>
-                                {{-- <th class="center">Action</th> --}}
-                            </tr>
-                        </thead>
-    
-                        <tbody>
-                            @forelse ($student->examResults as $result)
+                    <div class="table">
+                        <table>
+                            <thead>
                                 <tr>
-                                    <td>{{ $result->exam->year . ' - Term ' . $result->exam->term }}</td>
-                                    <td>{{ $result->exam->title }}</td>
-                                    <td>{{ $result->subject->title }}</td>
-                                    <td>{{ $result->marks }}</td>
-                                    <td>{{ $result->grade }}</td>
+                                    <th>Period</th>
+                                    <th>Title</th>
+                                    <th>Subject</th>
+                                    <th>Marks</th>
+                                    <th>Grade</th>
+                                    {{-- <th class="center">Action</th> --}}
                                 </tr>
-                                @empty
-                                <tr col="5">No exam records yet.</tr>
-                            @endforelse
-                        </tbody>
-                    </table>
+                            </thead>
+        
+                            <tbody>
+                                @forelse ($student->examResults as $result)
+                                    <tr>
+                                        <td>{{ $result->exam->year . ' - Term ' . $result->exam->term }}</td>
+                                        <td>{{ $result->exam->title }}</td>
+                                        <td>{{ $result->subject->title }}</td>
+                                        <td>{{ $result->marks }}</td>
+                                        <td>{{ $result->grade }}</td>
+                                    </tr>
+                                    @empty
+                                    <tr col="5">No exam records yet.</tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,7 +1,7 @@
 <x-authenticated-layout class="Payment_Receipt">
     <div class="system_nav">
         <a href="{{ route('payment-records.create', $student->id) }}">Payment Records</a>
-        <span>/ Payment Receipt</span>
+        <span>Payment Receipt</span>
     </div>
 
     <div class="body preview" id="printable_area">
@@ -41,51 +41,53 @@
             @if ($paymentRecords->isEmpty())
                 <p>No payment records found for the selected term and year.</p>
             @else
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Title</th>
-                            <th>Amount</th>
-                            <th>Paid</th>
-                            <th>Balance</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @php
-                            $totalAmount = 0;
-                            $totalPaid = 0;
-                            $totalBalance = 0;
-                        @endphp
-                        @foreach ($paymentRecords as $record)
+                <div class="table">
+                    <table>
+                        <thead>
                             <tr>
-                                <td>{{ $record->payment->title }}</td>
-                                <td>{{ number_format($record->payment->amount, 2) }}</td>
-                                <td>{{ number_format($record->amount_paid, 2) }}</td>
-                                <td>{{ number_format($record->balance, 2) }}</td>
-
-                                @php
-                                    $totalAmount += $record->payment->amount;
-                                    $totalPaid += $record->amount_paid;
-                                    $totalBalance += $record->balance;
-                                @endphp
+                                <th>Title</th>
+                                <th>Amount</th>
+                                <th>Paid</th>
+                                <th>Balance</th>
                             </tr>
-                        @endforeach
-                        <tr>
-                            <td><strong>Total</strong></td>
-                            <td><strong>{{ number_format($totalAmount, 2) }}</strong></td>
-                            <td><strong>{{ number_format($totalPaid, 2) }}</strong></td>
-                            <td>
-                                <strong>
-                                    @if ($totalBalance == 0)
-                                        Fully Paid
-                                    @else
-                                        {{ number_format($totalBalance, 2) }}
-                                    @endif
-                                </strong>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            @php
+                                $totalAmount = 0;
+                                $totalPaid = 0;
+                                $totalBalance = 0;
+                            @endphp
+                            @foreach ($paymentRecords as $record)
+                                <tr>
+                                    <td>{{ $record->payment->title }}</td>
+                                    <td>{{ number_format($record->payment->amount, 2) }}</td>
+                                    <td>{{ number_format($record->amount_paid, 2) }}</td>
+                                    <td>{{ number_format($record->balance, 2) }}</td>
+    
+                                    @php
+                                        $totalAmount += $record->payment->amount;
+                                        $totalPaid += $record->amount_paid;
+                                        $totalBalance += $record->balance;
+                                    @endphp
+                                </tr>
+                            @endforeach
+                            <tr>
+                                <td><strong>Total</strong></td>
+                                <td><strong>{{ number_format($totalAmount, 2) }}</strong></td>
+                                <td><strong>{{ number_format($totalPaid, 2) }}</strong></td>
+                                <td>
+                                    <strong>
+                                        @if ($totalBalance == 0)
+                                            Fully Paid
+                                        @else
+                                            {{ number_format($totalBalance, 2) }}
+                                        @endif
+                                    </strong>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             @endif
         </div>
     </div>

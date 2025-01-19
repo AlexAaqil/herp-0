@@ -7,7 +7,7 @@
 
             <div class="system_nav">
                 <a href="{{ route('inventory-records.index') }}">Inventory</a>
-                <span>/ New</span>
+                <span>New</span>
             </div>
         </header>
 

@@ -1,64 +1,70 @@
-$thead_background: #fff;
+$thead_background: #3b3b3b;
 
 .table {
-    width: 100%;
-    border-spacing: 0;
-    border-collapse: collapse;
-    color: #fff;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 1em;
 
-    thead {
-        background: $thead_background;
+    table {
+        width: 100%;
+        border-spacing: 0;
+        border-collapse: collapse;
+        color: #fff;
 
-        th {
-            padding: 6px;
-            font-size: 0.9em;
-            text-align: left;
-            color: #000;
-
-            &:first-of-type {
-                border-radius: 4px 0 0 0;
-            }
-            &:last-of-type {
-                border-radius: 0 4px 0 0;
-            }
-        }
-
-        .actions {
-            text-align: center;
-        }
-    }
-
-    tbody {
-        tr {
-            border-bottom: 1px solid $faded_line;
-
-            td {
-                padding: 4px 8px;
-
-                a {
-                    color: lightblue;
+        thead {
+            background: $form_table_header_background;
+            color: $form_table_header_text;
+    
+            th {
+                padding: 6px;
+                font-size: 0.9em;
+                text-align: left;
+    
+                &:first-of-type {
+                    border-radius: 4px 0 0 0;
                 }
-
-                .td_span {
-                    padding: 2px 6px;
-                    font-size: 0.6em;
-                    font-weight: bold;
-                    border-radius: 32px;
-                    background: $dashboard_background;
-                    color: #000;
-                }
-
-                .super_admin {
-                    background: $success;
-                    color: #fff;
+                &:last-of-type {
+                    border-radius: 0 4px 0 0;
                 }
             }
-
+    
             .actions {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                gap: 0.8em;
+                text-align: center;
+            }
+        }
+    
+        tbody {
+            tr {
+                border-bottom: 1px solid darken($faded_line, 40);
+    
+                td {
+                    padding: 4px 8px;
+    
+                    a {
+                        color: lightblue;
+                    }
+    
+                    .td_span {
+                        padding: 2px 6px;
+                        font-size: 0.6em;
+                        font-weight: bold;
+                        border-radius: 32px;
+                        background: $dashboard_background;
+                        color: #000;
+                    }
+    
+                    .super_admin {
+                        background: $success;
+                        color: #fff;
+                    }
+                }
+    
+                .actions {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 0.8em;
+                }
             }
         }
     }

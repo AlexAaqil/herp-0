@@ -5,9 +5,9 @@ aside {
     position: fixed;
     padding: 4px 8px;
     text-align: center;
-    border-right: 1px solid $faded_line;
+    border-right: 1px solid darken($faded_line, 20);
 
-    .brand,
+    .brand .text,
     .text {
         @include desktop_only;
     }
@@ -60,6 +60,8 @@ aside {
     .footer {
         position: absolute;
         bottom: 1.2em;
+        width: 90%;
+        margin: 0 auto;
 
         .logout {
             margin: 0.5em 0 0;
@@ -85,7 +87,7 @@ aside {
         }
 
         .brand {
-            padding: 0.4em 0;
+            padding: 0.2em 0;
 
             .profile {
                 display: grid;
@@ -107,11 +109,15 @@ aside {
                     font-size: 0.85em;
                     color: $aside_text_color;
                 }
+
+                .text {
+                    display: grid;
+                }
             }
         }
 
         ul {
-            margin: 1.2em 0;
+            margin: 0.5em 0;
 
             li {
                 border-bottom: 1px solid darken($faded_line, 55%);

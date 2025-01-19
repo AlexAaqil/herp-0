@@ -2,8 +2,8 @@
     <div class="custom_form">
         <div class="system_nav">
             <a href="{{ route('settings.index') }}">Settings</a>
-            <a href="{{ route('grades.index') }}">/ Grades</a>
-            <span>/ Edit</span>
+            <a href="{{ route('grades.index') }}">Grades</a>
+            <span>Edit</span>
         </div>
 
         <header>

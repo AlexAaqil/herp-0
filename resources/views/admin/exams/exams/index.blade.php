@@ -1,44 +1,46 @@
 <x-authenticated-layout class="Exams">
     <div class="system_nav">
         <a href="{{ route('settings.index') }}">Settings</a>
-        <span>/ Exams</span>
+        <span>Exams</span>
     </div>
 
     <x-admin-header header_title="Exams" :total_count="count($exams)" />
 
     <div class="row_container">
         <div class="body">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Exam</th>
-                        <th>Period</th>
-                        <th class="actions"></th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    @if (count($exams) > 0)
-                        @foreach ($exams as $exam)
-                            <tr class="searchable">
-                                <td>{{ $exam->title }}</td>
-                                <td>{{ $exam->year . ' Term - ' . $exam->term }}</td>
-                                <td class="actions">
-                                    <div class="action">
-                                        <a href="{{ route('exams.edit', $exam->id) }}">
-                                            <span class="fas fa-eye"></span>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
-                        @endforeach
-                    @else
+            <div class="table">
+                <table>
+                    <thead>
                         <tr>
-                            <td colspan="6">No exams have been added yet</td>
+                            <th>Exam</th>
+                            <th>Period</th>
+                            <th class="actions"></th>
                         </tr>
-                    @endif
-                </tbody>
-            </table>
+                    </thead>
+    
+                    <tbody>
+                        @if (count($exams) > 0)
+                            @foreach ($exams as $exam)
+                                <tr class="searchable">
+                                    <td>{{ $exam->title }}</td>
+                                    <td>{{ $exam->year . ' Term - ' . $exam->term }}</td>
+                                    <td class="actions">
+                                        <div class="action">
+                                            <a href="{{ route('exams.edit', $exam->id) }}">
+                                                <span class="fas fa-eye"></span>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @else
+                            <tr>
+                                <td colspan="6">No exams have been added yet</td>
+                            </tr>
+                        @endif
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <div class="custom_form">

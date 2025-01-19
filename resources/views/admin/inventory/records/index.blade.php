@@ -3,7 +3,8 @@
 
     <div class="body">
         @if (count($inventories) > 0)
-            <table class="table">
+        <div class="table">
+            <table>
                 <thead>
                     <th>Item</th>
                     <th>Transaction</th>
@@ -32,6 +33,7 @@
                     @endforeach
                 </tbody>
             </table>
+        </div>
         @else
             <p>No inventory has been added.</p>
         @endif

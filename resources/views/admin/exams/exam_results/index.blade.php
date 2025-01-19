@@ -31,49 +31,51 @@
                 <!-- Hidden field for exam_id -->
                 <input type="hidden" name="exam_id" value="{{ request('exam_id') }}">
 
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Student</th>
-                            @foreach ($subjects as $subject)
-                                <th>{!! Illuminate\Support\Str::limit($subject->title, 4, '') !!}</th>
-                            @endforeach
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        @foreach ($students as $student)
-                            <tr class="searchable">
-                                <td>{{ $student->registration_number }}</td>
-
-                                <!-- Display and Update Marks for Each Student and Subject -->
+                <div class="table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Student</th>
                                 @foreach ($subjects as $subject)
-                                    @php
-                                        // Get the existing result for the student and subject for this exam
-                                        $result = $student->examResults
-                                            ->where('exam_id', request('exam_id'))
-                                            ->where('subject_id', $subject->id)
-                                            ->first();
-                                    @endphp
-                                    <td>
-                                        <div class="input_group">
-                                            <input type="number"
-                                                name="marks[{{ $student->id }}][{{ $subject->id }}]"
-                                                value="{{ $result ? $result->marks : 0 }}" min="0"
-                                                max="100" placeholder="Enter marks">
-                                            <span class="inline_alert">{{ $errors->first('marks') }}</span>
-                                        </div>
-                                    </td>
+                                    <th>{!! Illuminate\Support\Str::limit($subject->title, 4, '') !!}</th>
                                 @endforeach
-
-                                <td>
-                                    <button type="submit" class="btn btn-primary">Save</button>
-                                </td>
+                                <th>Actions</th>
                             </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                        </thead>
+    
+                        <tbody>
+                            @foreach ($students as $student)
+                                <tr class="searchable">
+                                    <td>{{ $student->registration_number }}</td>
+    
+                                    <!-- Display and Update Marks for Each Student and Subject -->
+                                    @foreach ($subjects as $subject)
+                                        @php
+                                            // Get the existing result for the student and subject for this exam
+                                            $result = $student->examResults
+                                                ->where('exam_id', request('exam_id'))
+                                                ->where('subject_id', $subject->id)
+                                                ->first();
+                                        @endphp
+                                        <td>
+                                            <div class="input_group">
+                                                <input type="number"
+                                                    name="marks[{{ $student->id }}][{{ $subject->id }}]"
+                                                    value="{{ $result ? $result->marks : 0 }}" min="0"
+                                                    max="100" placeholder="Enter marks">
+                                                <span class="inline_alert">{{ $errors->first('marks') }}</span>
+                                            </div>
+                                        </td>
+                                    @endforeach
+    
+                                    <td>
+                                        <button type="submit" class="btn btn-primary">Save</button>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </form>
         @else
             <div class="no-exam-selected">

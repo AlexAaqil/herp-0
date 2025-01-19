@@ -1,48 +1,50 @@
 <x-authenticated-layout class="Subjects">
     <div class="system_nav">
         <a href="{{ route('settings.index') }}">Settings</a>
-        <span>/ Subjects</span>
+        <span>Subjects</span>
     </div>
 
     <x-admin-header header_title="Subjects" :total_count="count($subjects)" />
 
     <div class="row_container">
         <div class="body">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Subject</th>
-                        <th>Short Name</th>
-                        <th>Code</th>
-                        <th class="actions"></th>
-                    </tr>
-                </thead>
-    
-                <tbody>
-                    @if (count($subjects) > 0)
-                        @foreach ($subjects as $subject)
-                            <tr class="searchable">
-                                <td>{{ $subject->title }}</td>
-                                <td>{{ $subject->short_name ?? 'Undefined' }}</td>
-                                <td>{{ $subject->code ?? 'Undefined' }}</td>
-                                <td>
-                                    <div class="actions">
-                                        <div class="action">
-                                            <a href="{{ route('subjects.edit', $subject->id) }}">
-                                                <span class="fas fa-eye"></span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                        @endforeach
-                    @else
+            <div class="table">
+                <table>
+                    <thead>
                         <tr>
-                            <td colspan="6">No subjects have been added yet</td>
+                            <th>Subject</th>
+                            <th>Short Name</th>
+                            <th>Code</th>
+                            <th class="actions"></th>
                         </tr>
-                    @endif
-                </tbody>
-            </table>
+                    </thead>
+        
+                    <tbody>
+                        @if (count($subjects) > 0)
+                            @foreach ($subjects as $subject)
+                                <tr class="searchable">
+                                    <td>{{ $subject->title }}</td>
+                                    <td>{{ $subject->short_name ?? 'Undefined' }}</td>
+                                    <td>{{ $subject->code ?? 'Undefined' }}</td>
+                                    <td>
+                                        <div class="actions">
+                                            <div class="action">
+                                                <a href="{{ route('subjects.edit', $subject->id) }}">
+                                                    <span class="fas fa-eye"></span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @else
+                            <tr>
+                                <td colspan="6">No subjects have been added yet</td>
+                            </tr>
+                        @endif
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <div class="custom_form">

@@ -8,28 +8,30 @@
             @if($textbooks->isEmpty())
                 <p>No textbooks assigned yet.</p>
             @else
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Book Number</th>
-                            <th>Book Name</th>
-                            <th>Status</th>
-                            <th>Issued On</th>
-                            <th>Returned On</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($textbooks as $textbook)
+                <div class="table">
+                    <table>
+                        <thead>
                             <tr>
-                                <td>{{ $textbook->book_number }}</td>
-                                <td>{{ $textbook->book_name }}</td>
-                                <td>{{ ucfirst($textbook->status) }}</td>
-                                <td>{{ $textbook->date_issued }}</td>
-                                <td>{{ $textbook->date_returned ?? 'Not yet returned' }}</td>
+                                <th>Book Number</th>
+                                <th>Book Name</th>
+                                <th>Status</th>
+                                <th>Issued On</th>
+                                <th>Returned On</th>
                             </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            @foreach($textbooks as $textbook)
+                                <tr>
+                                    <td>{{ $textbook->book_number }}</td>
+                                    <td>{{ $textbook->book_name }}</td>
+                                    <td>{{ ucfirst($textbook->status) }}</td>
+                                    <td>{{ $textbook->date_issued }}</td>
+                                    <td>{{ $textbook->date_returned ?? 'Not yet returned' }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             @endif
         </div>
     </main>

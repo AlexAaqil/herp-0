@@ -5,7 +5,7 @@
 
             <div class="system_nav">
                 <a href="{{ route('expenses.index') }}">Expenses</a>
-                <span>/ Edit</span>
+                <span>Edit</span>
             </div>
         </header>
 

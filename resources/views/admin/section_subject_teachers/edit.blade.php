@@ -5,8 +5,8 @@
 
             <div class="system_nav">
                 <a href="{{ route('settings.index') }}">Settings</a>
-                <a href="{{ route('subject-teachers.index') }}">/ Teacher Subjects</a>
-                <span>/ Edit</span>
+                <a href="{{ route('subject-teachers.index') }}">Teacher Subjects</a>
+                <span>Edit</span>
             </div>
         </header>
 

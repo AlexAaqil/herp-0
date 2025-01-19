@@ -18,39 +18,42 @@
             {{ request('class_section_id') ? 'Students in Selected Class Section' : 'All Students' }}
         </p>
 
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Student</th>
-                    <th>Class</th>
-                    <th>Parent</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
+        <div class="table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Student</th>
+                        <th>Class</th>
+                        <th>Parent</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+    
+                <tbody>
+                    @forelse ($students as $student)
+                        <tr>
+                            <td>{{ $student->registration_number . ' - ' .$student->first_name . ' ' . $student->last_name }}</td>
+                            <td>{{ $student->studentClassSection->title }}</td>
+                            <td>
+                                @forelse ($student->parents as $parent)
+                                    <span>{{ $parent->first_name.' '.$parent->last_name.' - '.$parent->phone_main }}</span>
+                                    <br>
+                                @empty
+                                    <span>Unknown</span>
+                                @endforelse
+                            </td>
+                            <td>
+                                <a href="{{ route('payment-records.create', $student->id) }}">Manage Payments</a>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="5">No students found.</td>
+                        </tr>
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
 
-            <tbody>
-                @forelse ($students as $student)
-                    <tr>
-                        <td>{{ $student->registration_number . ' - ' .$student->first_name . ' ' . $student->last_name }}</td>
-                        <td>{{ $student->studentClassSection->title }}</td>
-                        <td>
-                            @forelse ($student->parents as $parent)
-                                <span>{{ $parent->first_name.' '.$parent->last_name.' - '.$parent->phone_main }}</span>
-                                <br>
-                            @empty
-                                <span>Unknown</span>
-                            @endforelse
-                        </td>
-                        <td>
-                            <a href="{{ route('payment-records.create', $student->id) }}">Manage Payments</a>
-                        </td>
-                    </tr>
-                @empty
-                    <tr>
-                        <td colspan="5">No students found.</td>
-                    </tr>
-                @endforelse
-            </tbody>
-        </table>
     </div>
 </x-authenticated-layout>

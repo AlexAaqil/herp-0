@@ -2,24 +2,57 @@
     color: #fff;
     
     .separator {
-        border: 1px solid rgb(230, 230, 230);
+        border: 1px solid darken($faded_line, 40);
         margin: 0 0 0.5em;
     }
 
     .details {
-        margin: 0.8em 0 2em;
-        width: 40%;
+        margin: 0 0 1em;
 
         .title {
             font-weight: bold;
         }
 
+    }
+
+    .student_details {
         p {
-            margin: 0 0 0.5em;
+            span {
+                &:last-of-type {
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+
+    .parents {
+        margin: 2em 0;
+
+        .title {
+            margin: 0 0 0.4em;
+        }
+        
+        p {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            gap: 0.2em;
+            padding: 0 4px 0.5em;
+        }
+    }
+}
+
+@media screen and (width >= 726px) {
+    .student_details {
+        display: grid;
+        grid-template-columns: 120px 2fr;
+        align-items: center;
+
+        p {
+            display: grid;
+            grid-template-columns: 10% auto;
+            gap: 0.4em;
 
             span {
+                margin: 0 0 0.2em;
                 &:first-of-type {
                     font-style: italic;
                 }

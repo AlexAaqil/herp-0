@@ -1,7 +1,7 @@
 <x-authenticated-layout class="Payment_Receipt GatePass">
     <div class="system_nav">
         <a href="{{ route('payment-records.create', $student->id) }}">Payment Records</a>
-        <span>/ Gate Pass</span>
+        <span>Gate Pass</span>
     </div>
 
     <div class="body printable_area" id="printable_area">

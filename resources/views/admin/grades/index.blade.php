@@ -1,46 +1,48 @@
 <x-authenticated-layout class="Grades">
     <div class="system_nav">
         <a href="{{ route('settings.index') }}">Settings</a>
-        <span>/ Grades</span>
+        <span>Grades</span>
     </div>
 
     <x-admin-header header_title="Grades" :total_count="count($grades)" />
 
     <div class="row_container">
         <div class="body">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Marks</th>
-                        <th>Grade</th>
-                        <th>Remarks</th>
-                        <th class="actions"></th>
-                    </tr>
-                </thead>
-    
-                <tbody>
-                    @if (count($grades) > 0)
-                        @foreach ($grades as $grade)
-                            <tr class="searchable">
-                                <td>{{ $grade->min_marks.' - '.$grade->max_marks }}</td>
-                                <td>{{ $grade->grade }}</td>
-                                <td>{{ $grade->remarks }}</td>
-                                <td class="actions">
-                                    <div class="action">
-                                        <a href="{{ route('grades.edit', $grade->id) }}">
-                                            <span class="fas fa-eye"></span>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
-                        @endforeach
-                    @else
+            <div class="table">
+                <table>
+                    <thead>
                         <tr>
-                            <td colspan="6">No grades have been added yet</td>
+                            <th>Marks</th>
+                            <th>Grade</th>
+                            <th>Remarks</th>
+                            <th class="actions"></th>
                         </tr>
-                    @endif
-                </tbody>
-            </table>
+                    </thead>
+        
+                    <tbody>
+                        @if (count($grades) > 0)
+                            @foreach ($grades as $grade)
+                                <tr class="searchable">
+                                    <td>{{ $grade->min_marks.' - '.$grade->max_marks }}</td>
+                                    <td>{{ $grade->grade }}</td>
+                                    <td>{{ $grade->remarks }}</td>
+                                    <td class="actions">
+                                        <div class="action">
+                                            <a href="{{ route('grades.edit', $grade->id) }}">
+                                                <span class="fas fa-eye"></span>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @else
+                            <tr>
+                                <td colspan="6">No grades have been added yet</td>
+                            </tr>
+                        @endif
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <div class="custom_form">

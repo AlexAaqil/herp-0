@@ -7,8 +7,8 @@ $custom_form_padding: 24px;
 
     header {
         border-radius: 6px 6px 0 0;
-        background: #3f3e3e;
-        color: #fff;
+        background: $form_table_header_background;
+        color: $form_table_header_text;
         padding: 0.5em $custom_form_padding;
         margin: 0 0 0.8em;
         display: flex;
@@ -32,7 +32,7 @@ $custom_form_padding: 24px;
         .details {
             p {
                 display: grid;
-                grid-template-columns: 25% 1fr;
+                grid-template-columns: 1fr 1fr;
                 gap: 1em;
                 margin: 0 0 0.5em;
                 
@@ -58,6 +58,13 @@ $custom_form_padding: 24px;
                         margin: 0 0 0.2em;
                     }
                } 
+            }
+        }
+
+        .parent_details {
+            margin: 1.5em 0 2em;
+            p {
+                display: grid;
             }
         }
 
@@ -231,6 +238,20 @@ $custom_form_padding: 24px;
 
         .row_input_group_3 {
             grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        .show_details {
+            .details {
+                margin: 0 0 2em;
+
+                p {
+                    grid-template-columns: 25% 1fr;
+                }
+            }
+
+            .parent_details {
+                margin: unset;
+            }
         }
     }
 }

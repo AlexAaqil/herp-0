@@ -3,49 +3,51 @@
 
     <div class="row_container">
         <div class="body">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Recepient</th>
-                        <th>Category</th>
-                        <th>Amount</th>
-                        <th>Date</th>
-                        <th>Description</th>
-                        <th class="actions"></th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    @if (count($expenses) > 0)
-                        @foreach ($expenses as $expense)
-                            <tr class="searchable">
-                                <td>{{ $expense->recepient }}</td>
-                                <td>{{ ucfirst($expense->category) }}</td>
-                                <td>{{ number_format($expense->amount_paid, 2) }}</td>
-                                <td>{{ $expense->date->format('d-m-Y') }}</td>
-                                <td>{!! Illuminate\Support\Str::limit($expense->description, 25, '...') ?? 'Not described' !!}</td>
-                                <td class="actions">
-                                    <div class="action">
-                                        <a href="{{ route('expenses.edit', $expense->id) }}">
-                                            <span class="fas fa-eye"></span>
-                                        </a>
-                                    </div>
-
-                                    <div class="action">
-                                        <a href="{{ route('expense-receipt.print', $expense->id) }}" target="_blank">
-                                            <span class="fas fa-print"></span>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
-                        @endforeach
-                    @else
+            <div class="table">
+                <table>
+                    <thead>
                         <tr>
-                            <td colspan="6">No expenses have been added yet</td>
+                            <th>Recepient</th>
+                            <th>Category</th>
+                            <th>Amount</th>
+                            <th>Date</th>
+                            <th>Description</th>
+                            <th class="actions"></th>
                         </tr>
-                    @endif
-                </tbody>
-            </table>
+                    </thead>
+    
+                    <tbody>
+                        @if (count($expenses) > 0)
+                            @foreach ($expenses as $expense)
+                                <tr class="searchable">
+                                    <td>{{ $expense->recepient }}</td>
+                                    <td>{{ ucfirst($expense->category) }}</td>
+                                    <td>{{ number_format($expense->amount_paid, 2) }}</td>
+                                    <td>{{ $expense->date->format('d-m-Y') }}</td>
+                                    <td>{!! Illuminate\Support\Str::limit($expense->description, 25, '...') ?? 'Not described' !!}</td>
+                                    <td class="actions">
+                                        <div class="action">
+                                            <a href="{{ route('expenses.edit', $expense->id) }}">
+                                                <span class="fas fa-eye"></span>
+                                            </a>
+                                        </div>
+    
+                                        <div class="action">
+                                            <a href="{{ route('expense-receipt.print', $expense->id) }}" target="_blank">
+                                                <span class="fas fa-print"></span>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @else
+                            <tr>
+                                <td colspan="6">No expenses have been added yet</td>
+                            </tr>
+                        @endif
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         @can('view-as-accountant')

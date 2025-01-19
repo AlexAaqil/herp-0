@@ -3,7 +3,8 @@
 
     <div class="body">
         @if (count($leaveouts) > 0)
-            <table class="table">
+        <div class="table">
+            <table>
                 <thead>
                     <th>Student</th>
                     @can('view-as-admin')
@@ -36,6 +37,7 @@
                     @endforeach
                 </tbody>
             </table>
+        </div>
         @else
             <p>No leaveouts have been added.</p>
         @endif

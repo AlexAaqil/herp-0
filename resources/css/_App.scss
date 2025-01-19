@@ -7,10 +7,6 @@ $aside_width: 15%;
     background-repeat: no-repeat;
     min-height: 100dvh;
     height: auto;
-    
-    aside {
-        width: $aside_width;
-    }
 
     .app_content {
         margin-left: $aside_width;
@@ -32,8 +28,15 @@ $aside_width: 15%;
             input {
                 padding: 8px 16px;
                 border-radius: 32px;
-                border: 1px solid $faded_line;
+                border: 1px solid darken($faded_line, 40);
+                color: #fff;
                 font-size: 1em;
+                background: transparent;
+
+                &::placeholder {
+                    color: #fff;
+                    font-style: italic;
+                }
             }
 
             .header_btn {
@@ -75,7 +78,7 @@ $aside_width: 15%;
         }
 
         .system_nav {
-            margin: 0 0 0.5em;
+            margin: 0.5em 0 0.8em;
             color: #fff;
             
             a {
@@ -83,12 +86,31 @@ $aside_width: 15%;
                 font-weight: bold;
                 text-decoration: none;
             }
+
+            span {
+                font-size: 0.95em;
+            }
+
+            a:not(:last-child),
+            span:not(:last-child) {
+                font-weight: bold;
+
+                &::after {
+                    content: " / ";
+                    color: #fff;
+                    margin: 0 0.2em;
+                }
+            }
         }
     }
 }
 
 @media screen and (width >= 726px) {
     .app_main {
+        aside {
+            width: $aside_width;
+        }
+        
         .app_content {
             .header {
                 .header_btn {
@@ -98,8 +120,8 @@ $aside_width: 15%;
 
             .row_container {
                 display: grid;
-                grid-template-columns: 2fr 1fr;
                 gap: 0 1em;
+                grid-template-columns: 2fr 1fr;
             }
         }
     }
