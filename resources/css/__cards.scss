@@ -1,0 +1,31 @@
+.card {
+    .image {
+        img {
+            border-radius: 8px;
+        }
+    }
+
+    .text {
+        padding: 4px 8px;
+        .extra_details {
+            display: flex;
+            gap: 0.8em;
+            padding: 4px 0;
+
+            .published {
+                color: $success;
+            }
+
+            span {
+                font-size: 0.85em;
+            }
+        }
+
+        .details {
+            .title {
+                font-size: 1.2em;
+                color: lightblue;
+            }
+        }
+    }
+}

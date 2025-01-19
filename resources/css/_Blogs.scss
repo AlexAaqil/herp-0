@@ -1,0 +1,15 @@
+.Blogs {
+    .blog_categories {
+        padding: 0.4em 0;
+        display: flex;
+
+        a {
+            color: lightblue;
+        }
+    }
+
+    .cards {
+        @include grid(3);
+        gap: 1em;
+    }
+}

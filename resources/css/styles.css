@@ -648,6 +648,28 @@ footer .copyright {
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
+.card .image img {
+  border-radius: 8px;
+}
+.card .text {
+  padding: 4px 8px;
+}
+.card .text .extra_details {
+  display: flex;
+  gap: 0.8em;
+  padding: 4px 0;
+}
+.card .text .extra_details .published {
+  color: green;
+}
+.card .text .extra_details span {
+  font-size: 0.85em;
+}
+.card .text .details .title {
+  font-size: 1.2em;
+  color: lightblue;
+}
+
 .Home_Page section:not(:nth-of-type(1)) {
   margin: 5em 0;
 }
@@ -1260,4 +1282,23 @@ footer .copyright {
 }
 .Payment_Receipt .preview .payment_details .table tbody {
   color: #fff;
+}
+
+.Blogs .blog_categories {
+  padding: 0.4em 0;
+  display: flex;
+}
+.Blogs .blog_categories a {
+  color: lightblue;
+}
+.Blogs .cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5em;
+  gap: 1em;
+}
+@media screen and (width >= 726px) {
+  .Blogs .cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }/*# sourceMappingURL=styles.css.map */
