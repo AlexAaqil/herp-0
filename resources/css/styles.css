@@ -498,8 +498,8 @@ footer .copyright {
 .custom_form header p {
   font-weight: bold;
 }
-.custom_form header .navigation a {
-  color: lightblue;
+.custom_form header .system_nav {
+  margin: unset !important;
 }
 .custom_form .show_details {
   padding: 0.5em 24px;

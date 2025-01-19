@@ -3,10 +3,10 @@
         <header>
             <p>Update Exam</p>
 
-            <div class="navigation">
+            <div class="system_nav">
                 <a href="{{ route('settings.index') }}">Settings</a>
-                <a href="{{ route('exams.index') }}">/ Exams</a>
-                <span>/ Edit</span>
+                <a href="{{ route('exams.index') }}">Exams</a>
+                <span>Edit</span>
             </div>
         </header>
 

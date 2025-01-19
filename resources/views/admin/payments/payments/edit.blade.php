@@ -3,10 +3,10 @@
         <header>
             <p>Update Payment</p>
 
-            <div class="navigation">
+            <div class="system_nav">
                 <a href="{{ route('settings.index') }}">Settings</a>
-                <a href="{{ route('payments.index') }}">/ Payments</a>
-                <span>/ Edit</span>
+                <a href="{{ route('payments.index') }}">Payments</a>
+                <span>Edit</span>
             </div>
         </header>
 
