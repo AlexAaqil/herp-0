@@ -1111,6 +1111,17 @@ footer .copyright {
 .StudentPortal .details .title {
   font-weight: bold;
 }
+.StudentPortal .student_details .image {
+  width: 100px;
+  height: 100px;
+}
+.StudentPortal .student_details .image img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 8px;
+}
 .StudentPortal .student_details p span:last-of-type {
   font-weight: bold;
 }

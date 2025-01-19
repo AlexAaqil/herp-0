@@ -14,9 +14,9 @@
         <header>
             <p>Student Information</p>
 
-            <div class="navigation">
+            <div class="system_nav">
                 <a href="{{ route('students.index') }}">Students</a>
-                <span>/ Info</span>
+                <span>Info</span>
             </div>
         </header>
 
@@ -127,9 +127,9 @@
             <header>
                 <p>Update Student</p>
 
-                <div class="navigation">
+                <div class="system_nav">
                     <a href="{{ route('students.index') }}">Students</a>
-                    <span>/ Update</span>
+                    <span>Update</span>
                 </div>
             </header>
 
