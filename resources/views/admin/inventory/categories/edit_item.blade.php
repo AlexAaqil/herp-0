@@ -24,13 +24,13 @@
             </div>
 
             <div class="input_group">
-                <label for="title">Item</label>
+                <label for="title">Item Name</label>
                 <input type="text" name="title" id="title" value="{{ old('title', $inventory_item->title) }}">
                 <span class="inline_alert">{{ $errors->first('title') }}</span>
             </div>
 
             <div class="input_group">
-                <label for="unit">Unit</label>
+                <label for="unit">Unit of measurement (Kgs, ltrs, pcs)</label>
                 <input type="text" name="unit" id="unit" value="{{ old('unit', $inventory_item->unit) }}">
                 <span class="inline_alert">{{ $errors->first('unit') }}</span>
             </div>
