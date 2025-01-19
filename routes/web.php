@@ -31,6 +31,7 @@ use App\Http\Controllers\InventoryItemController;
 use App\Http\Controllers\InventoryRecordController;
 use App\Http\Controllers\LeaveController;
 use App\Http\Controllers\StudentAssignmentController;
+use App\Http\Controllers\ExpenseController;
 
 Route::get('/', [GeneralPagesController::class, 'home'])->name('home');
 Route::get('/about', [GeneralPagesController::class, 'about'])->name('about');
@@ -41,30 +42,30 @@ Route::get('/blogs', [BlogController::class, 'users_blogs'])->name('users.blogs'
 Route::get('/blogs/{slug}', [BlogController::class, 'show'])->name('blogs.show');
 
 Route::middleware(['student'])
-->prefix('student')
-->group(function () {
-    Route::get('/student-details', [StudentController::class, 'details'])->name('student-details');
+    ->prefix('student')
+    ->group(function () {
+        Route::get('/student-details', [StudentController::class, 'details'])->name('student-details');
 
-    Route::get('/textbooks', [StudentController::class, 'textbooks'])->name('student-textbooks');
+        Route::get('/textbooks', [StudentController::class, 'textbooks'])->name('student-textbooks');
 
-    Route::get('/leaveouts', [StudentController::class, 'leavouts'])->name('student-leaveouts');
+        Route::get('/leaveouts', [StudentController::class, 'leavouts'])->name('student-leaveouts');
 
-    Route::get('/disciplinaries', [StudentController::class, 'disciplinaries'])->name('student-disciplinaries');
+        Route::get('/disciplinaries', [StudentController::class, 'disciplinaries'])->name('student-disciplinaries');
 
-    Route::get('/payments', [StudentController::class, 'payments'])->name('student-payments');
-    Route::get('/student-receipt/select', [StudentController::class, 'selectTermYear'])->name('student-receipt.select');
-    Route::post('/payment-receipt/{student_id}/generate', [StudentController::class, 'generate'])->name('student-receipt.generate');
-    Route::get('/student-receipt/print', [StudentController::class, 'print'])->name('student-receipt.print');
-    Route::get('/student-gatepass/select', [StudentController::class, 'selectTermYearGatePass'])->name('student-gatepass.select');
-    Route::post('/payment-gatepass/{student_id}/generate', [StudentController::class, 'generateGatePass'])->name('student-gatepass.generate');
-    Route::post('/payment-gatepass/print', [StudentController::class, 'printGatePass'])->name('student-gatepass.print');
+        Route::get('/payments', [StudentController::class, 'payments'])->name('student-payments');
+        Route::get('/student-receipt/select', [StudentController::class, 'selectTermYear'])->name('student-receipt.select');
+        Route::post('/payment-receipt/{student_id}/generate', [StudentController::class, 'generate'])->name('student-receipt.generate');
+        Route::get('/student-receipt/print', [StudentController::class, 'print'])->name('student-receipt.print');
+        Route::get('/student-gatepass/select', [StudentController::class, 'selectTermYearGatePass'])->name('student-gatepass.select');
+        Route::post('/payment-gatepass/{student_id}/generate', [StudentController::class, 'generateGatePass'])->name('student-gatepass.generate');
+        Route::post('/payment-gatepass/print', [StudentController::class, 'printGatePass'])->name('student-gatepass.print');
 
-    Route::get('/results', [StudentController::class, 'results'])->name('student-results');
+        Route::get('/results', [StudentController::class, 'results'])->name('student-results');
 
-    Route::get('/assignments', [StudentController::class, 'assignments'])->name('student-assignments');
-    
-    Route::post('/logout', [StudentController::class, 'logout_student'])->name('student_logout');
-});
+        Route::get('/assignments', [StudentController::class, 'assignments'])->name('student-assignments');
+
+        Route::post('/logout', [StudentController::class, 'logout_student'])->name('student_logout');
+    });
 
 Route::middleware(['auth', 'verified', 'active'])->group(function () {
     Route::get('/home', [DashboardController::class, 'index'])->name('dashboard.index');
@@ -99,7 +100,7 @@ Route::middleware(['auth', 'verified', 'active'])->group(function () {
     Route::get('/payment-gatepass/{student_id}/select', [ReceiptsController::class, 'selectTermYearGatePass'])->name('payment-gatepass.select');
     Route::post('/payment-gatepass/{student_id}/generate', [ReceiptsController::class, 'generateGatePass'])->name('payment-gatepass.generate');
     Route::post('/payment-gatepass/print', [ReceiptsController::class, 'printGatePass'])->name('payment-gatepass.print');
-    
+
     Route::get('/exam-results/{exam_id?}', [ExamResultController::class, 'index'])->name('exam-results.index');
     Route::resource('/exam-results', ExamResultController::class)->except('index', 'show');
 
@@ -110,6 +111,9 @@ Route::middleware(['auth', 'verified', 'active'])->group(function () {
     Route::resource('/inventory-categories', InventoryCategoryController::class)->except('show');
     Route::resource('/inventory-items', InventoryItemController::class)->except('show');
     Route::resource('/inventory-records', InventoryRecordController::class)->except('show');
+
+    Route::resource('/expenses', ExpenseController::class)->except('show');
+    Route::get('/expense-receipt/{expense}', [ExpenseController::class, 'print_receipt'])->name('expense-receipt.print');
 
     Route::resource('/leaves', LeaveController::class)->parameters(['leaves' => 'leave',])->except('show');
 });
@@ -136,7 +140,7 @@ Route::middleware('admin_auth')
         Route::resource('/blogs', BlogController::class)->except('show');
         Route::post('/blogs/sort-lessons', [BlogController::class, 'sort_blogs'])->name('blogs.sort');
 
-        Route::prefix('settings')->group(function() {
+        Route::prefix('settings')->group(function () {
             Route::get('/all', [SettingsController::class, 'index'])->name('settings.index');
 
             Route::get('/general', [SettingsController::class, 'general'])->name('settings.general');

@@ -68,6 +68,12 @@
                 'level' => [0, 1, 2],
             ],
             [
+                'route' => 'expenses.index',
+                'icon' => 'fas fa-money-bill-alt',
+                'text' => 'Expenses',
+                'level' => [0, 1, 2],
+            ],
+            [
                 'route' => 'exam-results.index',
                 'icon' => 'fas fa-brain',
                 'text' => 'Exams',

@@ -35,5 +35,9 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('view-as-storekeeper', function (User $user) {
             return in_array($user->user_level, [4]);
         });
+
+        Gate::define('view-as-accountant', function (User $user) {
+            return in_array($user->user_level, [2]);
+        });
     }
 }

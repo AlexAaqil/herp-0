@@ -3,7 +3,7 @@
         <header>
             <p>Update Dorm</p>
 
-            <div class="navigation">
+            <div class="system_nav">
                 <a href="{{ route('settings.index') }}">Settings</a>
                 <a href="{{ route('dorms.index') }}">/ Dorms</a>
                 <span>/ Edit</span>
