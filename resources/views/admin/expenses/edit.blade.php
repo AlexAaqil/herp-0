@@ -15,7 +15,7 @@
 
             <div class="input_group">
                 <label for="recepient" class="required">Recepient</label>
-                <input type="text" name="recepient" id="recepient" value="{{ old('recepient', $expense->recepeient) }}">
+                <input type="text" name="recepient" id="recepient" value="{{ old('recepient', $expense->recepient) }}">
                 <span class="inline_alert">{{ $errors->first('recepient') }}</span>
             </div>
 
