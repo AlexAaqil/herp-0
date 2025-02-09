@@ -32,6 +32,7 @@ use App\Http\Controllers\InventoryRecordController;
 use App\Http\Controllers\LeaveController;
 use App\Http\Controllers\StudentAssignmentController;
 use App\Http\Controllers\ExpenseController;
+use App\Http\Controllers\TimeslotsController;
 
 Route::get('/', [GeneralPagesController::class, 'home'])->name('home');
 Route::get('/about', [GeneralPagesController::class, 'about'])->name('about');
@@ -156,6 +157,8 @@ Route::middleware('admin_auth')
             Route::resource('/subjects', SubjectsController::class)->except('show');
 
             Route::resource('/subject-teachers', SectionSubjectTeacherController::class)->except('show');
+
+            Route::resource('timeslots', TimeslotsController::class)->except('show');
 
             Route::resource('/exams', ExamController::class)->except('create', 'show');
         });

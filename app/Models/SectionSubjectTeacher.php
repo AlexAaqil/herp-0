@@ -15,6 +15,7 @@ class SectionSubjectTeacher extends Model
         'class_section_id',
         'subject_id',
         'teacher_id',
+        'timeslot_id',
     ];
 
     public function classSection()
@@ -30,5 +31,10 @@ class SectionSubjectTeacher extends Model
     public function teacher()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function timeslot()
+    {
+        return $this->belongsTo(Timeslots::class);
     }
 }

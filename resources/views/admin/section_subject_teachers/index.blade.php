@@ -91,6 +91,19 @@
                     <span class="inline_alert">{{ $errors->first('teacher_id') }}</span>
                 </div>
 
+                <div class="input_group">
+                    <label for="timeslot_id">Timeslot</label>
+                    <select name="timeslot_id" id="timeslot_id">
+                        <option value="">Select Timeslot</option>
+                        @foreach ($timeslots as $timeslot)
+                            <option
+                                value="{{ $timeslot->id }}"{{ old('timeslot_id') == $timeslot->id ? 'selected' : '' }}>
+                                {{ $timeslot->day . ' - ' . $timeslot->start_time . ' ' . $timeslot->endt_time }}</option>
+                        @endforeach
+                    </select>
+                    <span class="inline_alert">{{ $errors->first('timeslot_id') }}</span>
+                </div>
+
                 <button type="submit">Save</button>
             </form>
         </div>

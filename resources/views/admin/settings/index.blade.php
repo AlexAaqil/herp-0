@@ -18,6 +18,9 @@
             <a href="{{ route('subjects.index') }}">Subjects</a>
         </li>
         <li>
+            <a href="{{ route('timeslots.index') }}">Timeslots</a>
+        </li>
+        <li>
             <a href="{{ route('subject-teachers.index') }}">Subject Teachers</a>
         </li>
         <li>

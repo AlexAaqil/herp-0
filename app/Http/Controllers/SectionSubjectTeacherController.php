@@ -6,6 +6,7 @@ use App\Models\ClassSections;
 use App\Models\SectionSubjectTeacher;
 use App\Models\Subjects;
 use App\Models\User;
+use App\Models\Timeslots;
 use Illuminate\Http\Request;
 
 class SectionSubjectTeacherController extends Controller
@@ -16,7 +17,9 @@ class SectionSubjectTeacherController extends Controller
         $classSections = ClassSections::all();
         $subjects = Subjects::all();
         $teachers = User::where('user_level', 3)->get();
-        return view('admin.section_subject_teachers.index', compact('assignments', 'classSections', 'subjects', 'teachers'));
+        $timeslots = Timeslots::all();
+
+        return view('admin.section_subject_teachers.index', compact('assignments', 'classSections', 'subjects', 'teachers', 'timeslots'));
     }
 
     public function store(Request $request)
