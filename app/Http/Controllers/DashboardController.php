@@ -13,6 +13,7 @@ use App\Models\Payments;
 use App\Models\PaymentRecords;
 use App\Models\Blog;
 use Illuminate\Support\Facades\DB;
+use Auth;
 
 class DashboardController extends Controller
 {
@@ -106,10 +107,45 @@ class DashboardController extends Controller
         $count_students = Student::count();
         $count_classes = ClassSections::count();
         $count_subjects = Subjects::count();
+
+        // Get the logged-in teacher
+        $teacher = Auth::user();
+
+        // Load the teacher's relationships
+        $teacher->load('sectionSubjectTeachers.timeslot', 'sectionSubjectTeachers.subject', 'sectionSubjectTeachers.classSection');
+
+        // Organize the schedule data for the timetable
+        $schedule = [];
+        foreach ($teacher->sectionSubjectTeachers as $assignment) {
+            $day = $assignment->timeslot->day;
+            $time = $assignment->timeslot->time;
+            $subject = $assignment->subject->title;
+            $class = $assignment->classSection->title;
+
+            // Group by time and day
+            if (!isset($schedule[$time])) {
+                $schedule[$time] = [];
+            }
+
+            // Store subject and class as an array
+            $schedule[$time][$day] = [
+                'subject' => $subject,
+                'class' => $class,
+            ];
+        }
+
+        // Get the number of unique subjects the teacher teaches
+        $count_teacher_subjects = $teacher->sectionSubjectTeachers->unique('subject_id')->count();
+        $count_teacher_classes = $teacher->sectionSubjectTeachers->unique('class_section_id')->count();
+
         return view('dashboards.teacher_dashboard', compact(
             'count_students',
             'count_classes',
             'count_subjects',
+            'teacher',
+            'schedule',
+            'count_teacher_subjects',
+            'count_teacher_classes',
         ));
     }
 

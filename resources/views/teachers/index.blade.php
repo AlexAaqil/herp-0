@@ -26,7 +26,7 @@
                                 <td class="{{ $user->emp_code ? '' : 'danger' }}">{{ $user->emp_code ?? 'Undefined' }}</td>
                                 <td class="actions">
                                     <div class="action">
-                                        <a href="{{ route('users.edit', ['user' => $user->id]) }}">
+                                        <a href="{{ route('teachers.edit', ['teacher' => $user->id]) }}">
                                             <span class="fas fa-eye"></span>
                                         </a>
                                     </div>

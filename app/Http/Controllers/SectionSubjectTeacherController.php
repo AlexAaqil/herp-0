@@ -28,11 +28,13 @@ class SectionSubjectTeacherController extends Controller
             'class_section_id' => 'required|exists:class_sections,id',
             'subject_id' => 'required|exists:subjects,id',
             'teacher_id' => 'required|exists:users,id',
+            'timeslot_id' => 'required|exists:timeslots,id',
         ]);
 
         $existingAssignment = SectionSubjectTeacher::where('class_section_id', $validated['class_section_id'])
             ->where('subject_id', $validated['subject_id'])
             ->where('teacher_id', $validated['teacher_id'])
+            ->where('timeslot_id', $validated['timeslot_id'])
             ->first();
 
         if ($existingAssignment) {
@@ -41,7 +43,7 @@ class SectionSubjectTeacherController extends Controller
 
         SectionSubjectTeacher::create($validated);
 
-        return redirect()->route('subject-teachers.index')->with('success', ['message' => 'Teacher has been assigned to the subject.']);
+        return redirect()->back()->with('success', ['message' => 'Teacher has been assigned to the subject.']);
     }
 
     public function edit(SectionSubjectTeacher $subject_teacher)
@@ -59,11 +61,13 @@ class SectionSubjectTeacherController extends Controller
             'class_section_id' => 'required|exists:class_sections,id',
             'subject_id' => 'required|exists:subjects,id',
             'teacher_id' => 'required|exists:users,id',
+            'timeslot_id' => 'required|exists:timeslots,id',
         ]);
 
         $existingAssignment = SectionSubjectTeacher::where('class_section_id', $validated['class_section_id'])
             ->where('subject_id', $validated['subject_id'])
             ->where('teacher_id', $validated['teacher_id'])
+            ->where('timeslot_id', $validated['timeslot_id'])
             ->where('id', '!=', $subject_teacher->id)  // Exclude the current record from the check
             ->first();
         

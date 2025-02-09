@@ -6,6 +6,7 @@ use App\Http\Controllers\GeneralPagesController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserLevelController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\UserMessageController;
 use App\Http\Controllers\BlogCategoryController;
 use App\Http\Controllers\BlogController;
@@ -128,7 +129,7 @@ Route::middleware('admin_auth')
 
         Route::resource('/user-levels', UserLevelController::class)->except('show');
         Route::resource('/users', UserController::class)->except('show');
-        Route::get('/teachers', [UserController::class, 'teachers_index'])->name('teachers.index');
+        Route::resource('teachers', TeacherController::class)->except('show');
 
         Route::get('/students/create', [StudentController::class, 'create'])->name('students.create');
         Route::post('/students', [StudentController::class, 'store'])->name('students.store');

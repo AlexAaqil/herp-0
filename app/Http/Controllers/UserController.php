@@ -108,13 +108,6 @@ class UserController extends Controller
         return redirect()->route('users.index')->with('success', ['message' => 'User has been deleted']);
     }
 
-    public function teachers_index()
-    {
-        $teachers = User::where('user_level', 3)->get();
-
-        return view('teachers.index', compact('teachers'));
-    }
-
     public function teacher_subjects_classes()
     {
         $teacher = User::where('id', auth()->user()->id)->first();
