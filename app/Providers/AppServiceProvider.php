@@ -22,7 +22,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         // Load all settings into a global variable as key-value pairs
-        $settings = Settings::getSettings();
-        View::share('appSettings', $settings);
+
+        if (\Schema::hasTable('settings')) {
+            $settings = Settings::getSettings();
+            View::share('appSettings', $settings);
+        }
     }
 }
